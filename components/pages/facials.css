@@ -1,0 +1,133 @@
+/* Ported from the live page's own stylesheet (chi.kingspa.com), scoped to .pg-facials. */
+/* Its Tang Garland / Cormorant Garamond headings never loaded on the live page, so they showed in the browser serif: kept that way. */
+/* Hello Elementor base rules the live page sat on (Tailwind's reset removes them). */
+.pg-facials h1, .pg-facials h2, .pg-facials h3, .pg-facials h4, .pg-facials h5, .pg-facials h6 { margin-block: .5rem 1rem; font-weight: 500; line-height: 1.2; }
+.pg-facials h1 { font-size: 2.5rem; } .pg-facials h2 { font-size: 2rem; } .pg-facials h3 { font-size: 1.75rem; } .pg-facials h4 { font-size: 1.5rem; } .pg-facials h5 { font-size: 1.25rem; } .pg-facials h6 { font-size: 1rem; }
+.pg-facials p { margin-block: 0 .9rem; }
+.pg-facials ul, .pg-facials ol { margin-block: 1em; padding-left: 40px; }
+.pg-facials ul { list-style: disc; }
+.pg-facials a { text-decoration: none; }
+.pg-facials strong { font-weight: bolder; }
+.pg-facials button { font-family: inherit; font-size: 1rem; line-height: 1.5; margin: 0; background-color: initial; border: 1px solid #c36; border-radius: 3px; color: #c36; display: inline-block; font-weight: 400; padding: .5rem 1rem; text-align: center; transition: all .3s; user-select: none; white-space: nowrap; }
+.pg-facials button:focus, .pg-facials button:hover { background-color: #c36; color: #fff; text-decoration: none; }
+.pg-facials button:focus:not(:focus-visible) { outline: none; }
+.pg-facials { --ks-burgundy: #722222; --ks-burgundy-light: #A63F3F; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-light: #E8D9A8; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-radius: 8px; }
+.pg-facials .ks-wrapper * { box-sizing: border-box; }
+.pg-facials .ks-wrapper { font-family: var(--ks-body-font); background: var(--ks-cream); color: var(--ks-text); line-height: 1.7; font-size: 16px; width: 100%; overflow-x: hidden; }
+.pg-facials h1, .pg-facials h2, .pg-facials h3, .pg-facials h4 { font-family: var(--ks-heading-font); font-weight: 400; margin-top: 0; line-height: 1.25; }
+.pg-facials p { margin-bottom: 1.5rem; margin-top: 0; }
+.pg-facials .ks-section-header { text-align: center; padding: 80px 20px 50px; max-width: 800px; margin: 0 auto; }
+.pg-facials .ks-section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ks-burgundy); margin-bottom: 15px; display: block; opacity: 0.8; }
+.pg-facials .ks-section-title { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--ks-burgundy); margin-bottom: 0; }
+.pg-facials .ks-divider { width: 60px; height: 1px; background: var(--ks-gold); margin: 25px auto 0; }
+.pg-facials .ks-intro { background: var(--ks-cream); padding: 80px 20px; text-align: center; }
+.pg-facials .ks-intro-inner { max-width: 900px; margin: 0 auto; }
+.pg-facials .ks-intro-symbol { font-family: var(--ks-heading-font); font-size: 3rem; color: var(--ks-burgundy); margin-bottom: 4px; display: block; line-height: 1; }
+.pg-facials .ks-intro-symbol-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ks-burgundy-light); display: block; margin-bottom: 32px; }
+.pg-facials .ks-intro-image-wrapper { max-width: 900px; margin: 0 auto 40px; border-radius: 16px !important; overflow: hidden !important; box-shadow: 0 10px 40px rgba(114, 34, 34, 0.15); }
+.pg-facials .ks-intro-image-wrapper img { width: 100%; height: 400px; object-fit: cover; display: block; }
+@media (max-width: 768px) {
+.pg-facials .ks-intro-image-wrapper { border-radius: 12px !important; }
+.pg-facials .ks-intro-image-wrapper img { height: 250px; }
+}
+.pg-facials .ks-intro-quote { font-family: var(--ks-heading-font); font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: var(--ks-burgundy); margin-bottom: 30px; position: relative; padding: 0 20px; }
+.pg-facials .ks-intro-quote::before, .pg-facials .ks-intro-quote::after { content: ''; position: absolute; width: 40px; height: 40px; border-color: var(--ks-gold); border-style: solid; opacity: 0.4; }
+.pg-facials .ks-intro-quote::before { top: -16px; left: 0; border-width: 2px 0 0 2px; }
+.pg-facials .ks-intro-quote::after { bottom: -16px; right: 0; border-width: 0 2px 2px 0; }
+.pg-facials .ks-intro-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; max-width: 760px; margin: 0 auto; }
+@media (max-width: 600px) {
+.pg-facials .ks-intro-columns { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+}
+.pg-facials .ks-intro-columns p { font-size: 1rem; line-height: 1.8; color: var(--ks-text-light); margin: 0; }
+.pg-facials .ks-intro-columns em { color: var(--ks-burgundy); font-style: normal; font-weight: 500; }
+.pg-facials .ks-philosophy { background: var(--ks-burgundy); padding: 80px 20px; position: relative; overflow: hidden; }
+.pg-facials .ks-philosophy-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+@media (max-width: 700px) {
+.pg-facials .ks-philosophy-inner { grid-template-columns: 1fr; text-align: center; }
+}
+.pg-facials .ks-philosophy-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ks-gold); margin-bottom: 12px; }
+.pg-facials .ks-philosophy-title { font-family: var(--ks-heading-font); font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 500; color: var(--ks-cream); margin-bottom: 16px; }
+.pg-facials .ks-philosophy-divider { width: 60px; height: 2px; background: var(--ks-gold); margin-bottom: 24px; }
+@media (max-width: 700px) {
+.pg-facials .ks-philosophy-divider { margin-left: auto; margin-right: auto; }
+}
+.pg-facials .ks-philosophy-text { color: rgba(255, 253, 244, 0.9); font-size: 1rem; line-height: 1.8; margin-bottom: 16px; }
+.pg-facials .ks-philosophy-text:last-child { margin-bottom: 0; }
+.pg-facials .ks-philosophy-text em { color: var(--ks-gold-light); font-style: normal; }
+.pg-facials .ks-philosophy-accent { text-align: center; padding: 32px; border: 1px solid rgba(201, 169, 98, 0.3); border-radius: 4px; }
+.pg-facials .ks-philosophy-korean { display: block; font-size: 2.5rem; color: var(--ks-gold-light); margin-bottom: 8px; }
+.pg-facials .ks-philosophy-translation { display: block; font-family: var(--ks-heading-font); font-size: 1rem; font-style: italic; color: rgba(255, 253, 244, 0.7); letter-spacing: 0.1em; }
+.pg-facials .ks-booking-bar { background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 24px 20px; text-align: center; font-size: 0.95rem; }
+.pg-facials .ks-booking-bar strong { color: var(--ks-gold-light); font-weight: 600; }
+.pg-facials .ks-menu-section { padding: 0 20px 80px; background: var(--ks-cream); }
+.pg-facials .ks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.pg-facials .ks-card { background: var(--ks-white); border-radius: var(--ks-radius); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); transition: transform 0.3s ease; height: 100%; }
+.pg-facials .ks-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(114, 34, 34, 0.1); }
+.pg-facials .ks-card-header { background: var(--ks-burgundy); padding: 30px 30px 45px; text-align: center; position: relative; display: flex; align-items: center; justify-content: center; min-height: 110px; }
+.pg-facials .ks-card-header::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 20px; background: var(--ks-white); clip-path: ellipse(55% 100% at 50% 100%); }
+.pg-facials .ks-card-title { font-size: 1.8rem; color: var(--ks-gold); margin: 0; line-height: 1.2; position: relative; z-index: 1; }
+.pg-facials .ks-card-body { padding: 30px 40px 40px; flex-grow: 1; display: flex; flex-direction: column; }
+.pg-facials .ks-card-desc { color: var(--ks-text-light); text-align: center; margin-bottom: 15px; font-size: 1rem; }
+.pg-facials .ks-best-for { background: var(--ks-cream); padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; border-left: 3px solid var(--ks-gold); }
+.pg-facials .ks-best-for-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ks-burgundy); margin-bottom: 4px; }
+.pg-facials .ks-best-for-text { font-size: 0.9rem; color: var(--ks-text-light); margin: 0; }
+.pg-facials .ks-benefits { list-style: none; padding: 0; margin: 0 0 30px 0; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; }
+.pg-facials .ks-benefits li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.9rem; color: var(--ks-text-light); }
+.pg-facials .ks-benefits li::before { content: '•'; color: var(--ks-gold); position: absolute; left: 0; top: -2px; font-size: 1.2rem; }
+.pg-facials .ks-prices { margin-top: auto; display: flex; justify-content: center; gap: 30px; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,0.1); }
+.pg-facials .ks-price-val { font-family: var(--ks-heading-font); font-size: 1.5rem; color: var(--ks-burgundy); display: block; line-height: 1; }
+.pg-facials .ks-price-lbl { font-size: 0.75rem; text-transform: uppercase; color: var(--ks-text-light); margin-top: 5px; display: block; }
+.pg-facials .ks-price-vip { font-size: 0.7rem; color: var(--ks-gold); }
+@media (max-width: 900px) {
+.pg-facials .ks-grid { grid-template-columns: 1fr; }
+}
+.pg-facials .ks-why-section { padding: 80px 20px; background: var(--ks-white); }
+.pg-facials .ks-why-content { max-width: 800px; margin: 0 auto; text-align: center; }
+.pg-facials .ks-why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px; text-align: left; }
+.pg-facials .ks-why-item { background: var(--ks-cream); border-radius: var(--ks-radius); padding: 28px; }
+.pg-facials .ks-why-item h4 { color: var(--ks-burgundy); font-size: 1.2rem; margin-bottom: 10px; }
+.pg-facials .ks-why-item p { font-size: 0.95rem; color: var(--ks-text-light); line-height: 1.6; margin: 0; }
+@media (max-width: 768px) {
+.pg-facials .ks-why-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+}
+.pg-facials .ks-prep-section { padding: 80px 20px; background: var(--ks-white); }
+.pg-facials .ks-prep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+@media (max-width: 800px) {
+.pg-facials .ks-prep-grid { grid-template-columns: 1fr; max-width: 400px; }
+}
+.pg-facials .ks-prep-card { background: var(--ks-cream); border-radius: var(--ks-radius); padding: 28px 24px; text-align: center; }
+.pg-facials .ks-prep-card-title { font-family: var(--ks-heading-font); font-size: 1.3rem; color: var(--ks-burgundy); margin-bottom: 16px; }
+.pg-facials .ks-prep-list { list-style: none; margin: 0; padding: 0; text-align: left; }
+.pg-facials .ks-prep-list li { position: relative; padding-left: 18px; margin-bottom: 10px; font-size: 0.9rem; color: var(--ks-text-light); line-height: 1.5; }
+.pg-facials .ks-prep-list li:last-child { margin-bottom: 0; }
+.pg-facials .ks-prep-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: var(--ks-gold); border-radius: 50%; }
+.pg-facials .ks-enhance-block { max-width: 1100px; margin: 48px auto 0; padding: 32px; background: var(--ks-cream); border-radius: var(--ks-radius); text-align: center; }
+.pg-facials .ks-enhance-title { font-family: var(--ks-heading-font); font-size: 1.4rem; color: var(--ks-burgundy); margin-bottom: 20px; }
+.pg-facials .ks-enhance-text { color: var(--ks-text-light); font-size: 0.95rem; line-height: 1.75; margin-bottom: 24px; }
+.pg-facials .ks-pairing-list { list-style: none; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin: 0; padding: 0; }
+.pg-facials .ks-pairing-item { flex: 1; min-width: 250px; max-width: 300px; text-align: center; padding: 0 16px; }
+.pg-facials .ks-pairing-name { font-family: var(--ks-heading-font); font-size: 1.1rem; color: var(--ks-burgundy); margin-bottom: 6px; }
+.pg-facials .ks-pairing-desc { font-size: 0.9rem; color: var(--ks-text-light); line-height: 1.5; margin: 0; }
+.pg-facials .ks-faq-section { padding: 80px 20px; background: var(--ks-cream-dark); }
+.pg-facials .ks-faq-container { max-width: 800px; margin: 0 auto; }
+.pg-facials .ks-accordion-item { background: var(--ks-white); border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); overflow: hidden; }
+.pg-facials .ks-accordion-item summary { padding: 20px 25px; cursor: pointer; font-weight: 600; color: var(--ks-burgundy); position: relative; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+.pg-facials .ks-accordion-item summary::-webkit-details-marker { display: none; }
+.pg-facials .ks-accordion-item summary:hover { background: #faf8f2; }
+.pg-facials .ks-accordion-icon { width: 20px; height: 20px; position: relative; flex-shrink: 0; }
+.pg-facials .ks-accordion-icon::before, .pg-facials .ks-accordion-icon::after { content: ''; position: absolute; background: var(--ks-gold); top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 0.3s; }
+.pg-facials .ks-accordion-icon::before { width: 14px; height: 2px; }
+.pg-facials .ks-accordion-icon::after { width: 2px; height: 14px; }
+.pg-facials details[open] .ks-accordion-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.pg-facials .ks-accordion-content { padding: 0 25px 30px; color: var(--ks-text-light); font-size: 0.95rem; line-height: 1.6; animation: ks-fade 0.3s ease-in-out; }
+@keyframes ks-fade {
+ from { opacity: 0; transform: translateY(-5px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+.pg-facials .ks-testimonials-section { padding: 80px 20px; background: var(--ks-cream-dark); }
+.pg-facials .ks-cta-section { background: linear-gradient(135deg, var(--ks-burgundy) 0%, var(--ks-burgundy-dark) 100%); padding: 80px 20px; text-align: center; }
+.pg-facials .ks-cta-content { max-width: 600px; margin: 0 auto; }
+.pg-facials .ks-cta-title { font-family: var(--ks-heading-font); font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--ks-cream); margin-bottom: 16px; }
+.pg-facials .ks-cta-text { color: rgba(255, 253, 244, 0.85); margin-bottom: 32px; font-size: 1.1rem; }
+.pg-facials .ks-cta-button { display: inline-block; background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background 0.3s ease, transform 0.3s ease; }
+.pg-facials .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); }

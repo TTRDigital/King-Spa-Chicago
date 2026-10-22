@@ -4,12 +4,12 @@ import { Cormorant_Garamond, DM_Serif_Display, Montserrat, Mulish, Poppins, Ques
 /*
  * The old site's fonts, self-hosted (no request to Google at runtime).
  * Recoleta and Tang Garland are the same files the old site served
- * (wp-content/uploads/2025/12). Only Recoleta and Mulish, used above the fold
- * on every page, are preloaded; the others download only on pages that use them.
+ * (wp-content/uploads/2025/12). Only Recoleta (headings above the fold) is
+ * preloaded; the others download only on pages that use them.
  */
 export const recoleta = localFont({ src: "../public/fonts/Recoleta-Regular-Demo.woff2", weight: "400", display: "swap", variable: "--ff-recoleta", fallback: ["Georgia", "serif"] });
 export const tangGarland = localFont({ src: "../public/fonts/TAN-Garland-Regular.woff2", weight: "400", display: "swap", variable: "--ff-tang", preload: false, fallback: ["Georgia", "serif"] });
-export const mulish = Mulish({ subsets: ["latin"], weight: ["200", "300", "400", "500", "600", "700", "800"], style: ["normal", "italic"], display: "swap", variable: "--ff-mulish" });
+export const mulish = Mulish({ subsets: ["latin"], weight: ["200", "300", "400", "500", "600", "700", "800"], style: ["normal", "italic"], display: "swap", variable: "--ff-mulish", preload: false });
 export const tienne = Tienne({ subsets: ["latin"], weight: "400", display: "swap", variable: "--ff-tienne", preload: false });
 export const questrial = Questrial({ subsets: ["latin"], weight: "400", display: "swap", variable: "--ff-questrial", preload: false });
 export const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], display: "swap", variable: "--ff-cormorant", preload: false });

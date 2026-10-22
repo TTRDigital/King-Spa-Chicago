@@ -42,4 +42,19 @@ for await (const file of walk(SRC)) {
     made++;
   }
 }
+// Phone crop of the home hero (components/pages/Home.tsx, heroPhoneSrc): the bottom-center
+// 768x760 the old site showed on phones at natural size, as its own small file.
+const HERO_CROPS = ["facility/red-healing-room-wide.webp"];
+for (const rel of HERO_CROPS) {
+  const file = path.join(SRC, rel);
+  const target = path.join(OUT, rel.replace(/\.(jpe?g|png|webp)$/i, "") + "-phone.webp");
+  const existing = await stat(target).catch(() => null);
+  if (existing && existing.mtimeMs >= (await stat(file)).mtimeMs) continue;
+  const { width = 768, height = 760 } = await sharp(file).metadata();
+  const w = Math.min(768, width);
+  const h = Math.min(760, height);
+  await sharp(file).extract({ left: Math.round((width - w) / 2), top: height - h, width: w, height: h }).webp({ quality: 74, effort: 5 }).toFile(target);
+  made++;
+}
+
 console.log(`[images] ${files} photos, ${made} WebP files written to public/_img`);

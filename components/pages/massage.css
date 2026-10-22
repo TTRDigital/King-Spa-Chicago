@@ -1,0 +1,102 @@
+/* Ported from the live page's own stylesheet (chi.kingspa.com), scoped to .pg-massage. */
+/* Its Tang Garland / Cormorant Garamond headings never loaded on the live page, so they showed in the browser serif: kept that way. */
+/* Hello Elementor base rules the live page sat on (Tailwind's reset removes them). */
+.pg-massage h1, .pg-massage h2, .pg-massage h3, .pg-massage h4, .pg-massage h5, .pg-massage h6 { margin-block: .5rem 1rem; font-weight: 500; line-height: 1.2; }
+.pg-massage h1 { font-size: 2.5rem; } .pg-massage h2 { font-size: 2rem; } .pg-massage h3 { font-size: 1.75rem; } .pg-massage h4 { font-size: 1.5rem; } .pg-massage h5 { font-size: 1.25rem; } .pg-massage h6 { font-size: 1rem; }
+.pg-massage p { margin-block: 0 .9rem; }
+.pg-massage ul, .pg-massage ol { margin-block: 1em; padding-left: 40px; }
+.pg-massage ul { list-style: disc; }
+.pg-massage a { text-decoration: none; }
+.pg-massage strong { font-weight: bolder; }
+.pg-massage button { font-family: inherit; font-size: 1rem; line-height: 1.5; margin: 0; background-color: initial; border: 1px solid #c36; border-radius: 3px; color: #c36; display: inline-block; font-weight: 400; padding: .5rem 1rem; text-align: center; transition: all .3s; user-select: none; white-space: nowrap; }
+.pg-massage button:focus, .pg-massage button:hover { background-color: #c36; color: #fff; text-decoration: none; }
+.pg-massage button:focus:not(:focus-visible) { outline: none; }
+.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-soft: #D4C596; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-gap: 40px; --ks-radius: 8px; }
+.pg-massage .ks-wrapper * { box-sizing: border-box; }
+.pg-massage .ks-wrapper { font-family: var(--ks-body-font); background: var(--ks-cream); color: var(--ks-text); line-height: 1.7; font-size: 16px; width: 100%; overflow-x: hidden; }
+.pg-massage h1, .pg-massage h2, .pg-massage h3, .pg-massage h4 { font-family: var(--ks-heading-font); font-weight: 400; margin-top: 0; line-height: 1.25; }
+.pg-massage p { margin-bottom: 1.5rem; margin-top: 0; }
+.pg-massage .ks-section-header { text-align: center; padding: 80px 20px 50px; max-width: 800px; margin: 0 auto; }
+.pg-massage .ks-section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ks-burgundy); margin-bottom: 15px; display: block; opacity: 0.8; }
+.pg-massage .ks-section-title { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--ks-burgundy); margin-bottom: 0; }
+.pg-massage .ks-divider { width: 60px; height: 1px; background: var(--ks-gold); margin: 25px auto 0; }
+.pg-massage .ks-intro { background: var(--ks-cream); padding: 80px 20px; }
+.pg-massage .ks-intro-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+.pg-massage .ks-intro-symbol { font-family: var(--ks-heading-font); font-size: 3rem; color: var(--ks-burgundy); margin-bottom: 10px; display: block; }
+.pg-massage .ks-intro-sub { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--ks-gold); margin-bottom: 40px; display: block; }
+.pg-massage .ks-intro-image-wrapper { width: 100%; max-width: 900px; margin: 0 auto 50px; border-radius: 16px !important; overflow: hidden !important; box-shadow: 0 10px 40px rgba(114, 34, 34, 0.15); }
+.pg-massage .ks-intro-image-wrapper img { width: 100%; height: 400px; object-fit: cover; display: block; }
+.pg-massage .ks-intro-quote { font-family: var(--ks-heading-font); font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: var(--ks-burgundy); max-width: 800px; margin: 0 auto 50px; line-height: 1.5; }
+.pg-massage .ks-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; text-align: left; max-width: 900px; margin: 0 auto; }
+.pg-massage .ks-intro-grid p { color: var(--ks-text-light); font-size: 1.05rem; }
+@media (max-width: 768px) {
+.pg-massage .ks-intro-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+.pg-massage .ks-intro-image-wrapper { border-radius: 12px !important; }
+.pg-massage .ks-intro-image-wrapper img { height: 250px; }
+}
+.pg-massage .ks-booking-bar { background: var(--ks-burgundy-dark); color: var(--ks-cream); padding: 18px 20px; text-align: center; font-size: 0.95rem; border-bottom: 3px solid var(--ks-gold); }
+.pg-massage .ks-booking-bar strong { color: var(--ks-gold); font-weight: 600; }
+.pg-massage .ks-menu-section { padding: 0 20px 80px; background: var(--ks-cream); }
+.pg-massage .ks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.pg-massage .ks-card { background: var(--ks-white); border-radius: var(--ks-radius); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; }
+.pg-massage .ks-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(114, 34, 34, 0.1); }
+.pg-massage .ks-card-header { background: var(--ks-burgundy); padding: 35px 30px; text-align: center; position: relative; }
+.pg-massage .ks-card-header::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 20px; background: var(--ks-white); clip-path: ellipse(55% 100% at 50% 100%); }
+.pg-massage .ks-card-icon { width: 50px; height: 50px; margin: 0 auto 15px; }
+.pg-massage .ks-card-icon svg { width: 100%; height: 100%; fill: var(--ks-gold); }
+.pg-massage .ks-card-title { font-size: 1.6rem; color: var(--ks-cream); margin: 0; }
+.pg-massage .ks-card-body { padding: 30px 40px 40px; flex-grow: 1; display: flex; flex-direction: column; }
+.pg-massage .ks-card-desc { color: var(--ks-text-light); text-align: center; margin-bottom: 25px; font-size: 1rem; }
+.pg-massage .ks-benefits { list-style: none; padding: 0; margin: 0 0 30px 0; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px; }
+.pg-massage .ks-benefits li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.9rem; color: var(--ks-text-light); }
+.pg-massage .ks-benefits li::before { content: '•'; color: var(--ks-gold); position: absolute; left: 0; top: -2px; font-size: 1.2rem; }
+.pg-massage .ks-prices { margin-top: auto; display: flex; justify-content: center; gap: 30px; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,0.1); }
+.pg-massage .ks-price-item { text-align: center; }
+.pg-massage .ks-price-val { display: block; font-family: var(--ks-heading-font); font-size: 1.5rem; color: var(--ks-burgundy); line-height: 1; }
+.pg-massage .ks-price-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ks-text-light); margin-top: 5px; display: block; }
+@media (max-width: 900px) {
+.pg-massage .ks-grid { grid-template-columns: 1fr; }
+.pg-massage .ks-card-body { padding: 30px; }
+}
+.pg-massage .ks-feat-section { padding: 0 20px 80px; }
+.pg-massage .ks-feat-wrapper { max-width: 1200px; margin: 0 auto; background: var(--ks-white); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 40% 60%; box-shadow: 0 20px 60px rgba(114, 34, 34, 0.08); }
+.pg-massage .ks-feat-visual { background: var(--ks-burgundy-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 40px; text-align: center; color: var(--ks-cream); position: relative; }
+.pg-massage .ks-feat-visual svg { width: 80px; height: 80px; fill: var(--ks-gold); margin-bottom: 20px; }
+.pg-massage .ks-feat-badge { background: var(--ks-gold); color: var(--ks-burgundy-dark); text-transform: uppercase; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+.pg-massage .ks-feat-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+.pg-massage .ks-feat-title { font-size: 2.5rem; color: var(--ks-burgundy); margin-bottom: 20px; }
+.pg-massage .ks-feat-desc { font-size: 1.1rem; color: var(--ks-text-light); margin-bottom: 30px; }
+.pg-massage .ks-feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+.pg-massage .ks-feat-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--ks-text); }
+.pg-massage .ks-feat-item svg { width: 16px; fill: var(--ks-gold); }
+@media (max-width: 850px) {
+.pg-massage .ks-feat-wrapper { grid-template-columns: 1fr; }
+.pg-massage .ks-feat-visual { padding: 40px; }
+.pg-massage .ks-feat-content { padding: 40px 30px; }
+.pg-massage .ks-feat-grid { grid-template-columns: 1fr; }
+}
+.pg-massage .ks-foot-section { background: var(--ks-cream-dark); padding: 80px 20px; }
+.pg-massage .ks-guide { padding: 80px 20px; background: var(--ks-white); }
+.pg-massage .ks-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+.pg-massage .ks-step-card { text-align: center; padding: 30px; background: var(--ks-cream); border-radius: var(--ks-radius); transition: background 0.3s; }
+.pg-massage .ks-step-card:hover { background: #fdfaf0; }
+.pg-massage .ks-step-icon { width: 40px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: var(--ks-white); border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.pg-massage .ks-step-icon svg { width: 20px; fill: var(--ks-burgundy); }
+.pg-massage .ks-step-title { font-size: 1.25rem; color: var(--ks-burgundy); margin-bottom: 15px; }
+.pg-massage .ks-step-list { text-align: left; padding: 0; list-style: none; margin: 0; }
+.pg-massage .ks-step-list li { position: relative; padding-left: 15px; margin-bottom: 8px; font-size: 0.9rem; color: var(--ks-text-light); }
+.pg-massage .ks-step-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: var(--ks-gold); border-radius: 50%; }
+@media (max-width: 768px) {
+.pg-massage .ks-steps { grid-template-columns: 1fr; max-width: 400px; }
+}
+.pg-massage .ks-enhance { margin-top: 60px; background: var(--ks-cream-dark); border-radius: 8px; padding: 50px; text-align: center; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.pg-massage .ks-pair-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 30px; }
+.pg-massage .ks-pair-item { flex: 1; min-width: 250px; max-width: 300px; background: var(--ks-white); padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-burgundy-light: #A63F3F; --ks-cream: #FFFDF4; --ks-font-heading: serif; --ks-font-body: var(--ff-questrial), sans-serif; }
+.pg-massage .ks-cta-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
+.pg-massage .ks-cta-section { background: linear-gradient(135deg, var(--ks-burgundy) 0%, var(--ks-burgundy-dark) 100%); padding: 80px 20px; text-align: center; font-family: var(--ks-font-body); color: var(--ks-cream); }
+.pg-massage .ks-cta-content { max-width: 600px; margin: 0 auto; }
+.pg-massage .ks-cta-title { font-family: var(--ks-font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; color: var(--ks-cream); margin-bottom: 16px; line-height: 1.2; }
+.pg-massage .ks-cta-text { color: rgba(255, 253, 244, 0.85); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6; }
+.pg-massage .ks-cta-button { display: inline-block; background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 18px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background 0.3s ease, transform 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+.pg-massage .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); }
