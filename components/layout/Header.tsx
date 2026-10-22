@@ -32,7 +32,8 @@ export function Header({ menu, button, logo }: Props) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [sub, setSub] = useState<number | null>(null);
-  const active = (href: string, children: Menu[number]["children"]) => href === path || children.some((c) => c.href === path);
+  // As on the old site, only the current page's own item is marked (not its parent).
+  const active = (href: string) => href === path;
 
   useEffect(() => {
     if (!open) return;
@@ -54,7 +55,7 @@ export function Header({ menu, button, logo }: Props) {
               <li key={item.label} className="group relative">
                 <NavLink
                   href={item.href}
-                  className={`relative flex items-center whitespace-nowrap py-[13px] after:absolute after:bottom-[6px] after:left-0 after:h-[3px] after:w-full after:bg-rose after:transition-opacity ${active(item.href, item.children) ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-100"}`}
+                  className={`relative flex items-center whitespace-nowrap py-[13px] after:absolute after:bottom-[6px] after:left-0 after:h-[3px] after:w-full after:bg-rose after:transition-opacity ${active(item.href) ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-100"}`}
                 >
                   {item.label}
                   {item.children.length ? <Caret /> : null}
@@ -100,7 +101,7 @@ export function Header({ menu, button, logo }: Props) {
           {menu.map((item, i) => (
             <li key={item.label}>
               <div className="flex items-center">
-                <NavLink href={item.href} onClick={() => setOpen(false)} className={`flex items-center px-[25px] py-[24px] ${active(item.href, item.children) ? "text-[#d3b574]" : ""}`}>
+                <NavLink href={item.href} onClick={() => setOpen(false)} className={`flex items-center px-[25px] py-[24px] ${active(item.href) ? "text-[#d3b574]" : ""}`}>
                   {item.label}
                 </NavLink>
                 {item.children.length ? (

@@ -29,5 +29,5 @@ export function Reviews({ widgetId, className }: { widgetId: string; className?:
     io.observe(el);
     return () => io.disconnect();
   }, [widgetId]);
-  return <div ref={ref} className={`elfsight-app-${widgetId} min-h-[200px] ${className ?? ""}`} data-elfsight-app-lazy="" />;
+  return <div ref={ref} className={`elfsight-app-${widgetId} ${className ?? ""}`} data-elfsight-app-lazy="" />;
 }

@@ -1,4 +1,146 @@
-/* Men's Body Scrubs (/body-scrub/mens-body-scrubs/): built-in content, copied from chi.kingspa.com/body-scrub/mens-body-scrubs/. Edited in /cms > Pages > Men's Body Scrubs. */
+/* Men's Body Scrubs (/body-scrub/mens-body-scrubs/): built-in content, copied from chi.kingspa.com/body-scrub/mens-body-scrubs/ as it is (including the "- Women's Body Scrubs -" label and the prices shown there). Edited in /cms > Pages > Men's Body Scrubs. */
+import { images } from "../images.ts";
+
 export const mensBodyScrubPage = {
   seo: { title: "Men’s Body Scrubs – King Spa Chicago", description: "" },
+  banner: {
+    korean: "세신",
+    title: "Korean Body Scrubs for Men",
+    subtitle: "The only authentic seshin in the Chicago region",
+  },
+  intro: {
+    heading: "Skin Reborn. The Art of Seshin.",
+    paragraphs: [
+      "The Korean body scrub — or *seshin* — is a full-body ritual that has endured for generations. It is a full ritual that penetrates the outermost layers to purify, renew, and restore. The grade of mitt, the duration of each pass, and the experience of your attendant all determine how effectively skin is renewed, revealing the cells hidden underneath.",
+      "At King Spa Chicago we are among the only places in the region where you can experience this authentic tradition. Men’s scrub services are performed privately in the men’s bathing area by a skilled male attendant — the same way it has been done in Korean jjimjilbangs for centuries.",
+    ],
+    quote: "\"I didn't know my skin could feel like this — like I shed an entire season.\"",
+    closing: "",
+    image: images.massageRed,
+  },
+  rituals: {
+    eyebrow: "- Women's Body Scrubs -",
+    heading: "Choose Your Ritual",
+    items: [
+      {
+        badge: "",
+        name: "Korean Body Scrub",
+        duration: "40 Minutes",
+        description: "Our signature seshin experience. Strong, traditional scrubbing mitts work systematically across every inch — neck, chest, arms, back, legs, and feet. This treatment removes the outermost layer of built-up dead skin, uncovering raw, smooth, soft skin beneath.",
+        price: "$110",
+        note: "Admission Required",
+      },
+      {
+        badge: "Most Popular",
+        name: "Aroma Gold",
+        duration: "80 Minutes — Scrub & Oil Treatment",
+        description: "After thorough exfoliation, warm aromatic oils are massaged deeply into the skin for full-body relaxation — delivering deeply moisturized, luminous skin and a profound sense of calm.",
+        price: "$170",
+        note: "Admission Required + Free VIP Pass for Next Visit",
+      },
+      {
+        badge: "",
+        name: "CBD Oil Treatment",
+        duration: "90 Minutes",
+        description: "Thorough seshin followed by a targeted CBD oil treatment. Powerful anti-inflammatory CBD is absorbed deeply into freshly exfoliated skin — the optimal window for any topical to reach its maximum effectiveness. Ideal for men with active lifestyles, heavy training loads, or skin prone to irritation.",
+        price: "$200",
+        note: "Admission Required + Free VIP Pass for Next Visit",
+      },
+      {
+        badge: "New",
+        name: "Bubble Treatment",
+        duration: "90 Minutes — Scrub, Oil & Bubble",
+        description: "Our most comprehensive men’s body experience. A full seshin is complemented by a rich enzymatic bubble wash, followed by a complete oil massage that seals in lasting hydration and works through tension in every muscle group. Finishes with a soothing enzyme mask to accelerate your skin’s full radiance.",
+        price: "$240",
+        note: "Admission Required + Free VIP Pass for Next Visit",
+      },
+      {
+        badge: "New",
+        name: "Marine Algae Treatment",
+        duration: "90 Minutes — Scrub, Wrap, Oil & Mask",
+        description: "Our most complete ritual. Combines the full body scrub with a mineral-rich marine algae wrap, scalp treatment, nourishing oil, and a finishing facial mask.",
+        price: "$250",
+        note: "Admission Required + Free VIP Pass for Next Visit",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "- The Process -",
+    heading: "The Four Steps of Renewal",
+    steps: [
+      { number: "01", title: "Soak & Prep Your Skin", text: "Spend 15–20 minutes in the men’s hot bath to fully open your pores and soften surface skin. This step is critical — it determines how much the scrub is able to remove." },
+      { number: "02", title: "The Seshin Treatment", text: "Male attendant will perform the full body scrub using traditional Italian mitts — working systematically from neck to feet, front and back, with deliberate and powerful strokes." },
+      { number: "03", title: "Deep & Rinse", text: "Warm water rinses the accumulated dead skin away, revealing the fresh layer beneath. If you selected an oil or bubble add-on, it is applied at this stage for maximum absorption." },
+      { number: "04", title: "Rest & Recover", text: "Rest and allow your skin to breathe fully for at least 30 minutes following the scrub — making the most of what has been revealed and allowing the treatment to complete its effects." },
+    ],
+    image: images.scrubOilRed,
+  },
+  benefits: {
+    eyebrow: "- Why It Works -",
+    heading: "What Your Skin Gains",
+    items: [
+      { title: "Instant Smoothness & Brightness", text: "Our signature seshin experience delivers thorough exfoliation, unlike anything achievable at home. The removal of the outer dead skin layer reveals significantly brighter, more refined, younger-looking skin underneath." },
+      { title: "Circulation & Lymphatic Flow", text: "The sustained pressure and deliberate pass-by-pass technique of the scrub dramatically boosts circulation and lymphatic drainage, helping the body flush toxins and increase healthy blood flow to the surface." },
+      { title: "Deep Hydration Absorption", text: "Removing dead cells primes newly exposed skin to absorb moisturizers far more effectively — maximizing the impact of any oil, lotion, or hydration treatment applied immediately after the scrub." },
+      { title: "Prevents Ingrown Hairs", text: "Regular exfoliation is one of the most effective interventions for men prone to razor bumps and ingrown hairs — particularly effective for coarse hair on the face, neck, and body." },
+      { title: "Collagen Stimulation", text: "Regular scrubs promote cell turnover and collagen production, supporting skin elasticity and firmness by constantly stimulating the regenerative processes beneath the surface." },
+      { title: "Full Body Decompression", text: "Deep step is consistently followed by extraordinary physical and mental decompression — a complete cleansing process and resetting your skin’s natural equilibrium in a way no daily routine can replicate." },
+    ],
+  },
+  fit: {
+    eyebrow: "- Is This Right for You? -",
+    heading: "Who This Experience Is For",
+    forYouHeading: "This is for you if...",
+    forYou: [
+      "You've never had a body scrub and aren't sure if it's right for you",
+      "You're comfortable with nudity; you've gotten comfortable and experienced",
+      "You exercise regularly and want to refresh and renew your skin",
+      "You're visiting a Korean spa for the first time and want the full experience",
+      "You've been dealing with full-on dry, rough, or dull skin",
+      "You want to prepare your skin for a special occasion or event",
+    ],
+    waitHeading: "You may want to wait if...",
+    wait: [
+      "You have active sunburn, open cuts, or any significant skin irritation",
+      "You've recently waxed or shaved within 24 hours — please allow time for recovery",
+      "You have a skin condition like eczema or psoriasis — contact us first to discuss",
+      "You're uncomfortable with the level of intimacy — contact us first for alternatives",
+      "You have a medical condition affecting skin sensitivity — please contact us first",
+    ],
+    quote: "\"A full body scrub is not just a treatment — it's a reset. Most men who try it once return for it regularly within the month.\"",
+  },
+  prepare: {
+    eyebrow: "- Before You Begin -",
+    heading: "How to Prepare",
+    steps: [
+      { number: "01", title: "Arrive Hydrated", text: "Drink plenty of water before your visit. Well-hydrated skin responds significantly better to exfoliation and releases dead cells more effectively." },
+      { number: "02", title: "Shower First", text: "Rinse off before entering the bath area — but do not use any lotion, oil, or body scrub product before your visit. These coat the skin and prevent effective exfoliation." },
+      { number: "03", title: "Avoid All Things on Skin", text: "A thorough seshin is facilitated when nothing has been applied to the skin. Skip deodorant, body spray, and any other product from the neck down before your appointment." },
+      { number: "04", title: "Soak Before Scrub", text: "Relax in the hot bath for at least 15–20 minutes before your session. This primes the skin for exfoliation and makes your treatment dramatically more effective." },
+      { number: "05", title: "Moisturize After (Not Before)", text: "Moisturize immediately after your session while skin is still slightly damp. This is when your skin will absorb hydration most deeply and effectively." },
+    ],
+  },
+  rewards: {
+    eyebrow: "- Membership & Rewards -",
+    heading: "Earn with Every Visit",
+    text: "The KingSpa Rewards App keeps every point of your treatment toward your next visit. Visit regularly, build rewards at every tier, and unlock free admissions and exclusive member rates. Your membership accrues points with every scrub, treatment, and spa day spent.",
+    pills: ["1pt per $1 spent", "500pts ＝ Free Entry", "50pt Sign-Up Bonus", "$45 App Rate"],
+    stats: [
+      { value: "500", label: "Points = Free Admission" },
+      { value: "$45", label: "App Member Rate" },
+      { value: "50", label: "Sign-Up Bonus Points" },
+    ],
+  },
+  faq: {
+    eyebrow: "- FAQs -",
+    heading: "What You Want to Know",
+    items: [
+      { question: "Is the body scrub service clothing-free?", answer: "Yes. The seshin is performed in the nude — consistent with traditional Korean bathhouse practice, where the absence of clothing is necessary to perform a full-body scrub from head to toe. The treatment takes place in the men’s private bathing area." },
+      { question: "Does the scrub hurt?", answer: "Not for most men. You will feel significant friction and pressure as the mitts work across your skin — it’s vigorous, not gentle. Most men describe it as deeply satisfying rather than painful. If you need lighter pressure, simply let your attendant know." },
+      { question: "Can I book this same-day?", answer: "Yes. Men’s body scrub services are provided on a first-come, first-served basis and do not require advance reservations. Walk in, check in at the desk, and our team will notify you when an attendant is available — typically within a short wait during off-peak hours." },
+      { question: "Do I need to be experienced?", answer: "No experience is required. Our male attendants are trained to guide first-time guests through the process — from where to go, to what to expect, to how to maximize your results. Many of our most loyal regulars tried it for the first time without any prior knowledge of Korean spa culture." },
+      { question: "What does the KingSpa VIP Pass include?", answer: "The KingSpa VIP Pass provides unlimited general admission to the spa, access to all communal bathing and sauna areas, and discounts on body scrub and massage services. Contact our front desk or download the KingSpa app for current VIP membership pricing and benefits." },
+      { question: "How often should I get a body scrub?", answer: "Most men achieve optimal results with a scrub every 3–4 weeks, aligned with the skin’s natural regeneration cycle. Regular visits keep dead skin buildup minimal and skin consistently smooth, bright, and well-maintained between sessions." },
+    ],
+  },
 };
