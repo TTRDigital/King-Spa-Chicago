@@ -1,0 +1,238 @@
+# King Spa Chicago: static Next.js export on SiteGround (Apache).
+# Does what a Node server would: canonical host, trailing slashes, headers, caching.
+
+Options -Indexes
+DirectoryIndex index.html index.php
+# The trailing slash is added by a rewrite below (on https), not by Apache.
+DirectorySlash Off
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # One address: https://chi.kingspa.com. Any other host name that reaches this
+  # folder (the SiteGround temporary address *.sg-host.com, www., a bare IP) and
+  # plain http are sent there. Turn on SiteGround's "HTTPS Enforce" as well.
+  RewriteCond %{HTTP_HOST} !^chi\.kingspa\.com$ [NC]
+  RewriteRule ^(.*)$ https://chi.kingspa.com/$1 [R=301,L]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://chi.kingspa.com/$1 [R=301,L]
+
+  # ---- Old WordPress URLs (keep above the slash rule) ----
+  # Every page and post keeps its old address; these are the WordPress-only extras.
+
+  # ?page_id= / ?p= short links: 301 to the page, query dropped.
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=13(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=293(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/pricing/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=318(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/body-scrub/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=352(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/e-coupon/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=494(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/about/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=509(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/facials/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=514(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/massagetherapy/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=523(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/sauna-healing-rooms/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=609(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/first-time-guide/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=646(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/contact/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=704(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/blog/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=832(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/v-steam/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=1036(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/reward/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=1317(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/body-scrub/mens-body-scrubs/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=1395(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/body-scrub/womens-body-scrubs/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=1573(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/fall-sale/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:page_id|p)=1447(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/uncategorized/the-authentic-korean-spa-experience/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)author=1(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/author/ttr/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)author=3(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/author/ahsan/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)author=4(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/author/subhan/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)author=6(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/author/ryan/ [R=301,L,QSD]
+  RewriteCond %{QUERY_STRING} (?:^|&)cat=1(?:&|$)
+  RewriteRule ^(?:index\.php)?$ https://%{HTTP_HOST}/category/uncategorized/ [R=301,L,QSD]
+
+  # Photos from /wp-content/uploads (every WordPress size) -> the same photo's new address.
+  RewriteRule ^wp-content/uploads/2025/12/DSC07318(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/treatments/mens-body-scrub.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Gallery\-4(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/facility/lounge-red-chairs.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Gold\-Sauna\-Inside(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/gold-sauna-inside.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Group\-1597881732\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/body-scrub-back-red.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Group\-1597883733(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/facility/fire-sudatorium-lounge-arch.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Image\-L1090229(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/facility/restaurant-counter.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/brand/king-spa-sauna-logo.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-1\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/guests-resting-bamboo-mats.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-Background(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/card-body-scrub.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-Background\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/card-massage.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-Background\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/card-v-steam.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/King\-Spa\-Sauna\-Background\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/card-facial.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Mask\-group(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/step-steam-soak.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Mask\-group\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/step-exfoliation.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Mask\-group\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/step-rinse.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-Operations\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/guests-face-masks.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-Operations\-3\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/sauna-door-mural.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-Operations\-3\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/dining-utensil-station.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-Operations\-3\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/korean-meals.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-from\-Operations\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/exterior-entrance.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Photos\-from\-Operations\-3\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/dining-hall.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Steam\-Room\-Image(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/facility/steam-room.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/Subtract(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.svg$ https://%{HTTP_HOST}/images/brand/lion-mane-accent.svg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/TangTang\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/facility/bathhouse-pool.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/cropped\-icono\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/brand/site-icon.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/facial\-icon\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/hydration.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/facilities_1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/gallery/lounge-fire-sudatorium.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/hallway_king(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/gallery/hallway-salt-dome.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/icon\-1\.svg\-fill(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/deep-exfoliation.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/icon\-2\.svg\-fill(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/circulation.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/exterior-dusk.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/salt-room-dome.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-34(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/lion-statue.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-58(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/amethyst-geodes.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-67(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/red-healing-room.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-71(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/fried-rice-meal.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-84(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/entrance-lion-night.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-92(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/golden-buddha.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2025/12/unnamed\-97(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/gallery/cinema-room.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Desktop\-4\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/backgrounds/banner-red-lion.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Desktop\-4\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/backgrounds/banner-red-lion-wide.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Group\-1597883733\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/facility/fire-sudatorium-lounge-arch.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Heading\-3\-[^/]+\-Book\-your\-scrub_(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/number-01.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Heading\-3\-[^/]+\-Book\-your\-scrub_\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/number-02.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Heading\-3\-[^/]+\-Book\-your\-scrub_\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/number-03.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Heading\-3\-[^/]+\-Book\-your\-scrub_\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/number-04.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Heading\-3\-[^/]+\-Book\-your\-scrub_\-4(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/number-05.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Rectangle\-161124872\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-ocher-room.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Rectangle\-161124872\-4(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-ice-room.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Rectangle\-161124872\-6\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-gold-pyramid.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/Rectangle\-161124872\-7(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-fire-sudatorium.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/amethyst\-5(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/amethyst-hinoki.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/baserock\-4(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/base-rock-sauna.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/bathinside(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/facility/bathhouse-hot-tub.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/bulgama\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/bul-ga-ma-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/charcoal\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/charcoal-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/fire\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/fire-sudatorium.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/ice\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/ice-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/image\-spa\-(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/exfoliating-mitt.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/ocher\-2(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/ocher-sauna.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/pyramid\-7(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/gold-pyramid.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/01/salt\-3(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/salt-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Baserock\-Sauna\-1_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/base-rock-sauna.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Charcoal\-Room\-2_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/charcoal-room-shelves.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/DSC04968(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/treatments/v-steam-herb-treatment.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Desktop\-4\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/backgrounds/banner-red-lion.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Fire\-Sudatorium\-4_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/fire-sudatorium-guests.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Group\-1597880451(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/rewards/rewards-app-qr-codes.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Group\-2147234483\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.svg$ https://%{HTTP_HOST}/images/rewards/rewards-badge.svg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Ice\-Room\-4_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/ice-room-guests.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/JPT3962\-1jpg(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/treatments/foot-massage.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/JPT3983\-1jpg(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/amethyst-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Mask\-group(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/earn-points.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Ocher\-Room\-4_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/ocher-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Pyramid\-Room\-4_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/gold-pyramid-guests.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Salt\-Room\-3_King\-Spa\-Chicago(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/salt-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/Untitled\-design(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-charcoal.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/base\-rock(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-base-rock.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/bulgama(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/saunas/card-bul-ga-ma.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/icon\-017263(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/app-entry-price.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/icon\-17263(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/members-deals.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/icon\-72431(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/point-tracking.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/icon\-761423(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/welcome-points.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/icon\-861523(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/icons/redeem.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/image(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/card-amethyst-salt.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/salt\-room(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/saunas/card-salt-dome.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/smiling\-young\-woman\-procedure\-face(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/treatments/facial-treatment.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/02/unnamed\-90(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/saunas/bulgama-guest.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/Desktop\-4\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/backgrounds/banner-red-lion.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/Group\-1597881732\-1\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/body-scrub-oil-red.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/Group\-1597881732\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/body-scrub-back-red-wide.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/V\-steam1\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/foot-massage-red.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/04/1776172152757(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/blog/authentic-korean-spa-experience.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/04/King_Spa_and_Sauna_Full_Size31\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/facility/red-healing-room-wide.webp [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/10/00\-image\-fixed(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/fall-sale-banner.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/10/02\-curved\-heated\-therapy\-room\-with\-reclinin(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/heated-therapy-room.jpg [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/10/03\-warm\-wood\-lined\-sauna\-room\-at\-king\-spa\-c(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/restaurant.jpg [R=301,L,NC]
+  # The $45 e-coupon image in e-mails already sent stays at its old address (a real file);
+  # other WordPress media that no page uses anymore: 410 Gone.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^wp-content/uploads/ - [G,L,NC]
+
+  # WordPress sitemaps -> the new sitemap.
+  RewriteRule ^(?:sitemap_index|wp-sitemap(?:-[a-z0-9_-]+)?)\.xml$ https://%{HTTP_HOST}/sitemap.xml [R=301,L,NC]
+  # WordPress-only paths that no longer exist: 410 Gone, so search engines drop them.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(?:wp-admin|wp-includes|wp-json|wp-content)(?:/|$) - [G,L,NC]
+  RewriteRule ^(?:wp-login|xmlrpc|wp-cron|wp-signup|wp-trackback|wp-comments-post|wp-links-opml|wp-mail)\.php$ - [G,L,NC]
+  RewriteRule ^wp-sitemap.*\.xsl$ - [G,L,NC]
+  RewriteRule ^(?:.+/)?(?:feed|trackback|embed)/?$ - [G,L,NC]
+  RewriteRule ^(?:blog|category/[^/]+|author/[^/]+)/page/\d+/?$ - [G,L,NC]
+  RewriteCond %{QUERY_STRING} (?:^|&)(?:rest_route|feed|attachment_id|preview|s)= [NC]
+  RewriteRule ^(?:index\.php)?$ - [G,L]
+  # ---- end of old WordPress URLs ----
+
+  # Pages live at /page/ (page/index.html): add the missing slash, on https
+  # (absolute, so visitors behind SiteGround's proxy are not bounced through http).
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.*[^/])$ https://%{HTTP_HOST}/$1/ [R=301,L]
+
+  # The Sanity Studio is one page; its inner URLs (/cms/structure/...) load it.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^cms/. /cms/index.html [L]
+</IfModule>
+
+# The form's settings file and the upload tool's file list are never served.
+<FilesMatch "^(lead-config\.php|\.ftp-deploy-sync-state\.json)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+  Header always set Strict-Transport-Security "max-age=63072000"
+
+  # CSP for the site. Third parties allowed: Google Tag Manager / Analytics, the
+  # Elfsight Google Reviews widget, Google Maps embeds, Sanity images, and the
+  # GoHighLevel (LeadConnector) chat once its ID is set. If you add tags in GTM
+  # that load other scripts, add their domains here.
+  # The studio at /cms talks to many Sanity hosts and is protected by Sanity login instead.
+  <If "%{REQUEST_URI} !~ m#^/cms(/|$)#">
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://*.google-analytics.com https://elfsightcdn.com https://*.elfsightcdn.com https://*.elfsight.com https://*.leadconnectorhq.com https://*.msgsndr.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://elfsightcdn.com https://*.elfsightcdn.com https://*.elfsight.com https://fonts.googleapis.com https://*.leadconnectorhq.com https://*.msgsndr.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://elfsightcdn.com https://*.elfsightcdn.com https://*.elfsight.com https://*.leadconnectorhq.com https://*.msgsndr.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://elfsightcdn.com https://*.elfsightcdn.com https://*.elfsight.com https://*.leadconnectorhq.com https://*.msgsndr.com wss://*.leadconnectorhq.com https://*.googleapis.com https://challenges.cloudflare.com; frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com https://*.elfsight.com https://www.youtube.com https://www.youtube-nocookie.com https://*.leadconnectorhq.com https://*.msgsndr.com https://challenges.cloudflare.com; media-src 'self' blob: https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+  </If>
+
+  # Caching: hashed build files forever, photos for a month, pages always fresh.
+  <FilesMatch "\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|avif|jpe?g|png|gif|svg|ico|mp4|webm)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html|txt|xml)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Compress text files. Apache serves .js as text/javascript, so both JavaScript types are listed.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/manifest+json image/svg+xml text/xml application/xml text/plain
+</IfModule>
