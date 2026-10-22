@@ -7,7 +7,8 @@ const isExternal = (href: string) => /^(https?:|tel:|mailto:)/.test(href);
 
 function A({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) {
   if (isExternal(href)) return <a href={href} className={className} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}>{children}</a>;
-  return <Link href={href} className={className}>{children}</Link>;
+  // No prefetch: some footer links lead to pages the old site never had (kept as they were), which would log 404s.
+  return <Link href={href} className={className} prefetch={false}>{children}</Link>;
 }
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {

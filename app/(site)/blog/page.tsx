@@ -1,4 +1,4 @@
-import { getPage } from "@/lib/content";
+import { getPage, getPosts } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -13,11 +13,11 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const page = await getPage("blogPage");
+  const [page, posts] = await Promise.all([getPage("blogPage"), getPosts()]);
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, ...crumbs])} />
-      <BlogView data={page} />
+      <BlogView data={page} posts={posts} />
     </>
   );
 }
