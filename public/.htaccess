@@ -160,12 +160,15 @@ ErrorDocument 404 /404.html
   RewriteRule ^wp-content/uploads/2026/03/Desktop\-4\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/backgrounds/banner-red-lion.jpg [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/03/Group\-1597881732\-1\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/body-scrub-oil-red.png [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/03/Group\-1597881732\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/body-scrub-back-red-wide.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/Group\-1597881734\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/pricing-v-steam-bg.png [R=301,L,NC]
+  RewriteRule ^wp-content/uploads/2026/03/King\-Spa\-Sauna\-Background\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/pricing-foot-chair-bg.png [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/03/V\-steam1\-scaled\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/treatments/foot-massage-red.png [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/04/1776172152757(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.png$ https://%{HTTP_HOST}/images/blog/authentic-korean-spa-experience.png [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/04/King_Spa_and_Sauna_Full_Size31\-1(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.webp$ https://%{HTTP_HOST}/images/facility/red-healing-room-wide.webp [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/10/00\-image\-fixed(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/fall-sale-banner.jpg [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/10/02\-curved\-heated\-therapy\-room\-with\-reclinin(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/heated-therapy-room.jpg [R=301,L,NC]
   RewriteRule ^wp-content/uploads/2026/10/03\-warm\-wood\-lined\-sauna\-room\-at\-king\-spa\-c(?:-scaled)?(?:-e\d+)?(?:-\d+x\d+)?\.jpg$ https://%{HTTP_HOST}/images/promo/restaurant.jpg [R=301,L,NC]
+
   # The $45 e-coupon image in e-mails already sent stays at its old address (a real file);
   # other WordPress media that no page uses anymore: 410 Gone.
   RewriteCond %{REQUEST_FILENAME} !-f

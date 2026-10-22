@@ -98,4 +98,7 @@ export const images = {
   couplesScrub: { src: "/images/treatments/couples-bubble-body-scrub.png", alt: "Couple receiving a bubble body scrub side by side", width: 689, height: 443 },
   subtract: { src: "/images/brand/lion-mane-accent.svg", alt: "Decorative lion mane accent", width: 107, height: 216 },
   rewardsBadge: { src: "/images/rewards/rewards-badge.svg", alt: "KingSpa Rewards badge", width: 455, height: 240 },
+  pricingFootChairBg: { src: "/images/treatments/pricing-foot-chair-bg.png", alt: "Guest relaxing in a recliner during a foot massage", width: 1040, height: 1148 },
+  pricingVSteamBg: { src: "/images/treatments/pricing-v-steam-bg.png", alt: "Guest in a pink robe seated in the V-Steam room", width: 2560, height: 1552 },
+  downloadAppIcon: { src: "/images/icons/download-app.png", alt: "Download icon", width: 104, height: 104 },
 } satisfies Record<string, Img>;

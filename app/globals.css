@@ -52,9 +52,9 @@
       transition-duration: 0.01ms !important;
     }
   }
-  /* Hello Elementor base: system font, 16px/1.5, #333 on the kit's cream background. */
+  /* Hello Elementor base: system font, 16px/1.5, #333 on white (the home page sets cream itself). */
   body {
-    background: var(--color-cream);
+    background: #fff;
     color: var(--color-body);
     font-family: var(--font-sans);
     font-size: 1rem;
