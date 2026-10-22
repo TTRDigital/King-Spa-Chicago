@@ -24,7 +24,7 @@ All page URLs are unchanged. The WordPress-only extras answer as follows: every 
 
 ## Setup
 
-1. **Sanity project:** set the repository variable `SANITY_PROJECT_ID` (Settings > Secrets and variables > Actions > Variables) and, locally, `NEXT_PUBLIC_SANITY_PROJECT_ID` in `.env.local`. Dataset `production`.
+1. **Sanity project:** `i8bf8qqu`, dataset `production` (defaults in `sanity/env.ts`; the repository variable `SANITY_PROJECT_ID` or `NEXT_PUBLIC_SANITY_PROJECT_ID` in `.env.local` override them).
 2. **CORS:** sanity.io/manage > project > API > CORS origins: `https://chi.kingspa.com`, the Vercel preview URL and `http://localhost:3000`, each with "Allow credentials". Without it, /cms shows "Add CORS origin".
 3. **Load the content into Sanity (once), all in the browser:**
    1. Create an Editor token: sanity.io/manage > project > API > Tokens > Add API token (permission: Editor).
@@ -47,7 +47,7 @@ Automatic deploys (`.github/workflows/deploy-siteground.yml`) build and upload o
 | `SG_FTP_USERNAME` / `SG_FTP_PASSWORD` | an FTP account whose folder is the site's `public_html` |
 | `GHL_WEBHOOK_URL` | the e-coupon form's GoHighLevel inbound webhook; the workflow writes it to `api/lead-config.php` (never served, see `.htaccess`) |
 
-Repository **variables** (not secrets): `SANITY_PROJECT_ID`, `GHL_CHAT_WIDGET_ID` (shows the GoHighLevel chat, loaded after the first interaction or 4 s), `GA_ID`, `GTM_ID` (defaults to the old site's `GTM-MR3XHJK3`).
+Repository **variables** (not secrets): `SANITY_PROJECT_ID` (optional override), `GHL_CHAT_WIDGET_ID` (shows the GoHighLevel chat, loaded after the first interaction or 4 s), `GA_ID`, `GTM_ID` (defaults to the old site's `GTM-MR3XHJK3`).
 
 **Publish → live:** in sanity.io/manage > API > Webhooks, add a webhook: URL `https://api.github.com/repos/TTRDigital/King-Spa-Chicago/dispatches`, method POST, triggers create/update/delete, projection `{"event_type": "sanity-publish"}`, headers `Authorization: Bearer <GitHub fine-grained token with Contents: read and write on this repo>` and `Accept: application/vnd.github+json`.
 
