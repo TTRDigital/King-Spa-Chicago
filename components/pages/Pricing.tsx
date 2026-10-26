@@ -100,52 +100,57 @@ export function PricingView({ data }: { data: Data }) {
   return (
     <>
       <InnerBanner korean={data.banner.korean} title={data.banner.title} />
+      {/* Everything under the banner sits on the cream background, as on live. */}
+      <div className="bg-cream">
 
-      <CenteredBlock block={admission} first headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+        <CenteredBlock block={admission} first headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
 
-      {/* Korean Body Scrub: photo card left, both scrub tables right (overlapping by 22px). */}
-      <section className="pb-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
-          <div className="relative isolate overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:w-[49%] md:shrink-0 md:rounded-[20px_0_0_20px] md:pt-[70px] md:pr-[72px] md:pb-[70px] md:pl-[73px]">
-            <Bg image={bodyScrub.image} sizes="686px" position="object-center" className="max-md:hidden" />
-            <Bg image={bodyScrub.imageMobile} sizes="100vw" position="object-center" className="md:hidden" />
-            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{bodyScrub.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{bodyScrub.subheading}</p>
-            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{bodyScrub.text}</p>
+        {/* Korean Body Scrub: photo card left, both scrub tables right (overlapping by 22px). */}
+        <section className="pb-[100px]">
+          <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
+            <div className="relative isolate overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:w-[49%] md:shrink-0 md:rounded-[20px_0_0_20px] md:pt-[70px] md:pr-[72px] md:pb-[70px] md:pl-[73px]">
+              <Bg image={bodyScrub.image} sizes="686px" position="object-center" className="max-md:hidden" />
+              <Bg image={bodyScrub.imageMobile} sizes="100vw" position="object-center" className="md:hidden" />
+              <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{bodyScrub.heading}</h4>
+              <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{bodyScrub.subheading}</p>
+              <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{bodyScrub.text}</p>
+            </div>
+            <div className={`${tableBox} mx-[10px] -mt-[90px] flex min-h-[500px] flex-col justify-center pt-[20px] pr-[20px] pb-[21px] pl-[20px] md:mx-0 md:mt-0 md:-ml-[22px] md:w-[51%] md:pt-[30px] md:pr-[62px] md:pb-[30px] md:pl-[40px]`}>
+              {bodyScrub.tables.map((t, i) => (
+                <div key={i} className="max-md:pb-[5px]">
+                  {i ? <hr className="my-[35px] border-0 border-t border-dotted border-white/60" /> : null}
+                  <PriceTable table={t} font="font-mulish" headSize="text-[20px] leading-[22.4px] md:text-[26px] md:leading-[29.12px]" />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={`${tableBox} mx-[10px] -mt-[90px] flex min-h-[500px] flex-col justify-center pt-[20px] pr-[20px] pb-[21px] pl-[20px] md:mx-0 md:mt-0 md:-ml-[22px] md:w-[51%] md:pt-[30px] md:pr-[62px] md:pb-[30px] md:pl-[40px]`}>
-            {bodyScrub.tables.map((t, i) => (
-              <div key={i} className="max-md:pb-[5px]">
-                {i ? <hr className="my-[35px] border-0 border-t border-dotted border-white/60" /> : null}
-                <PriceTable table={t} font="font-mulish" headSize="text-[20px] leading-[22.4px] md:text-[26px] md:leading-[29.12px]" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Massage: table left, photo card right; on phones the photo comes first. */}
-      <section className="pb-[100px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
-          <div className={`${tableBox} order-2 mx-[10px] -mt-[89px] p-[20px] md:order-1 md:mx-0 md:mt-0 md:w-[43%] md:shrink-0 md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px]`}>
-            {massage.tables.map((t, i) => (
-              <div key={i} className={`max-md:pb-[5px] ${i ? "mt-[20px]" : ""}`}>
-                <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" />
-              </div>
-            ))}
+        {/* Massage: table left, photo card right; on phones the photo comes first. */}
+        <section className="pb-[100px]">
+          <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
+            <div className={`${tableBox} order-2 mx-[10px] -mt-[89px] p-[20px] md:order-1 md:mx-0 md:mt-0 md:w-[43%] md:shrink-0 md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px]`}>
+              {massage.tables.map((t, i) => (
+                <div key={i} className={`max-md:pb-[5px] ${i ? "mt-[20px]" : ""}`}>
+                  <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" />
+                </div>
+              ))}
+            </div>
+            <div className="relative isolate order-1 mt-[20px] overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:order-2 md:mt-0 md:flex-1 md:rounded-[0_20px_20px_0] md:p-[70px]">
+              <Bg image={massage.image} sizes="100vw" position="object-center" className="md:hidden" />
+              {/* From 768px live sizes this photo to the card's width (centred, not stretched to fill), so a tall card shows cream above and below it. */}
+              <Image src={massage.image.src} alt={massage.image.alt} width={massage.image.width} height={massage.image.height} sizes="800px" className="absolute inset-y-0 left-0 -z-10 my-auto h-auto w-full max-md:hidden" />
+              <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{massage.heading}</h4>
+              <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{massage.subheading}</p>
+              <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{massage.text}</p>
+            </div>
           </div>
-          <div className="relative isolate order-1 mt-[20px] overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:order-2 md:mt-0 md:flex-1 md:rounded-[0_20px_20px_0] md:p-[70px]">
-            <Bg image={massage.image} sizes="(max-width: 767px) 100vw, 800px" position="object-center" />
-            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{massage.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{massage.subheading}</p>
-            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{massage.text}</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <CenteredBlock block={footChair} headingAlign="text-center md:text-start" textClass="text-[14px] leading-[21px]" />
-      <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
-      <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+        <CenteredBlock block={footChair} headingAlign="text-center md:text-start" textClass="text-[14px] leading-[21px]" />
+        <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+        <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+      </div>
     </>
   );
 }

@@ -27,50 +27,53 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
   return (
     <>
       <InnerBanner korean={data.banner.korean} title={data.banner.title} titleClass="text-[50px] leading-[50px] md:text-[96px] md:leading-[96px]" />
+      {/* Everything under the banner sits on the cream background, as on live. */}
+      <div className="bg-cream">
 
-      {/* Full width up to 1400px; tablets use smaller type and padding, as on live. */}
-      <section className="px-[10px] pt-[10px] pb-[10px] md:px-0 md:pt-[30px] md:pb-[60px]">
-        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row">
-          <div className="rounded-[22px_22px_0_0] bg-maroon px-[24px] py-[40px] md:w-1/2 md:rounded-[22px_0_0_22px] md:px-[40px] md:py-[30px] lg:px-[72px] lg:py-[32px]">
-            <h2 className="font-dmserif text-[30px] leading-[30px] font-normal text-white lg:text-[40px] lg:leading-[40px]">{data.name}</h2>
-            <div className="mt-[20px] font-mulish text-[18px] leading-[27px] text-white md:text-[20px] md:leading-[30px] lg:text-[24px] lg:leading-[36px]">{data.label}</div>
-            <hr className="mt-[20px] border-0 border-t border-white" />
-            <ul className="mt-[24px] space-y-[5px]">
-              <li>
-                <a href={data.phone.href} className={item}>
-                  <Icon name="phone" box="0 0 512 512" />
-                  <span className="pl-[5px]">{data.phone.label}</span>
-                </a>
-              </li>
-              <li>
-                <a href={data.email.href} className={item}>
-                  <Icon name="email" box="0 0 512 512" />
-                  <span className="pl-[5px]">{data.email.label}</span>
-                </a>
-              </li>
-              <li className={item}>
-                <Icon name="pin" box="0 0 384 512" className="mr-[10px]" />
-                {/* Inline text, as live's address line. */}
-                <span><span>{data.address}</span></span>
-              </li>
-              <li className={item}>
-                <span>{data.hoursLabel}</span>
-              </li>
-              <li className={item}>
-                <Icon name="clock" box="0 0 512 512" />
-                <span className="pl-[5px]">{data.hours}</span>
-              </li>
-            </ul>
+        {/* Full width up to 1400px; tablets use smaller type and padding, as on live. */}
+        <section className="px-[10px] pt-[10px] pb-[10px] md:px-0 md:pt-[30px] md:pb-[60px]">
+          <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row">
+            <div className="rounded-[22px_22px_0_0] bg-maroon px-[24px] py-[40px] md:w-1/2 md:rounded-[22px_0_0_22px] md:px-[40px] md:py-[30px] lg:px-[72px] lg:py-[32px]">
+              <h2 className="font-dmserif text-[30px] leading-[30px] font-normal text-white lg:text-[40px] lg:leading-[40px]">{data.name}</h2>
+              <div className="mt-[20px] font-mulish text-[18px] leading-[27px] text-white md:text-[20px] md:leading-[30px] lg:text-[24px] lg:leading-[36px]">{data.label}</div>
+              <hr className="mt-[20px] border-0 border-t border-white" />
+              <ul className="mt-[24px] space-y-[5px]">
+                <li>
+                  <a href={data.phone.href} className={item}>
+                    <Icon name="phone" box="0 0 512 512" />
+                    <span className="pl-[5px]">{data.phone.label}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={data.email.href} className={item}>
+                    <Icon name="email" box="0 0 512 512" />
+                    <span className="pl-[5px]">{data.email.label}</span>
+                  </a>
+                </li>
+                <li className={item}>
+                  <Icon name="pin" box="0 0 384 512" className="mr-[10px]" />
+                  {/* Inline text, as live's address line. */}
+                  <span><span>{data.address}</span></span>
+                </li>
+                <li className={item}>
+                  <span>{data.hoursLabel}</span>
+                </li>
+                <li className={item}>
+                  <Icon name="clock" box="0 0 512 512" />
+                  <span className="pl-[5px]">{data.hours}</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative h-[225px] overflow-hidden rounded-[0_0_22px_22px] md:h-auto md:w-1/2 md:rounded-[0_22px_22px_0]">
+              <Image src={data.image.src} alt={data.image.alt} fill sizes="(max-width: 767px) 370px, 700px" className="object-cover object-center" />
+            </div>
           </div>
-          <div className="relative h-[225px] overflow-hidden rounded-[0_0_22px_22px] md:h-auto md:w-1/2 md:rounded-[0_22px_22px_0]">
-            <Image src={data.image.src} alt={data.image.alt} fill sizes="(max-width: 767px) 370px, 700px" className="object-cover object-center" />
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="px-[10px] pt-[10px] pb-[16px]">
-        <MapEmbed src={settings.maps.place} title={data.mapTitle} className="mx-auto h-[450px] max-w-[1400px]" />
-      </section>
+        <section className="px-[10px] pt-[10px] pb-[16px]">
+          <MapEmbed src={settings.maps.place} title={data.mapTitle} className="mx-auto h-[450px] max-w-[1400px]" />
+        </section>
+      </div>
     </>
   );
 }
