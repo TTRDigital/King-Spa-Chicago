@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Inline } from "@/components/ui/RichText";
 
-type Item = { question: string; answer: string };
+/** paragraph: the old site showed this answer as a paragraph, with paragraph spacing around it. */
+type Item = { question: string; answer: string; paragraph?: boolean };
 
 const Chevron = ({ up }: { up: boolean }) => (
   <svg viewBox="0 0 448 512" width="16" height="16" aria-hidden="true" className="shrink-0 fill-current">
@@ -24,7 +25,7 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
   const [open, setOpen] = useState<number | null>(0);
   const ritual = variant === "ritual";
   return (
-    <div className={ritual ? "mt-[56px] px-[15px] md:mt-[90px] md:px-0" : "mt-[50px] px-[15px] md:mt-[92px] md:px-0"}>
+    <div className={ritual ? "mt-[73px] px-[15px] md:mt-[90px] md:px-0" : "mt-[85px] px-[15px] md:mt-[92px] md:px-0"}>
       {items.map((f, i) => {
         const isOpen = open === i;
         return (
@@ -40,7 +41,7 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
               <span
                 className={
                   ritual
-                    ? "font-recoleta text-[16px] leading-[16px] tracking-[0.1px] text-maroon md:text-[22px] md:leading-[30px]"
+                    ? "block py-[2.5px] font-recoleta text-[16px] leading-[17px] tracking-[0.1px] text-maroon max-md:max-w-[291px] md:py-0 md:text-[22px] md:leading-[30px]"
                     : "font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] text-maroon md:text-[22px] md:leading-[25px]"
                 }
               >
@@ -50,12 +51,12 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
                 <Chevron up={isOpen} />
               </span>
             </button>
-            <div id={`${variant}-faq-${i}`} role="region" aria-labelledby={`${variant}-faq-q-${i}`} hidden={!isOpen}>
+            <div id={`${variant}-faq-${i}`} role="region" aria-labelledby={`${variant}-faq-q-${i}`} hidden={!isOpen} className={f.paragraph ? "mb-[15px] md:mt-[10px] md:mb-[5px]" : undefined}>
               <p
                 className={
                   ritual
-                    ? "rich pt-[10px] pr-0 pb-[0px] font-mulish text-[14px] leading-[21px] text-[#0e0e0e] md:pt-[20px] md:pr-[80px] md:text-[16px] md:leading-[24px]"
-                    : "rich pt-[26px] font-recoleta text-[14px] leading-[21px] text-maroon md:pt-[34px] md:pr-[80px] md:text-[16px] md:leading-[24px]"
+                    ? "rich pt-[22px] pr-[15px] pb-[12px] font-mulish text-[14px] leading-[21px] text-[#0e0e0e] md:pt-[30px] md:pr-[80px] md:pb-[4px] md:text-[16px] md:leading-[24px]"
+                    : "rich pt-[26px] pr-[17px] pb-[22px] font-recoleta text-[14px] leading-[21px] text-maroon md:pt-[34px] md:pr-[80px] md:pb-[15px] md:text-[16px] md:leading-[24px]"
                 }
               >
                 <Inline text={f.answer} />

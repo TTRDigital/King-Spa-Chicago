@@ -43,16 +43,17 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* Intro: the art of seshin */}
-      <section className="pt-[80px] pb-[90px] md:py-[80px]">
+      <section className="bg-cream pt-[80px] pb-[90px] md:py-[80px]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] md:flex-row md:items-start md:justify-between md:gap-[70px] md:px-[20px]">
           <div className="px-[15px] md:w-[660px] md:shrink-0 md:px-0 md:pt-[10px] md:pl-[10px]">
-            <h2 className="font-recoleta text-[32px] leading-[32px] text-maroon md:text-[40px] md:leading-[40px]">{intro.heading}</h2>
+            <h2 className="font-recoleta text-[32px] leading-[32px] font-normal text-maroon md:text-[40px] md:leading-[40px]">{intro.heading}</h2>
             {intro.paragraphs.map((p) => (
               <p key={p} className="rich mt-[14px] font-mulish text-[14px] leading-[21px] text-[#002c39] first-of-type:mt-[20px] md:text-[18px] md:leading-[27px]">
                 <Inline text={p} />
               </p>
             ))}
-            <blockquote className="mt-[45px] border-l-[6px] border-maroon pl-[21px] font-recoleta text-[20px] leading-[24px] text-maroon">
+            {/* Without a closing line the old site left 10px more under the quote on phones. */}
+            <blockquote className={`mt-[45px] border-l-[6px] border-maroon pl-[21px] font-recoleta text-[20px] leading-[24px] text-maroon ${intro.closing ? "" : "max-md:mb-[10px]"}`}>
               <p>{intro.quote}</p>
             </blockquote>
             {intro.closing ? <div className="mt-[30px] font-mulish text-[14px] leading-[21px] text-[#002c39] md:text-[18px] md:leading-[27px]">{intro.closing}</div> : null}
@@ -71,7 +72,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* Choose your ritual: treatments and prices */}
-      <section className="px-[10px] pt-[10px] pb-[10px] md:px-[20px] md:pt-[60px] md:pb-[60px]">
+      <section className="bg-cream px-[10px] pt-[10px] pb-[10px] md:px-[20px] md:pt-[60px] md:pb-[60px]">
         <div className={`${maroonBox} px-[20px] py-[40px] md:p-[75px]`}>
           <h2 className={eyebrowLight}>{rituals.eyebrow}</h2>
           <h2 className={boxHeading}>{rituals.heading}</h2>
@@ -79,15 +80,16 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
             {rituals.items.map((r, i) => (
               <div
                 key={r.name}
-                className={`${glassCard} flex flex-col px-[25px] pt-[25px] pb-[35px] ${i === rituals.items.length - 1 && rituals.items.length % 2 ? "md:col-span-2 md:mx-auto md:w-[calc(50%-12.5px)]" : ""}`}
+                className={`${glassCard} flex flex-col px-[25px] pt-[25px] pb-[35px] ${i === rituals.items.length - 1 && rituals.items.length % 2 ? "md:col-span-2 md:ml-[330px] md:w-[613px]" : ""}`}
               >
                 {r.badge ? (
                   <span className="mb-[10px] -translate-y-[30px] self-start rounded-[6px] bg-sand px-[8px] py-[5px] font-recoleta text-[14px] leading-[14px] font-medium text-maroon">{r.badge}</span>
                 ) : null}
                 <h2 className="font-recoleta text-[28px] leading-[28px] font-medium text-white">{r.name}</h2>
                 <h2 className="mt-[10px] font-recoleta text-[14px] leading-[14px] font-medium text-sand">{r.duration}</h2>
-                <p className={`mt-[20px] mb-[44px] font-mulish text-white md:text-[18px] md:leading-[27px] ${i === 0 ? "text-[18px] leading-[27px]" : "text-[16px] leading-[24px]"}`}>{r.description}</p>
-                <div className="mt-auto flex flex-wrap items-center justify-between gap-y-[20px] border-t border-white/[0.29] pt-[20px]">
+                {/* spaceBelow: the old site's paragraph spacing under some descriptions (14px), none under others. */}
+                <p className={`mt-[20px] mb-[30px] font-mulish text-white md:text-[18px] md:leading-[27px] ${i === 0 ? "text-[18px] leading-[27px]" : "text-[16px] leading-[24px]"}`} style={{ marginBottom: 30 + (r.spaceBelow ?? 0) }}>{r.description}</p>
+                <div className="flex flex-wrap items-center justify-between gap-y-[20px] border-t border-white/[0.29] pt-[20px]">
                   <h2 className="font-recoleta text-[28px] leading-[28px] font-medium text-white">{r.price}</h2>
                   <p className="font-recoleta text-[16px] leading-[16px] text-sand">{r.note}</p>
                 </div>
@@ -98,18 +100,23 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* The process */}
-      <section className="pt-[80px] pb-[90px] md:py-[80px]">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] md:flex-row md:items-start md:justify-between md:gap-[70px] md:px-[20px]">
-          <div className="px-[15px] md:w-[660px] md:shrink-0 md:px-0 md:pt-[21px] md:pl-[10px]">
+      <section className="bg-cream pt-[80px] pb-[90px] md:py-[80px]">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] md:flex-row md:items-center md:justify-between md:gap-[70px] md:px-[20px]">
+          <div className="px-[15px] md:w-[660px] md:shrink-0 md:px-0 md:pt-[10px] md:pl-[10px]">
             <h2 className={eyebrowDark}>{process.eyebrow}</h2>
-            <h2 className="mt-[20px] font-recoleta text-[32px] leading-[32px] text-maroon md:text-[45px] md:leading-[45px]">{process.heading}</h2>
+            <h2 className="mt-[20px] font-recoleta text-[32px] leading-[32px] font-normal text-maroon md:text-[45px] md:leading-[45px]">{process.heading}</h2>
             <ol className="mt-[40px]">
               {process.steps.map((s) => (
-                <li key={s.number} className="flex flex-col gap-[40px] border-b border-[#d2d1cb] py-[20px] first:pt-0 md:flex-row md:gap-[40px]">
+                <li key={s.number} className="flex flex-col gap-[40px] border-b border-[#d2d1cb] py-[20px] first:pt-0 md:flex-row md:items-start md:gap-[34px]">
                   <h2 className="font-recoleta text-[50px] leading-[50px] font-medium text-maroon">{s.number}</h2>
                   <div>
                     <h2 className="font-recoleta text-[18px] leading-[18px] font-medium text-[#ae5450]">{s.title}</h2>
-                    <p className="mt-[10px] font-mulish text-[14px] leading-[21px] text-[#1a1a1a]">{s.text}</p>
+                    <p
+                      className="mt-[10px] mb-(--sb) font-mulish text-[14px] leading-[21px] text-[#1a1a1a] md:mb-(--sb-md)"
+                      style={{ "--sb": `${"spaceBelow" in s ? s.spaceBelow : 0}px`, "--sb-md": `${"spaceBelowDesktop" in s ? s.spaceBelowDesktop : "spaceBelow" in s ? s.spaceBelow : 0}px` } as React.CSSProperties}
+                    >
+                      {s.text}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -129,7 +136,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* Why it works */}
-      <section className="px-[10px] py-[10px] md:px-[20px] md:py-[60px]">
+      <section className="bg-cream px-[10px] py-[10px] md:px-[20px] md:py-[60px]">
         <div className={`${maroonBox} px-[20px] py-[40px] md:p-[75px]`}>
           <h2 className={eyebrowLight}>{benefits.eyebrow}</h2>
           <h2 className={boxHeading}>{benefits.heading}</h2>
@@ -138,7 +145,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
               <div key={b.title} className={`${glassCard} px-[25px] pt-[25px] pb-[35px]`}>
                 <span aria-hidden="true" className="block h-[2px] w-[53px] bg-sand" />
                 <h2 className="mt-[24px] font-recoleta text-[20px] leading-[20px] font-medium text-sand">{b.title}</h2>
-                <div className="mt-[20px] font-mulish text-[17px] leading-[25.5px] text-white">{b.text}</div>
+                <div className="mt-[20px] font-mulish text-[17px] leading-[25.5px] text-white" style={{ marginBottom: "spaceBelow" in b ? b.spaceBelow : 0 }}>{b.text}</div>
               </div>
             ))}
           </div>
@@ -146,17 +153,17 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* Is this right for you? */}
-      <section className="pt-[80px] pb-[100px]">
+      <section className="bg-cream pt-[80px] pb-[100px]">
         <div className="mx-auto max-w-[1440px] md:px-[20px]">
           <h2 className={`text-center ${eyebrowDark}`}>{fit.eyebrow}</h2>
-          <h2 className="mt-[20px] text-center font-recoleta text-[32px] leading-[32px] text-maroon md:text-[45px] md:leading-[45px]">{fit.heading}</h2>
-          <div className="mt-[60px] grid gap-[60px] px-[20px] md:grid-cols-2 md:gap-[70px] md:px-[20px]">
+          <h2 className="mt-[20px] text-center font-recoleta text-[32px] leading-[32px] font-normal text-maroon md:text-[45px] md:leading-[45px]">{fit.heading}</h2>
+          <div className="mt-[60px] grid gap-[70px] px-[20px] md:grid-cols-2 md:gap-[70px] md:px-[20px]">
             {[
               { heading: fit.forYouHeading, items: fit.forYou, Icon: Check },
               { heading: fit.waitHeading, items: fit.wait, Icon: Cross },
             ].map((col, c) => (
               <div key={col.heading}>
-                <h3 className="font-recoleta text-[32px] leading-[32px] text-maroon md:text-[25px] md:leading-[25px]">{col.heading}</h3>
+                <h3 className="font-recoleta text-[32px] leading-[32px] font-normal text-maroon md:text-[25px] md:leading-[25px]">{col.heading}</h3>
                 <ul className="mt-[20px] space-y-[16px]">
                   {col.items.map((it) => (
                     <li key={it} className="flex gap-[15px] font-mulish text-[16px] leading-[24px] font-medium text-[#333]">
@@ -177,7 +184,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* How to prepare */}
-      <section className="px-[10px] py-[10px] md:px-[20px] md:py-[60px]">
+      <section className="bg-cream px-[10px] py-[10px] md:px-[20px] md:py-[60px]">
         <div className={`${maroonBox} px-[20px] py-[40px] md:px-[50px] md:py-[75px]`}>
           <h2 className={eyebrowLight}>{prepare.eyebrow}</h2>
           <h2 className={boxHeading}>{prepare.heading}</h2>
@@ -187,7 +194,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
                 <h2 className="font-recoleta text-[35px] leading-[35px] font-medium text-sand">{s.number}</h2>
                 <span aria-hidden="true" className="mt-[22px] block h-[2px] w-[32px] bg-sand" />
                 <h2 className="mt-[22px] font-recoleta text-[18px] leading-[18px] font-medium text-sand">{s.title}</h2>
-                <div className="mt-[20px] font-mulish text-[16px] leading-[20.8px] text-white">{s.text}</div>
+                <div className="mt-[20px] font-mulish text-[16px] leading-[20.8px] text-white" style={{ marginBottom: "spaceBelow" in s ? s.spaceBelow : 0 }}>{s.text}</div>
               </li>
             ))}
           </ol>
@@ -195,24 +202,30 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* Membership & rewards */}
-      <section className="py-[90px] md:py-[90px]">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-[40px] md:flex-row md:items-center md:justify-between md:gap-[70px] md:px-[30px]">
-          <div className="px-[10px] md:w-[655px] md:shrink-0 md:px-0">
+      <section className="bg-cream pt-[90px] pb-[110px]">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-[80px] md:flex-row md:items-center md:justify-between md:gap-[70px] md:px-[30px]">
+          <div className="px-[10px] md:w-[655px] md:shrink-0 md:px-0 md:pb-[11px]">
             <h2 className={eyebrowDark}>{rewards.eyebrow}</h2>
-            <h2 className="mt-[10px] font-recoleta text-[32px] leading-[32px] text-maroon md:text-[55px] md:leading-[55px]">{rewards.heading}</h2>
+            <h2 className="mt-[10px] font-recoleta text-[32px] leading-[32px] font-normal text-maroon md:text-[55px] md:leading-[55px]">{rewards.heading}</h2>
             <div className="mt-[30px] font-mulish text-[18px] leading-[27px] text-[#1a1a1a]">{rewards.text}</div>
             <ul className="mt-[20px] grid grid-cols-2 gap-[5px] px-[10px] md:flex md:gap-[5px]">
               {rewards.pills.map((p) => (
-                <li key={p} className="rounded-[6px_20px_6px_6px] border-[3px] border-rust bg-maroon p-[10px] md:w-[155px]">
-                  <h2 className="font-recoleta text-[13px] leading-[13px] text-white md:text-[14px] md:leading-[14px]">{p}</h2>
+                <li key={p} className="rounded-[6px_20px_6px_6px] border-[3px] border-rust bg-maroon pt-[10px] pr-[10px] pb-[7px] pl-[7px] md:w-[155px]">
+                  <h2 className="font-recoleta text-[13px] leading-[13px] font-normal text-white md:text-[14px] md:leading-[14px]">{p}</h2>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="space-y-[20px] px-[10px] md:w-[655px] md:shrink-0 md:space-y-[19px] md:px-0">
+          <div className="space-y-[20px] px-[10px] md:w-[655px] md:shrink-0 md:space-y-[19.5px] md:px-0">
             {rewards.stats.map((s) => (
-              <div key={s.label} className="flex flex-col gap-[20px] rounded-[29px_29px_105px_29px] border-b-[13px] border-rust bg-maroon px-[40px] pt-[40px] pb-[30px] md:flex-row md:items-center md:gap-[40px]">
-                <h2 className="font-tang text-[50px] leading-[55px] font-bold text-[#ae5450] md:w-[123px] md:shrink-0 md:text-[55px] md:leading-[60.5px]">{s.value}</h2>
+              <div
+                key={s.label}
+                className="flex flex-col gap-[20px] rounded-[29px_29px_105px_29px] border-b-[13px] border-rust bg-maroon px-[40px] pt-[40px] pb-[30px] md:flex-row md:items-center md:gap-(--gap)"
+                style={{ "--gap": `${s.gap}px` } as React.CSSProperties}
+              >
+                <h2 className="font-tang text-[50px] leading-[55px] font-bold whitespace-nowrap text-[#ae5450] md:w-(--vw) md:shrink-0 md:text-[55px] md:leading-[60.5px]" style={{ "--vw": `${s.valueWidth}px` } as React.CSSProperties}>
+                  {s.value}
+                </h2>
                 <h2 className="font-tang text-[20px] leading-[30px] font-semibold text-white md:text-[24px] md:leading-[36px]">{s.label}</h2>
               </div>
             ))}
@@ -221,10 +234,10 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
       </section>
 
       {/* FAQs */}
-      <section className="px-[10px] pt-[50px] pb-[100px] md:px-[20px] md:pt-[75px] md:pb-[125px]">
-        <div className="mx-auto max-w-[1400px] rounded-[20px] bg-white py-[40px] shadow-[0_22px_37.7px_rgba(79,79,79,0.2)] md:rounded-[35px] md:px-[130px] md:pt-[100px] md:pb-[130px]">
+      <section className="bg-cream px-[10px] pt-[50px] pb-[100px] md:px-[20px] md:pt-[75px] md:pb-[125px]">
+        <div className="mx-auto max-w-[1400px] rounded-[20px] bg-white pt-[40px] pb-[26px] shadow-[0_22px_37.7px_rgba(79,79,79,0.2)] md:rounded-[35px] md:px-[130px] md:pt-[100px] md:pb-[109px]">
           <h2 className={`text-center ${eyebrowDark}`}>{faq.eyebrow}</h2>
-          <h2 className="mt-[10px] text-center font-recoleta text-[25px] leading-[44px] text-maroon md:mt-[20px] md:text-[48px]">{faq.heading}</h2>
+          <h2 className="mt-[10px] text-center font-recoleta text-[25px] leading-[44px] font-normal text-maroon md:mt-[20px] md:text-[48px]">{faq.heading}</h2>
           <ScrubFaq items={faq.items} variant="ritual" />
         </div>
       </section>

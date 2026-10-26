@@ -16,7 +16,7 @@ const Caret = ({ open }: { open: boolean }) => (
 function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div id={id} role="tabpanel" aria-labelledby={tabId} className="order-none flex w-full flex-col gap-[20px] px-[20px] pt-[30px] pb-[30px] md:flex-row md:gap-[20px] md:pt-[30px] md:pb-[50px]">
+    <div id={id} role="tabpanel" aria-labelledby={tabId} className="order-none flex w-full flex-col gap-[40px] px-[20px] pt-[30px] pb-[30px] md:flex-row md:gap-[20px] md:pt-[30px] md:pb-[50px]">
       <div className="md:w-[629px] md:shrink-0">
         {tab.items.map((it, i) => (
           <div key={it.title}>
@@ -24,19 +24,19 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
               type="button"
               aria-expanded={open === i}
               onClick={() => setOpen(open === i ? null : i)}
-              className="flex w-full items-center justify-between border border-black/[0.02] py-[10px] pr-[10px] text-left font-[Arial,Helvetica,sans-serif] text-[16px] leading-[16px] font-bold text-white"
+              className="flex w-full items-center justify-between border border-black/[0.02] py-[11px] pr-[10px] text-left font-[Arial,Helvetica,sans-serif] text-[16px] leading-[16px] font-bold text-white"
             >
-              <span className="pl-px">{it.title}</span>
+              <span className="block flex-1 pl-px">{it.title}</span>
               <Caret open={open === i} />
             </button>
-            {open === i ? <p className="pt-[2px] pb-[33px] font-mulish text-[14px] leading-[23.8px] text-white md:pr-[62px]">{it.text}</p> : null}
+            {open === i ? <p className="pt-[5px] pb-[27px] font-mulish text-[14px] leading-[23.8px] text-white md:pr-[62px]">{it.text}</p> : null}
           </div>
         ))}
         <Link
           href={tab.button.href}
           className="mt-[20px] inline-block rounded-[4px] border border-rust bg-rust p-[18px] font-[Arial,Helvetica,sans-serif] text-[14px] leading-[14px] font-bold text-white uppercase md:px-[40px] md:py-[20px]"
         >
-          {tab.button.label}
+          <span className="block text-center">{tab.button.label}</span>
         </Link>
       </div>
       <div className="md:w-[629px] md:shrink-0">
@@ -54,7 +54,7 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
 export function ScrubTreatmentTabs({ tabs }: { tabs: Tab[] }) {
   const [active, setActive] = useState(0);
   return (
-    <div role="tablist" aria-label="Body scrub treatments" className="mt-[40px] flex flex-col gap-y-[10px] md:mt-[15px] md:flex-row md:flex-wrap md:gap-x-[10px] md:gap-y-0">
+    <div role="tablist" aria-label="Body scrub treatments" className="mt-[40px] flex flex-col pb-[10px] md:mt-[15px] md:pb-0 md:flex-row md:flex-wrap md:gap-x-[10px] md:gap-y-0">
       {tabs.map((t, i) => {
         const tabId = `scrub-tab-${i}`;
         const panelId = `scrub-panel-${i}`;
@@ -70,7 +70,7 @@ export function ScrubTreatmentTabs({ tabs }: { tabs: Tab[] }) {
             onClick={() => setActive(i)}
             className={`rounded-[10px_30px_10px_10px] px-[35px] py-[15px] font-recoleta text-[18px] leading-[27px] md:order-first ${on ? "bg-rust text-white" : "bg-[#f1f2f3] text-[#54595f]"}`}
           >
-            {t.label}
+            <span className="block text-center">{t.label}</span>
           </button>,
           on ? <Panel key={panelId} tab={t} id={panelId} tabId={tabId} /> : null,
         ];
