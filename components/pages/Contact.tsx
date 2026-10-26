@@ -13,7 +13,7 @@ const ICONS = {
 
 function Icon({ name, box }: { name: keyof typeof ICONS; box: string }) {
   return (
-    <svg viewBox={box} className="h-[16px] w-[18px] shrink-0 fill-white" aria-hidden="true">
+    <svg viewBox={box} className="mr-[5px] h-[16px] w-[18px] shrink-0 fill-white" aria-hidden="true">
       {ICONS[name]}
     </svg>
   );
@@ -31,7 +31,7 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
       <section className="px-[10px] pt-[10px] pb-[10px] md:px-[20px] md:pt-[30px] md:pb-[60px]">
         <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row">
           <div className="rounded-[22px_22px_0_0] bg-maroon px-[24px] py-[40px] md:w-1/2 md:rounded-[22px_0_0_22px] md:px-[72px] md:py-[32px]">
-            <h2 className="font-dmserif text-[30px] leading-[30px] text-white md:text-[40px] md:leading-[40px]">{data.name}</h2>
+            <h2 className="font-dmserif text-[30px] leading-[30px] font-normal text-white md:text-[40px] md:leading-[40px]">{data.name}</h2>
             <div className="mt-[20px] font-mulish text-[18px] leading-[27px] text-white md:text-[24px] md:leading-[36px]">{data.label}</div>
             <hr className="mt-[25px] border-0 border-t border-white md:mt-[20px]" />
             <ul className="mt-[22px] space-y-[5px]">
@@ -49,9 +49,11 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
               </li>
               <li className={item}>
                 <Icon name="pin" box="0 0 384 512" />
-                <span className="pl-[10px]">{data.address}</span>
+                <span className="pl-[5px]">{data.address}</span>
               </li>
-              <li className={item}>{data.hoursLabel}</li>
+              <li className={item}>
+                <span>{data.hoursLabel}</span>
+              </li>
               <li className={item}>
                 <Icon name="clock" box="0 0 512 512" />
                 <span className="pl-[5px]">{data.hours}</span>

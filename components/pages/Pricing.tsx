@@ -6,31 +6,43 @@ import { InnerBanner } from "@/components/sections/InnerBanner";
 type Data = typeof pricingPage;
 type Table = Data["admission"]["tables"][number];
 
-/** Price tables as on the old page: optional header row, every other row tinted, a hairline on top. */
-function PriceTable({ table, font, headSize }: { table: Table; font: string; headSize: string }) {
+/**
+ * Price tables as on the old page (Essential Addons data table): an automatic-layout table, so the
+ * columns size themselves from their text exactly as before. The hairline is the top border of the
+ * header cells (one empty header cell when a table has no heading, so it spans only the first column);
+ * odd rows are tinted; cells have 10px top padding and weight 500. On phones the old table widget
+ * stood 5px taller than its table (max-md:pb-[5px] on each wrapper).
+ */
+function PriceTable({ table, font, headSize, align = "" }: { table: Table; font: string; headSize: string; align?: string }) {
+  const th = "border-t border-[rgba(128,128,128,0.5)] p-0 text-left align-top font-montserrat text-[16px] leading-[16px] font-semibold";
+  const cell = `p-0 pt-[10px] align-top text-[14px] leading-[23.38px] font-medium md:text-[16px] md:leading-[26.72px] ${font}`;
   return (
-    <table className="w-full border-collapse border-t border-[rgba(128,128,128,0.5)] text-left text-white">
-      {table.heading ? (
-        <thead>
-          <tr>
-            <th className={`p-0 align-top font-dmserif font-normal ${headSize}`}>{table.heading}</th>
-            <th className={`p-0 align-top font-dmserif font-normal ${headSize}`}>{table.priceHeading}</th>
-          </tr>
-        </thead>
-      ) : null}
+    <table className="w-full border-separate border-spacing-0 text-left text-white">
+      <thead>
+        <tr>
+          {table.heading ? (
+            <>
+              <th className={th}>
+                <span className={`font-dmserif font-normal ${headSize}`}>{table.heading}</span>
+              </th>
+              <th className={th}>
+                <span className={`font-dmserif font-normal ${headSize}`}>{table.priceHeading}</span>
+              </th>
+            </>
+          ) : (
+            <th className={th} aria-hidden="true" />
+          )}
+        </tr>
+      </thead>
       <tbody>
         {table.rows.map((r, i) => (
           <tr key={i}>
-            <td className="p-0 align-top">
-              <div className={`pt-[10px] ${i % 2 === 0 ? "bg-[rgba(128,128,128,0.07)]" : ""}`}>
-                <span className={`block text-[14px] leading-[23.38px] md:text-[16px] md:leading-[26.72px] ${font}`}>{r.label}</span>
-              </div>
+            <td className={`${cell} ${i % 2 === 0 ? "bg-[rgba(128,128,128,0.07)]" : ""}`}>
+              <div className={align}>{r.label}</div>
             </td>
             {r.price ? (
-              <td className="w-px p-0 align-top whitespace-nowrap">
-                <div className={`pt-[10px] pr-[12px] ${i % 2 === 0 ? "bg-[rgba(128,128,128,0.07)]" : ""}`}>
-                  <span className={`block text-[14px] leading-[23.38px] md:text-[16px] md:leading-[26.72px] ${font}`}>{r.price}</span>
-                </div>
+              <td className={`${cell} ${i % 2 === 0 ? "bg-[rgba(128,128,128,0.07)]" : ""}`}>
+                <div className={align}>{r.price}</div>
               </td>
             ) : null}
           </tr>
@@ -72,8 +84,9 @@ function CenteredBlock({
       </div>
       <div className={`${tableBox} mx-[10px] p-[20px] md:mx-auto md:w-[548px] md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px] ${first ? "-mt-[112px]" : overlap} md:-mt-[49px]`}>
         {block.tables.map((t, i) => (
-          <div key={i} className={i ? "mt-[20px]" : ""}>
-            <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" />
+          <div key={i} className={`max-md:pb-[5px] ${i ? "mt-[20px]" : ""}`}>
+            {/* The lower cards' rows inherited centered text on phones; the admission table did not. */}
+            <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" align={first ? "" : "max-md:text-center"} />
           </div>
         ))}
       </div>
@@ -97,14 +110,14 @@ export function PricingView({ data }: { data: Data }) {
             <Bg image={bodyScrub.image} sizes="686px" position="object-center" className="max-md:hidden" />
             <Bg image={bodyScrub.imageMobile} sizes="100vw" position="object-center" className="md:hidden" />
             <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[40px] md:leading-[60px]">{bodyScrub.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-left md:text-[21px] md:leading-[30.87px]">{bodyScrub.subheading}</p>
-            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-left">{bodyScrub.text}</p>
+            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-start md:text-[21px] md:leading-[30.87px]">{bodyScrub.subheading}</p>
+            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{bodyScrub.text}</p>
           </div>
           <div className={`${tableBox} mx-[10px] -mt-[90px] flex min-h-[500px] flex-col justify-center pt-[20px] pr-[20px] pb-[21px] pl-[20px] md:mx-0 md:mt-0 md:-ml-[22px] md:w-[714px] md:pt-[30px] md:pr-[62px] md:pb-[30px] md:pl-[40px]`}>
             {bodyScrub.tables.map((t, i) => (
-              <div key={i}>
+              <div key={i} className="max-md:pb-[5px]">
                 {i ? <hr className="my-[35px] border-0 border-t border-dotted border-white/60" /> : null}
-                <PriceTable table={t} font="font-mulish font-medium" headSize="text-[20px] leading-[22.4px] md:text-[26px] md:leading-[29.12px]" />
+                <PriceTable table={t} font="font-mulish" headSize="text-[20px] leading-[22.4px] md:text-[26px] md:leading-[29.12px]" />
               </div>
             ))}
           </div>
@@ -116,7 +129,7 @@ export function PricingView({ data }: { data: Data }) {
         <div className="mx-auto flex max-w-[1440px] flex-col md:flex-row md:items-start md:px-[20px]">
           <div className={`${tableBox} order-2 mx-[10px] -mt-[89px] p-[20px] md:order-1 md:mx-0 md:mt-0 md:w-[602px] md:shrink-0 md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px]`}>
             {massage.tables.map((t, i) => (
-              <div key={i} className={i ? "mt-[20px]" : ""}>
+              <div key={i} className={`max-md:pb-[5px] ${i ? "mt-[20px]" : ""}`}>
                 <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" />
               </div>
             ))}
@@ -124,13 +137,13 @@ export function PricingView({ data }: { data: Data }) {
           <div className="relative isolate order-1 mt-[20px] overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:order-2 md:mt-[21px] md:min-h-[369px] md:flex-1 md:rounded-[0_20px_20px_0] md:p-[70px]">
             <Bg image={massage.image} sizes="(max-width: 767px) 100vw, 800px" position="object-center" />
             <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[40px] md:leading-[60px]">{massage.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-left md:text-[21px] md:leading-[30.87px]">{massage.subheading}</p>
-            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-left">{massage.text}</p>
+            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-start md:text-[21px] md:leading-[30.87px]">{massage.subheading}</p>
+            <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{massage.text}</p>
           </div>
         </div>
       </section>
 
-      <CenteredBlock block={footChair} headingAlign="text-center md:text-left" textClass="text-[14px] leading-[21px]" />
+      <CenteredBlock block={footChair} headingAlign="text-center md:text-start" textClass="text-[14px] leading-[21px]" />
       <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] md:text-[15px] md:leading-[22.5px]" />
       <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] md:text-[15px] md:leading-[22.5px]" />
     </>

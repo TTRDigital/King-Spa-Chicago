@@ -4,7 +4,8 @@ import type { aboutPage } from "@/lib/data/pages/about";
 import { Inline } from "@/components/ui/RichText";
 import { InnerBanner } from "@/components/sections/InnerBanner";
 
-const h2 = "font-recoleta text-[40px] leading-[40px] font-normal tracking-[1.2px] text-maroon";
+const hBase = "font-recoleta font-normal tracking-[1.2px] text-maroon";
+const h2 = `${hBase} text-[40px] leading-[40px]`;
 const copy = "font-mulish text-[14px] leading-[21px] md:text-[16px] md:leading-[24px] [&>p]:mb-[14.4px]";
 
 function Paragraphs({ items, className }: { items: string[]; className?: string }) {
@@ -31,7 +32,7 @@ export function AboutView({ data }: { data: typeof aboutPage }) {
         <h2 className={`${h2} px-0 text-center md:px-[20px]`}>{data.heading}</h2>
         <div className="mt-[121px] grid grid-cols-1 md:mt-[60px] md:grid-cols-2 md:items-start">
           <div className="px-[15px] md:mt-[46px] md:pr-[73px] md:pl-[35px]">
-            <h2 className={`${h2} text-[32px] leading-[32px] md:text-[40px] md:leading-[40px]`}>{story.heading}</h2>
+            <h2 className={`${hBase} text-[32px] leading-[32px] md:text-[40px] md:leading-[40px]`}>{story.heading}</h2>
             <Paragraphs items={story.paragraphs} className="mt-[20px] text-[#0f0f0f]" />
           </div>
           <div className="mt-[37px] flex justify-center px-[10px] md:mt-0 md:pr-[18px] md:pl-0">
@@ -45,13 +46,13 @@ export function AboutView({ data }: { data: typeof aboutPage }) {
           <h2 className={`${h2} text-center`}>{tradition.heading}</h2>
           <Paragraphs items={tradition.paragraphs} className="mt-[20px] text-[#002c39]" />
         </div>
-        <div className="mt-[30px] flex flex-col gap-[21px] px-[30px] md:mt-[44px] md:flex-row md:gap-[30px] md:px-[40px]">
+        <div className="mt-[42px] flex flex-col gap-[28.4px] px-[30px] md:mt-[44px] md:flex-row md:gap-[30px] md:px-[40px]">
           {columns.map((col, c) => (
-            <div key={c} className="flex flex-1 flex-col gap-[21px]">
+            <div key={c} className="flex flex-1 flex-col gap-[19.6px]">
               {col.map((g) => (
                 <figure key={g.caption}>
                   <Image src={g.image.src} alt={g.image.alt} width={g.image.width} height={g.image.height} sizes="(max-width: 767px) 330px, 433px" className="aspect-[1024/613] w-full rounded-[16px] object-cover" />
-                  <figcaption className="text-center font-roboto text-[16px] leading-[22.4px] font-medium text-[#002c39] italic">{g.caption}</figcaption>
+                  <figcaption className="mt-[1px] text-center font-roboto text-[16px] leading-[22.4px] font-medium text-[#002c39] italic">{g.caption}</figcaption>
                 </figure>
               ))}
             </div>
@@ -59,17 +60,17 @@ export function AboutView({ data }: { data: typeof aboutPage }) {
         </div>
       </section>
 
-      <section className="bg-white px-[20px] pt-[97px] md:px-[30px] md:pt-[110px]">
+      <section className="bg-white px-[20px] pt-[93.5px] md:px-[30px] md:pt-[99.5px]">
         <h2 className={`${h2} text-center`}>{reconnect.heading}</h2>
         <Paragraphs items={reconnect.paragraphs} className="mt-[20px] text-black" />
       </section>
 
-      <section className="bg-white px-[10px] pt-[82px] pb-[51px] md:px-[30px] md:pt-[82px]">
+      <section className="bg-white px-[10px] pt-[81px] pb-[51px] md:px-[30px] md:pt-[79px]">
         <h2 className={`${h2} text-center`}>{commitment.heading}</h2>
         <Paragraphs items={commitment.paragraphs} className="mt-[20px] text-black" />
-        <div className="mt-[22px] text-center">
+        <div className="mt-[34px] text-center">
           <Link href={commitment.button.href} className="inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[95px] md:py-[19px]">
-            {commitment.button.label}
+            <span className="block">{commitment.button.label}</span>
           </Link>
         </div>
       </section>
