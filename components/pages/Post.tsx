@@ -41,8 +41,10 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
               <div className="relative h-[35px] w-[35px] shrink-0">
                 <Image src={t.bylineIcon.src} alt={t.bylineIcon.alt} width={t.bylineIcon.width} height={t.bylineIcon.height} unoptimized className="absolute top-0 left-[-6px] h-[35px] w-[32px] max-w-none" />
               </div>
-              <div className="ml-[10px]">
-                <h5 className="font-mulish text-[12px] leading-[14.4px] font-normal text-[#022a3e]">{t.bylineName}</h5>
+              <div className="ml-[10px] flex-1">
+                <h5 className="font-mulish text-[12px] leading-[14.4px] font-normal text-[#022a3e]">
+                  <span>{t.bylineName}</span>
+                </h5>
                 <p className="font-mulish text-[10px] leading-[15px] text-[#929292]">{postDate(post.date).date}</p>
               </div>
             </div>
@@ -60,18 +62,21 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
             <div className="mt-[34px] rounded-[22px] bg-rust px-[24px] pt-[40px] pb-[60px] text-center text-white md:px-[50px] md:py-[60px]">
               <h2 className="font-recoleta text-[30px] leading-[32px] font-normal md:text-[34px] md:leading-[34px]">{t.cta.heading}</h2>
               <div className="mt-[20px] font-mulish text-[14px] leading-[21px] md:px-[60px] md:text-[15px] md:leading-[22.5px]">{t.cta.text}</div>
-              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:mt-[20px] md:px-[20px] md:py-[15px]">
-                {t.cta.button.label}
+              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:mt-[20px] md:ml-[20px] md:px-[20px] md:py-[15px]">
+                <span className="block text-center">{t.cta.button.label}</span>
               </a>
             </div>
 
-            <div className="mt-[40px] px-[10px] md:flex md:items-start md:justify-between">
-              <h2 className="font-recoleta text-[24px] leading-[24px] font-normal text-maroon md:text-[32px] md:leading-[32px]">{t.relatedHeading}</h2>
-              <Link href={t.viewAll.href} className="mt-[20px] flex items-center font-mulish text-[14px] leading-[21px] font-semibold text-maroon md:mt-0">
-                <svg viewBox="0 0 448 512" width="13" height="13" fill="currentColor" aria-hidden="true">
+            {/* Two columns on desktop as on the old site: the heading, then "View All" right-aligned in a 284px column. */}
+            <div className="mt-[40px] px-[10px] md:flex md:items-start">
+              <h2 className="font-recoleta text-[24px] leading-[24px] font-normal text-maroon max-md:w-[calc(100%-18px)] md:flex-1 md:text-[32px] md:leading-[32px]">{t.relatedHeading}</h2>
+              <Link href={t.viewAll.href} className="mt-[20px] flex items-center font-mulish text-[14px] leading-[21px] font-semibold text-maroon md:mt-0 md:ml-[20px] md:w-[264px] md:justify-end md:text-end">
+                <span aria-hidden="true" className="inline-flex w-[18px] shrink-0">
+                  <svg viewBox="0 0 448 512" width="13" height="13" fill="currentColor">
                   <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
-                </svg>
-                <span className="pl-[5px]">{t.viewAll.label}</span>
+                  </svg>
+                </span>
+                <span className="pl-[5px] md:text-end">{t.viewAll.label}</span>
               </Link>
             </div>
 
@@ -90,9 +95,9 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
 
             <div className="mt-[40px] px-[10px] pb-[19px] md:flex md:items-start md:pb-[10px]">
               <Image src={lion.src} alt={lion.alt} width={lion.width} height={lion.height} unoptimized className="ml-[78px] h-[216px] w-[107px] md:ml-[13px] md:w-[107px] md:shrink-0" />
-              <div className="mt-[10px] md:mt-[10px] md:ml-[91px]">
+              <div className="mt-[10px] md:mt-[10px] md:ml-[91px] md:flex-1">
                 <p className="font-mulish text-[14px] leading-[25.2px] text-[#022a3e] md:text-[16px] md:leading-[28.8px]">{t.authorIntro}</p>
-                <h4 className="font-mulish text-[20px] leading-[25.6px] font-bold text-[#022a3e] md:text-[24px] md:leading-[30.72px]">{t.authorName}</h4>
+                <h4 className="-mt-[5.6px] font-mulish text-[20px] leading-[25.6px] font-bold text-[#022a3e] md:text-[24px] md:leading-[30.72px]">{t.authorName}</h4>
               </div>
             </div>
           </div>

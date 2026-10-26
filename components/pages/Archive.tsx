@@ -1,3 +1,4 @@
+import { headerFallbackFont } from "@/components/sections/archiveHeaderFont";
 import Image from "next/image";
 import Link from "next/link";
 import type { blogPage } from "@/lib/data/pages/blog";
@@ -12,9 +13,11 @@ export function ArchiveView({ title, posts }: { title: string; posts: Post[]; bl
   const [prefix, ...rest] = title.split(": ");
   return (
     <div className="bg-white">
+      <style>{headerFallbackFont}</style>
       <div className="mx-auto max-w-[1140px] px-[10px] lg:px-0">
         <h1 className="mt-[8px] mb-[16px] px-[10px] font-sans text-[40px] leading-[48px] font-medium text-body lg:px-0">
-          {prefix}: <span>{rest.join(": ")}</span>
+          {`${prefix}: `}
+          <span>{rest.join(": ")}</span>
         </h1>
         {posts.map((p, i) => {
           const href = `/${p.category}/${p.slug}/`;

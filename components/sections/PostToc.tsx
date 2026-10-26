@@ -39,7 +39,7 @@ export function PostToc({ title, items }: { title: string; items: { label: strin
       <ul id="post-toc" className={open === null ? "hidden lg:block" : open ? "block" : "hidden"}>
         {items.map((it) => (
           <li key={it.href}>
-            <a href={it.href} className="font-mulish text-[14px] leading-[21px] text-[#ff0000] underline">
+            <a href={it.href} className="block w-fit font-mulish text-[14px] leading-[21px] text-[#ff0000] underline">
               {it.label}
             </a>
           </li>
