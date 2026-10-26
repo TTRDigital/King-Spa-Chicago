@@ -6,9 +6,9 @@ import { useState } from "react";
 export function FooterHoursToggle({ label, text }: { label: string; text: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="mb-[18px] border-b border-white md:hidden">
-      <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className="flex w-full items-center justify-between py-[6px] text-left font-[Arial,Helvetica,sans-serif] text-[18px] leading-[18px] text-white">
-        {label}
+    <div className="border-b border-white md:hidden">
+      <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className="flex w-full items-center justify-between pt-[9px] pb-[6px] text-left font-mulish text-[18px] leading-[18px] font-semibold text-white">
+        <span>{label}</span>
         <svg viewBox="0 0 6 10" width="6" height="10" fill="currentColor" aria-hidden="true" className={open ? "rotate-90" : ""}>
           <path d="M0 0l6 5-6 5z" />
         </svg>

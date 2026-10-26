@@ -18,9 +18,11 @@ function NavLink({ href, className, children, onClick }: { href: string; classNa
 }
 
 const Caret = () => (
-  <svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" className="ml-[10px] inline-block fill-current">
-    <path d="M0 0h10L5 6z" />
-  </svg>
+  <span aria-hidden="true" className="ml-[10px] inline-flex w-[16px] justify-center">
+    <svg viewBox="0 0 10 6" width="10" height="6" className="fill-current">
+      <path d="M0 0h10L5 6z" />
+    </svg>
+  </span>
 );
 
 /**
@@ -49,7 +51,7 @@ export function Header({ menu, button, logo }: Props) {
           <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} sizes="110px" className="h-[48px] w-full object-contain" />
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="relative -left-[2px] hidden lg:block">
           <ul className="flex items-center gap-[30px] font-recoleta text-[16px] leading-[20px] text-white capitalize">
             {menu.map((item) => (
               <li key={item.label} className="group relative">
@@ -77,7 +79,7 @@ export function Header({ menu, button, logo }: Props) {
         </nav>
 
         <Link href={button.href} className="hidden rounded-[8px] bg-white px-[24px] py-[12px] font-recoleta text-[16px] leading-[16px] text-black capitalize lg:inline-block">
-          {button.label}
+          <span className="block text-center">{button.label}</span>
         </Link>
 
         <button

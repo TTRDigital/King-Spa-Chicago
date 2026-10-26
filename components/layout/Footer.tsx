@@ -22,10 +22,10 @@ const iconFor = (label: string) => SOCIAL_ICONS[Object.keys(SOCIAL_ICONS).find((
 export function Footer({ settings }: { settings: SiteSettings }) {
   const f = settings.footer;
   const heading = "font-[Arial,Helvetica,sans-serif] text-[24px] leading-[24px] font-bold text-white";
-  const item = "font-mulish text-[16px] leading-[24px] font-semibold text-white";
+  const item = "inline-block font-mulish text-[16px] leading-[24px] font-semibold text-white";
   return (
     <footer className="bg-maroon py-[62px]">
-      <div className="mx-auto max-w-[1408px] md:px-[16px] min-[1441px]:px-0">
+      <div className="mx-auto max-w-[1408px]">
         <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
           <Link href="/" className="block w-full md:w-[304px]" aria-label="King Spa & Sauna home">
             <Image src={settings.logo.src} alt={settings.logo.alt} width={settings.logo.width} height={settings.logo.height} sizes="(max-width: 767px) 100vw, 304px" loading="lazy" className="h-auto w-full" />
@@ -41,9 +41,9 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           </ul>
         </div>
 
-        <div className="mt-[38px] grid grid-cols-1 gap-y-[18px] px-[10px] md:mt-[28px] md:grid-cols-4 md:gap-y-0">
+        <div className="mt-[38px] grid grid-cols-1 gap-y-[18px] md:mt-[30px] md:grid-cols-4 md:gap-y-0">
           {f.columns.map((col) => (
-            <div key={col.heading}>
+            <div key={col.heading} className="px-[10px]">
               <h4 className={heading}>
                 <A href={col.headingHref}>{col.heading}</A>
               </h4>
@@ -56,19 +56,21 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               </ul>
             </div>
           ))}
-          <div>
+          <div className="px-[10px]">
             <FooterHoursToggle label={f.openingHoursToggle} text={f.hours} />
             <h4 className={`hidden md:block ${heading}`}>
               <A href={f.hoursHeadingHref}>{f.hoursHeading}</A>
             </h4>
-            <p className={`hidden items-center md:mt-[6px] md:flex ${item}`}>
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
-              <span className="pl-[5px]">{f.hours}</span>
+            <p className="hidden items-center font-mulish text-[16px] leading-[24px] font-semibold text-white md:mt-[6px] md:flex">
+              <span aria-hidden="true" className="inline-flex w-[18px] shrink-0">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+              </span>
+              <span>{f.hours}</span>
             </p>
-            <h4 className={`mt-[18px] md:mt-[18px] ${heading}`}>
+            <h4 className={`mt-[27px] md:mt-[18px] ${heading}`}>
               <A href={f.addressHeadingHref}>{f.addressHeading}</A>
             </h4>
-            <p className={`mt-[4px] ${item}`}>{f.address}</p>
+            <p className="mt-[4px] md:mt-[8px]"><span className={item}>{f.address}</span></p>
           </div>
         </div>
 
