@@ -82,7 +82,7 @@ export const firstTimeGuidePage = {
       { title: "Ocher Room", text: "This room uses infrared rays and yellow soil to detoxify the body.", image: images.cardOcher },
       { title: "Ice Room", text: "Chilled to just above freezing, a brisk cold treatment stimulates blood flow and tightens pores.", image: images.cardIce },
       { title: "Salt Dome", text: "Himalayan salt microclimate rich in negative ions", image: images.cardSaltDome },
-      { title: "Gold Pyramid Sauna", text: "The pyramid shape channels energy to purify mind, body and soul.", image: images.cardPyramid },
+      { title: "Gold Pyramid Sauna", text: "The pyramid shape channels energy to purify mind, body and soul.", image: images.cardPyramid, shortCard: true },
       { title: "Bul Ga Ma Sauna", text: "Contains amethysts crystals, and a unique living stone called elvan. This room is very hot to maximize the healing benefits of infrared rays.", image: images.cardBulgama },
       { title: "Fire Sudatorium", text: "The unique architectural shape intensifies the heat within the room. The sudatorium is made from rocks as described as living.", image: images.cardFire },
       { title: "Base Rock Room", text: "Exclusive Japanese Base Rock Room with mineral stones and amethyst crystals melts tension and boosts circulation in just 20 minutes.", image: images.cardBaseRock },

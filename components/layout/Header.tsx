@@ -45,7 +45,7 @@ export function Header({ menu, button, logo }: Props) {
   }, [open]);
 
   return (
-    <header className="relative z-50 bg-maroon">
+    <header className="sticky top-0 z-[99] bg-maroon">
       <div className="flex h-[88px] items-center justify-between px-[20px] lg:px-[30px]">
         <Link href="/" className="block w-[100px] lg:w-[110px]" aria-label="King Spa & Sauna home">
           <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} sizes="110px" className="h-[48px] w-full object-contain" />

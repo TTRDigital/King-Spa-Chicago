@@ -131,7 +131,7 @@ export const homePage = {
   faq: { heading: "Frequently Asked Questions", items: faq },
   booking: {
     heading: "Book Your Spa Day",
-    text: " Book your visit today at King Spa Chicago for an unforgettable wellness journey. Enjoy our renowned saunas, body scrubs, and facials tailored to rejuvenate your mind and body.",
+    text: "\u00a0Book your visit today at King Spa Chicago for an unforgettable wellness journey. Enjoy our renowned saunas, body scrubs, and facials tailored to rejuvenate your mind and body.",
     button: { label: "Visit King Spa", href: "/e-coupon/" },
   },
 };

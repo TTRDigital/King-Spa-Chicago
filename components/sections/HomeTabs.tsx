@@ -71,7 +71,7 @@ export function HomeTabs({ tabs }: { tabs: Tab[] }) {
           {/* Phones: accordion */}
           <div className="mt-[21px] md:hidden">
             {t.items.map((x, i) => (
-              <div key={x.title} className="border-b border-[rgba(74,28,26,0.08)]">
+              <div key={x.title} className="border-b border-[rgba(74,28,26,0.1)]">
                 <button
                   type="button"
                   aria-expanded={open === i}
@@ -84,7 +84,7 @@ export function HomeTabs({ tabs }: { tabs: Tab[] }) {
                   </span>
                 </button>
                 {open === i ? (
-                  <div className="relative mb-[17px] h-[260px] overflow-hidden rounded-[16px_80px_16px_16px]">
+                  <div className="relative mt-[4px] mb-[16px] h-[260px] overflow-hidden rounded-[16px_80px_16px_16px]">
                     <Image src={x.image.src} alt={x.image.alt} fill sizes="370px" className="object-cover" />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_40%,rgba(0,0,0,0.65)_100%)]" />
                     <p className="absolute inset-x-[20px] bottom-[20px] font-mulish text-[14px] leading-[21px] text-white/[0.92]">{x.text}</p>

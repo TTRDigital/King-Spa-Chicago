@@ -58,7 +58,7 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   }, [animate]);
 
   const track = [...cards, ...cards, ...cards];
-  const arrow = "absolute top-1/2 z-10 -translate-y-1/2 p-[8px] text-white";
+  const arrow = "absolute top-[calc(50%-16px)] z-10 -translate-y-1/2 p-[8px] text-white";
   return (
     <div
       className="relative"
@@ -88,12 +88,12 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
                   <Image src={c.image.src} alt={c.image.alt} fill sizes="(max-width: 767px) 370px, 460px" className="object-cover" />
                 </div>
                 <h2 className="mt-[20px] font-recoleta text-[32px] leading-[32px] font-medium text-white">{c.title}</h2>
-                <div className="mt-[16px] font-recoleta text-[18px] leading-[21px] text-white">
+                <div className="mt-[20px] font-recoleta text-[18px] leading-[7px] text-white">
                   {c.lines.map((l) => (
-                    <p key={l}>{l}</p>
+                    <p key={l} className="mb-[14.4px]">{l}</p>
                   ))}
                 </div>
-                <div className="mt-[24px]">
+                <div className="mt-[19px]">
                   <Link href={c.button.href} tabIndex={visible ? 0 : -1} className="inline-flex items-center gap-[7px] rounded-[3px] bg-rust px-[24px] py-[12px] font-recoleta text-[15px] leading-[15px] text-white">
                     {c.button.label}
                     <svg viewBox="0 0 448 512" width="13" height="13" fill="currentColor" aria-hidden="true">
@@ -106,11 +106,11 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
           })}
         </div>
       </div>
-      <button type="button" aria-label="Previous treatment" onClick={() => go(-1)} className={`${arrow} left-[6px]`}>
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true"><path d="M15 4l-8 8 8 8" /></svg>
+      <button type="button" aria-label="Previous treatment" onClick={() => go(-1)} className={`${arrow} -left-[9px]`}>
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M15 4l-8 8 8 8" /></svg>
       </button>
-      <button type="button" aria-label="Next treatment" onClick={() => go(1)} className={`${arrow} right-[6px]`}>
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true"><path d="M9 4l8 8-8 8" /></svg>
+      <button type="button" aria-label="Next treatment" onClick={() => go(1)} className={`${arrow} -right-[8px]`}>
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M9 4l8 8-8 8" /></svg>
       </button>
     </div>
   );
