@@ -116,7 +116,7 @@ export function SaunaView({ data }: { data: typeof saunaPage }) {
       <TreatmentBanner
         {...banner}
         image={images.bannerRedWide}
-        className="h-[492px] px-0 pt-[100px] md:h-[669px] md:pt-[244px]"
+        className="h-[492px] px-0 pt-[100px] md:h-auto md:py-[244px]"
         koreanClassName="font-sans text-[32px] leading-[32px] font-medium"
         titleClassName="text-[45px] leading-[45px] font-medium md:text-[77px] md:leading-[77px]"
         subtitleClassName="text-[23px] leading-[23px] font-medium md:text-[32px] md:leading-[32px]"

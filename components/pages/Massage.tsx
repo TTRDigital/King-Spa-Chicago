@@ -355,14 +355,17 @@ export async function MassageView({ data }: { data: typeof massagePage }) {
           </section>
         </div>
 
-        <section className="bg-white px-[10px] pt-[30px] pb-[10px] md:px-[20px]">
-          {/* `!`: the page stylesheet's h2 rule would otherwise win (Elementor heading on the old site). */}
-          <h2 className="m-0! text-center font-recoleta! text-[47px]! leading-[47px]! font-normal! text-[#333]!">
-            {reviewsTitle}
-          </h2>
-          {/* The old site's widget wrapper spacing (20px above, 40px below the reviews). */}
-          <div className="pt-[20px] pb-[40px]">
-            <Reviews widgetId={settings.reviews.pagesWidgetId} />
+        {/* Elementor boxed container on the old site: 1400px wide, centred, 10px side padding. */}
+        <section className="bg-white pt-[30px] pb-[10px]">
+          <div className="mx-auto max-w-[1420px] px-[10px]">
+            {/* `!`: the page stylesheet's h2 rule would otherwise win (Elementor heading on the old site). */}
+            <h2 className="m-0! text-center font-recoleta! text-[47px]! leading-[47px]! font-normal! text-[#333]!">
+              {reviewsTitle}
+            </h2>
+            {/* The old site's widget wrapper spacing (20px above, 40px below the reviews). */}
+            <div className="pt-[20px] pb-[40px]">
+              <Reviews widgetId={settings.reviews.pagesWidgetId} />
+            </div>
           </div>
         </section>
 

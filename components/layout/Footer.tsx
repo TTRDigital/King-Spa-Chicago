@@ -27,10 +27,10 @@ export function Footer({ settings }: { settings: SiteSettings }) {
     <footer className="bg-maroon py-[62px]">
       <div className="mx-auto max-w-[1408px]">
         <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
-          <Link href="/" className="block w-full md:w-[304px]" aria-label="King Spa & Sauna home">
-            <Image src={settings.logo.src} alt={settings.logo.alt} width={settings.logo.width} height={settings.logo.height} sizes="(max-width: 767px) 100vw, 304px" loading="lazy" className="h-auto w-full" />
+          <Link href="/" className="block w-full md:w-[21.64%]" aria-label="King Spa & Sauna home">
+            <Image src={settings.logo.src} alt={settings.logo.alt} width={settings.logo.width} height={settings.logo.height} sizes="(max-width: 767px) 100vw, 22vw" loading="lazy" className="h-auto w-full" />
           </Link>
-          <ul className="mt-[64px] flex gap-[18px] md:mt-[10px] md:mr-[19px]">
+          <ul className="mt-[64px] flex gap-[18px] md:mt-[10px] md:mr-[calc(9px+0.75%)]">
             {f.social.map((s) => (
               <li key={s.href}>
                 <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white text-maroon">
@@ -47,7 +47,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               <h4 className={heading}>
                 <A href={col.headingHref}>{col.heading}</A>
               </h4>
-              <ul className="mt-[10px] space-y-[10px] md:mt-[9px]">
+              <ul className="mt-[10px] space-y-[10px]">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <A href={l.href} className={item}>{l.label}</A>

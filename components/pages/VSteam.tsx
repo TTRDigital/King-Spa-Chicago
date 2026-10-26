@@ -73,7 +73,7 @@ export function VSteamView({ data }: { data: typeof vSteamPage }) {
       <TreatmentBanner
         {...banner}
         image={images.bannerRed}
-        className="px-[10px] py-[150px] md:h-[688px] md:px-0 md:py-[244px]"
+        className="px-[10px] py-[150px] md:px-0 md:py-[244px]"
         koreanClassName="font-sans text-[32px] leading-[32px] font-medium"
         titleClassName="text-[45px] leading-[45px] font-medium md:text-[96px] md:leading-[96px]"
         subtitleClassName="text-[18px] leading-[18px] font-medium md:text-[32px] md:leading-[32px]"
