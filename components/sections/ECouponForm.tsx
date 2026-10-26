@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import "flatpickr/dist/flatpickr.css";
 import { ATTRIBUTION_STORAGE_KEY } from "@/lib/lead-options";
 import type { eCouponPage } from "@/lib/data/pages/eCoupon";
 
@@ -13,16 +14,26 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /**
  * The e-coupon sign-up, with the old Fluent form's fields (Name, Email,
  * Number Of Visitors *, Visiting Date). Posts JSON to /api/lead.php, which
- * forwards it to GoHighLevel; GoHighLevel sends the coupon email.
+ * forwards it to GoHighLevel; GoHighLevel sends the coupon email. The date
+ * field opens the same Flatpickr calendar as live (Monday first, d/m/Y).
  */
 export function ECouponForm({ copy }: { copy: Copy }) {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [message, setMessage] = useState("");
-  const [dateType, setDateType] = useState<"text" | "date">("text");
   const mounted = useRef(0);
+  const dateInput = useRef<HTMLInputElement>(null);
   useEffect(() => {
     mounted.current = Date.now();
+    let picker: { destroy: () => void } | undefined;
+    let cancelled = false;
+    import("flatpickr").then(({ default: flatpickr }) => {
+      if (!cancelled && dateInput.current) picker = flatpickr(dateInput.current, { dateFormat: "d/m/Y", disableMobile: true, locale: { firstDayOfWeek: 1 } });
+    });
+    return () => {
+      cancelled = true;
+      picker?.destroy();
+    };
   }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -31,13 +42,12 @@ export function ECouponForm({ copy }: { copy: Copy }) {
     const get = (k: string) => String(fd.get(k) ?? "").trim();
     const values = { name: get("name"), email: get("email"), visitors: get("visitors"), visit_date: get("visit_date") };
     const errs: Errors = {};
-    if (!/^[1-9]\d{0,2}$/.test(values.visitors)) errs.visitors = "Please enter the number of visitors.";
+    if (!values.visitors) errs.visitors = "This field is required";
+    else if (!/^[1-9]\d{0,2}$/.test(values.visitors)) errs.visitors = "Please enter a valid number.";
     if (values.email && !EMAIL.test(values.email)) errs.email = "Please enter a valid email address.";
     setErrors(errs);
-    if (Object.keys(errs).length) {
-      document.getElementById(`ecoupon-${Object.keys(errs)[0]}`)?.focus();
-      return;
-    }
+    // As live, the message shows under the field without moving the focus.
+    if (Object.keys(errs).length) return;
     let attribution: Record<string, string> = {};
     try {
       attribution = JSON.parse(sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) ?? "{}");
@@ -83,18 +93,18 @@ export function ECouponForm({ copy }: { copy: Copy }) {
   }
 
   const input = (f: Field) =>
-    `mt-[5px] block h-[44px] w-full rounded-[7px] border bg-white px-[15px] py-[11px] font-sans text-[16px] leading-[24px] text-[#1e1f21] placeholder:text-[#8a8a8a] focus:outline-2 focus:outline-rust ${errors[f] ? "border-[#ff4d4f]" : "border-[#dadbdd]"}`;
+    `mt-[5px] block h-[44px] w-full rounded-[7px] border bg-white px-[15px] py-[11px] font-sans text-[16px] leading-[24px] text-[#606266] placeholder:text-[#868e96] transition-[border-color,box-shadow] duration-150 ease-in-out focus:outline-none ${errors[f] ? "border-[#f56c6c]" : "border-[#dadbdd] focus:border-[#1a7efb]"}`;
   const label = "block font-sans text-[16px] leading-[24px] font-medium text-white";
   const err = (f: Field) =>
     errors[f] ? (
-      <p id={`ecoupon-${f}-error`} role="alert" className="mt-[4px] font-sans text-[14px] leading-[20px] text-[#ffd0d0]">
+      <p id={`ecoupon-${f}-error`} role="alert" className="mt-[4px] font-sans text-[12px] leading-[18px] text-[#f56c6c]">
         {errors[f]}
       </p>
     ) : null;
   const aria = (f: Field) => ({ "aria-invalid": errors[f] ? true : undefined, "aria-describedby": errors[f] ? `ecoupon-${f}-error` : undefined });
 
   return (
-    <form onSubmit={onSubmit} noValidate className="mx-auto w-[70%]">
+    <form onSubmit={onSubmit} className="mx-auto w-[70%]">
       <div className="grid grid-cols-1 gap-x-[15px] gap-y-[21px] md:grid-cols-2 md:gap-y-[22px]">
         <div>
           <label htmlFor="ecoupon-name" className={label}>{copy.nameLabel}</label>
@@ -110,7 +120,7 @@ export function ECouponForm({ copy }: { copy: Copy }) {
           <label htmlFor="ecoupon-visitors" className={label}>
             {copy.visitorsLabel} <span aria-hidden="true" className="ml-[3px] text-[#f56c6c]">*</span>
           </label>
-          <input id="ecoupon-visitors" name="visitors" type="number" min={1} max={999} step={1} inputMode="numeric" required aria-required="true" placeholder={copy.visitorsPlaceholder} className={input("visitors")} {...aria("visitors")} />
+          <input id="ecoupon-visitors" name="visitors" type="number" step="any" inputMode="numeric" aria-required="true" placeholder={copy.visitorsPlaceholder} className={input("visitors")} {...aria("visitors")} />
           {err("visitors")}
         </div>
         <div>
@@ -118,9 +128,8 @@ export function ECouponForm({ copy }: { copy: Copy }) {
           <input
             id="ecoupon-visit_date"
             name="visit_date"
-            type={dateType}
-            onFocus={() => setDateType("date")}
-            onBlur={(e) => !e.currentTarget.value && setDateType("text")}
+            ref={dateInput}
+            type="text"
             placeholder={copy.datePlaceholder}
             className={input("visit_date")}
             {...aria("visit_date")}

@@ -72,7 +72,8 @@ $lead = [
 ];
 
 $errors = [];
-if (!preg_match('/^[1-9]\d{0,3}$/', $lead['visitors'])) $errors['visitors'] = 'Please enter the number of visitors.';
+if ($lead['visitors'] === '') $errors['visitors'] = 'This field is required';
+elseif (!preg_match('/^[1-9]\d{0,3}$/', $lead['visitors'])) $errors['visitors'] = 'Please enter a valid number.';
 if ($lead['email'] !== '' && !filter_var($lead['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Please enter a valid email address.';
 if ($errors) {
     reply(422, ['ok' => false, 'error' => 'Please check the form.', 'fields' => $errors]);

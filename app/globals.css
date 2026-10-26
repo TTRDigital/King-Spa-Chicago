@@ -73,10 +73,6 @@
   a {
     color: inherit;
   }
-  :focus-visible {
-    outline: 2px solid var(--color-rust);
-    outline-offset: 3px;
-  }
   img {
     max-width: 100%;
     height: auto;
@@ -99,13 +95,12 @@
   }
 }
 
-@keyframes popin {
+/* The gallery lightbox fades in, as on the old site. */
+@keyframes lbfade {
   from {
-    transform: scale(0.6);
     opacity: 0;
   }
   to {
-    transform: scale(1);
     opacity: 1;
   }
 }

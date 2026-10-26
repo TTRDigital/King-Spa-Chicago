@@ -113,7 +113,7 @@ export async function HomeView({ data }: { data: typeof homePage }) {
       {/* Gallery */}
       <section className="mx-auto max-w-[1400px] px-[10px] pt-[120px] pb-[59px] md:px-0 md:pt-[61px] md:pb-[50px]">
         <h2 className="mb-[40px] text-center font-recoleta text-[36px] leading-[44px] font-normal text-maroon md:text-[40px] lg:text-[48px]">{gallery.heading}</h2>
-        <GalleryLightbox images={gallery.images} />
+        <GalleryLightbox photos={gallery.photos} />
       </section>
 
       {/* Guest Reviews (Elfsight) */}
