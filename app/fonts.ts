@@ -15,7 +15,7 @@ export const questrial = Questrial({ subsets: ["latin"], weight: "400", display:
 export const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], display: "swap", variable: "--ff-cormorant", preload: false });
 export const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400", display: "swap", variable: "--ff-dmserif", preload: false });
 export const poppins = Poppins({ subsets: ["latin"], weight: ["500", "700"], display: "swap", variable: "--ff-poppins", preload: false });
-export const montserrat = Montserrat({ subsets: ["latin"], weight: ["600"], display: "swap", variable: "--ff-montserrat", preload: false });
+export const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "600"], display: "swap", variable: "--ff-montserrat", preload: false });
 export const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500"], style: ["normal", "italic"], display: "swap", variable: "--ff-roboto", preload: false });
 export const urbanist = Urbanist({ subsets: ["latin"], weight: "400", display: "swap", variable: "--ff-urbanist", preload: false });
 

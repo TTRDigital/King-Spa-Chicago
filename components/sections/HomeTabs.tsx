@@ -56,7 +56,7 @@ export function HomeTabs({ tabs }: { tabs: Tab[] }) {
           {/* Desktop: list of rooms */}
           <ul className="mt-[24px] hidden min-[641px]:block">
             {t.items.map((x, i) => (
-              <li key={x.title} className="border-b border-[rgba(74,28,26,0.08)] py-[10px]">
+              <li key={x.title} className="border-b border-[rgba(74,28,26,0.08)] py-[10px] last:border-b-0">
                 <button
                   type="button"
                   aria-pressed={item === i}
@@ -73,7 +73,7 @@ export function HomeTabs({ tabs }: { tabs: Tab[] }) {
           {/* Phones: accordion */}
           <div className="mt-[21px] min-[641px]:hidden">
             {t.items.map((x, i) => (
-              <div key={x.title} className="border-b border-[rgba(74,28,26,0.1)]">
+              <div key={x.title} className="border-b border-[rgba(74,28,26,0.12)]">
                 <button
                   type="button"
                   aria-expanded={open === i}

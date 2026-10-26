@@ -64,21 +64,24 @@ export function Header({ menu, button, logo }: Props) {
                   <li key={item.label} className="group relative">
                     <NavLink
                       href={item.href}
-                      className={`relative flex items-center whitespace-nowrap py-[13px] after:absolute after:bottom-[6px] after:left-0 after:h-[3px] after:w-full after:bg-rose after:transition-opacity ${active(item.href) ? "after:opacity-100" : "after:opacity-0 hover:after:opacity-100"}`}
+                      className={`relative flex items-center whitespace-nowrap py-[13px] after:absolute after:bottom-[6px] after:left-0 after:h-[3px] after:w-full after:bg-rose after:transition-opacity ${active(item.href) ? "after:opacity-100" : "after:opacity-0 group-hover:after:opacity-100"}`}
                     >
                       {item.label}
                       {item.children.length ? <Caret /> : null}
                     </NavLink>
                     {item.children.length ? (
-                      <ul className="invisible absolute left-0 top-full min-w-[200px] rounded-[5px] bg-white py-[8px] opacity-0 shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                        {item.children.map((c) => (
-                          <li key={c.href}>
-                            <NavLink href={c.href} className="block whitespace-nowrap px-[25px] py-[10px] font-montserrat text-[14px] leading-[20px] normal-case text-[#16163f] hover:text-maroon">
-                              {c.label}
-                            </NavLink>
-                          </li>
-                        ))}
-                      </ul>
+                      // As live: 15px below the item (the padding keeps the hover across the gap), as wide as its longest item, gold on hover.
+                      <div className="invisible absolute left-0 top-full pt-[15px] opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                        <ul className="min-w-[130px] rounded-[5px] bg-white shadow-[0_15px_20px_rgba(0,0,0,0.1)]">
+                          {item.children.map((c) => (
+                            <li key={c.href}>
+                              <NavLink href={c.href} className="block whitespace-nowrap border-l-[8px] border-transparent px-[25px] py-[10px] font-montserrat text-[14px] leading-[20px] font-normal normal-case text-[#16163f] transition-colors duration-[400ms] hover:text-[#d3b574]">
+                                {c.label}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ) : null}
                   </li>
                 ))}
@@ -114,25 +117,26 @@ export function Header({ menu, button, logo }: Props) {
         </div>
       </div>
 
-      <nav id="phone-menu" aria-label="Phone menu" hidden={!open} className="absolute inset-x-0 top-[80.5px] bg-white shadow-[0_15px_20px_rgba(0,0,0,0.1)] lg:hidden">
-        <ul className="font-recoleta text-[16px] leading-[20px] capitalize text-[#16163f]">
+      {/* As live: phones get 68px rows at 16px (with E-Coupon), tablets 40px rows at 14px from 73px down; the open submenu's parent turns gold. */}
+      <nav id="phone-menu" aria-label="Phone menu" hidden={!open} className="absolute inset-x-0 top-[80.5px] rounded-[5px] bg-white shadow-[0_15px_20px_rgba(0,0,0,0.1)] md:top-[73px] lg:hidden">
+        <ul className="font-recoleta text-[16px] leading-[20px] capitalize text-[#16163f] md:text-[14px]">
           {menu.map((item, i) => (
             <li key={item.label}>
               <div className="flex items-center">
-                <NavLink href={item.href} onClick={() => setOpen(false)} className={`flex items-center px-[25px] py-[24px] ${active(item.href) ? "text-[#d3b574]" : ""}`}>
+                <NavLink href={item.href} onClick={() => setOpen(false)} className={`block py-[24px] pl-[25px] md:py-[10px] ${item.children.length ? "" : "flex-1 pr-[25px]"} ${active(item.href) || sub === i ? "text-[#d3b574]" : ""}`}>
                   {item.label}
                 </NavLink>
                 {item.children.length ? (
-                  <button type="button" aria-label={`Show ${item.label} submenu`} aria-expanded={sub === i} onClick={() => setSub(sub === i ? null : i)} className="-ml-[20px] p-[10px]">
-                    <Caret />
+                  <button type="button" aria-label={`Show ${item.label} submenu`} aria-expanded={sub === i} onClick={() => setSub(sub === i ? null : i)} className={`flex self-stretch items-center pl-[10px] pr-[25px] ${active(item.href) || sub === i ? "text-[#d3b574]" : ""}`}>
+                    <svg viewBox="0 0 320 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z" /></svg>
                   </button>
                 ) : null}
               </div>
               {item.children.length && sub === i ? (
-                <ul className="pb-[8px]">
+                <ul>
                   {item.children.map((c) => (
                     <li key={c.href}>
-                      <NavLink href={c.href} onClick={() => setOpen(false)} className="block px-[45px] py-[14px] font-montserrat text-[14px] normal-case">
+                      <NavLink href={c.href} onClick={() => setOpen(false)} className={`block border-l-[8px] border-transparent px-[25px] py-[24px] font-montserrat text-[16px] leading-[20px] font-normal normal-case md:py-[10px] md:text-[14px] ${active(c.href) ? "text-[#d3b574]" : ""}`}>
                         {c.label}
                       </NavLink>
                     </li>
@@ -141,7 +145,7 @@ export function Header({ menu, button, logo }: Props) {
               ) : null}
             </li>
           ))}
-          <li>
+          <li className="md:hidden">
             <NavLink href={button.href} onClick={() => setOpen(false)} className={`block px-[25px] py-[24px] ${path === button.href ? "text-[#d3b574]" : ""}`}>
               {button.label}
             </NavLink>
