@@ -78,8 +78,8 @@ function CenteredBlock({
     <section className={`${first ? "pt-[100px]" : ""} pb-[110px]`}>
       <div className={`relative isolate mx-auto overflow-hidden rounded-[20px] px-[20px] pt-[40px] md:w-[686px] md:rounded-[31px] md:p-[70px] ${first ? "pb-[120px]" : "pb-[100px]"}`}>
         <Bg image={block.image} sizes="(max-width: 767px) 100vw, 686px" />
-        <h4 className={`font-tang text-[26px] leading-[39px] font-normal text-white md:text-[40px] md:leading-[60px] ${headingAlign}`}>{block.heading}</h4>
-        {block.subheading ? <p className={`mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-[21px] md:leading-[30.87px] ${subClass ?? ""}`}>{block.subheading}</p> : null}
+        <h4 className={`font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px] ${headingAlign}`}>{block.heading}</h4>
+        {block.subheading ? <p className={`mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px] ${subClass ?? ""}`}>{block.subheading}</p> : null}
         <p className={`mt-[15px] mb-[14.4px] text-center font-mulish text-white md:mt-[20px] ${textClass}`}>{block.text}</p>
       </div>
       <div className={`${tableBox} mx-[10px] p-[20px] md:mx-auto md:w-[548px] md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px] ${first ? "-mt-[112px]" : overlap} md:-mt-[49px]`}>
@@ -101,19 +101,19 @@ export function PricingView({ data }: { data: Data }) {
     <>
       <InnerBanner korean={data.banner.korean} title={data.banner.title} />
 
-      <CenteredBlock block={admission} first headingAlign="text-center" textClass="text-[14px] leading-[21px] md:text-[15px] md:leading-[22.5px]" />
+      <CenteredBlock block={admission} first headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
 
       {/* Korean Body Scrub: photo card left, both scrub tables right (overlapping by 22px). */}
       <section className="pb-[100px]">
-        <div className="mx-auto flex max-w-[1440px] flex-col md:flex-row md:items-start md:px-[20px]">
-          <div className="relative isolate overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:mt-[25px] md:h-[450px] md:w-[686px] md:shrink-0 md:rounded-[20px_0_0_20px] md:pt-[70px] md:pr-[72px] md:pb-[70px] md:pl-[73px]">
+        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
+          <div className="relative isolate overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:w-[49%] md:shrink-0 md:rounded-[20px_0_0_20px] md:pt-[70px] md:pr-[72px] md:pb-[70px] md:pl-[73px]">
             <Bg image={bodyScrub.image} sizes="686px" position="object-center" className="max-md:hidden" />
             <Bg image={bodyScrub.imageMobile} sizes="100vw" position="object-center" className="md:hidden" />
-            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[40px] md:leading-[60px]">{bodyScrub.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-start md:text-[21px] md:leading-[30.87px]">{bodyScrub.subheading}</p>
+            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{bodyScrub.heading}</h4>
+            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] font-medium text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{bodyScrub.subheading}</p>
             <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{bodyScrub.text}</p>
           </div>
-          <div className={`${tableBox} mx-[10px] -mt-[90px] flex min-h-[500px] flex-col justify-center pt-[20px] pr-[20px] pb-[21px] pl-[20px] md:mx-0 md:mt-0 md:-ml-[22px] md:w-[714px] md:pt-[30px] md:pr-[62px] md:pb-[30px] md:pl-[40px]`}>
+          <div className={`${tableBox} mx-[10px] -mt-[90px] flex min-h-[500px] flex-col justify-center pt-[20px] pr-[20px] pb-[21px] pl-[20px] md:mx-0 md:mt-0 md:-ml-[22px] md:w-[51%] md:pt-[30px] md:pr-[62px] md:pb-[30px] md:pl-[40px]`}>
             {bodyScrub.tables.map((t, i) => (
               <div key={i} className="max-md:pb-[5px]">
                 {i ? <hr className="my-[35px] border-0 border-t border-dotted border-white/60" /> : null}
@@ -126,26 +126,26 @@ export function PricingView({ data }: { data: Data }) {
 
       {/* Massage: table left, photo card right; on phones the photo comes first. */}
       <section className="pb-[100px]">
-        <div className="mx-auto flex max-w-[1440px] flex-col md:flex-row md:items-start md:px-[20px]">
-          <div className={`${tableBox} order-2 mx-[10px] -mt-[89px] p-[20px] md:order-1 md:mx-0 md:mt-0 md:w-[602px] md:shrink-0 md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px]`}>
+        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row md:items-center">
+          <div className={`${tableBox} order-2 mx-[10px] -mt-[89px] p-[20px] md:order-1 md:mx-0 md:mt-0 md:w-[43%] md:shrink-0 md:pt-[30px] md:pr-[60px] md:pb-[30px] md:pl-[40px]`}>
             {massage.tables.map((t, i) => (
               <div key={i} className={`max-md:pb-[5px] ${i ? "mt-[20px]" : ""}`}>
                 <PriceTable table={t} font="font-recoleta" headSize="text-[26px] leading-[29.12px]" />
               </div>
             ))}
           </div>
-          <div className="relative isolate order-1 mt-[20px] overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:order-2 md:mt-[21px] md:min-h-[369px] md:flex-1 md:rounded-[0_20px_20px_0] md:p-[70px]">
+          <div className="relative isolate order-1 mt-[20px] overflow-hidden rounded-[20px] px-[20px] pt-[40px] pb-[100px] md:order-2 md:mt-0 md:flex-1 md:rounded-[0_20px_20px_0] md:p-[70px]">
             <Bg image={massage.image} sizes="(max-width: 767px) 100vw, 800px" position="object-center" />
-            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[40px] md:leading-[60px]">{massage.heading}</h4>
-            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-start md:text-[21px] md:leading-[30.87px]">{massage.subheading}</p>
+            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{massage.heading}</h4>
+            <p className="mt-[15px] text-center font-recoleta text-[14px] leading-[14px] text-white md:mt-[20px] md:text-start md:leading-[20.58px] lg:text-[21px] lg:leading-[30.87px]">{massage.subheading}</p>
             <p className="mt-[15px] mb-[14.4px] text-center font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] md:text-start">{massage.text}</p>
           </div>
         </div>
       </section>
 
       <CenteredBlock block={footChair} headingAlign="text-center md:text-start" textClass="text-[14px] leading-[21px]" />
-      <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] md:text-[15px] md:leading-[22.5px]" />
-      <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] md:text-[15px] md:leading-[22.5px]" />
+      <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+      <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
     </>
   );
 }

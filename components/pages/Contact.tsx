@@ -11,9 +11,9 @@ const ICONS = {
   clock: <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7a12.1 12.1 0 0 1-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6a12 12 0 0 1 2.6 16.8L334.6 349a12.1 12.1 0 0 1-16.8 2.6z" />,
 };
 
-function Icon({ name, box }: { name: keyof typeof ICONS; box: string }) {
+function Icon({ name, box, className = "mr-[5px]" }: { name: keyof typeof ICONS; box: string; className?: string }) {
   return (
-    <svg viewBox={box} className="mr-[5px] h-[16px] w-[18px] shrink-0 fill-white" aria-hidden="true">
+    <svg viewBox={box} className={`h-[16px] w-[18px] shrink-0 fill-white ${className}`} aria-hidden="true">
       {ICONS[name]}
     </svg>
   );
@@ -28,13 +28,14 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
     <>
       <InnerBanner korean={data.banner.korean} title={data.banner.title} titleClass="text-[50px] leading-[50px] md:text-[96px] md:leading-[96px]" />
 
-      <section className="px-[10px] pt-[10px] pb-[10px] md:px-[20px] md:pt-[30px] md:pb-[60px]">
+      {/* Full width up to 1400px; tablets use smaller type and padding, as on live. */}
+      <section className="px-[10px] pt-[10px] pb-[10px] md:px-0 md:pt-[30px] md:pb-[60px]">
         <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row">
-          <div className="rounded-[22px_22px_0_0] bg-maroon px-[24px] py-[40px] md:w-1/2 md:rounded-[22px_0_0_22px] md:px-[72px] md:py-[32px]">
-            <h2 className="font-dmserif text-[30px] leading-[30px] font-normal text-white md:text-[40px] md:leading-[40px]">{data.name}</h2>
-            <div className="mt-[20px] font-mulish text-[18px] leading-[27px] text-white md:text-[24px] md:leading-[36px]">{data.label}</div>
-            <hr className="mt-[25px] border-0 border-t border-white md:mt-[20px]" />
-            <ul className="mt-[22px] space-y-[5px]">
+          <div className="rounded-[22px_22px_0_0] bg-maroon px-[24px] py-[40px] md:w-1/2 md:rounded-[22px_0_0_22px] md:px-[40px] md:py-[30px] lg:px-[72px] lg:py-[32px]">
+            <h2 className="font-dmserif text-[30px] leading-[30px] font-normal text-white lg:text-[40px] lg:leading-[40px]">{data.name}</h2>
+            <div className="mt-[20px] font-mulish text-[18px] leading-[27px] text-white md:text-[20px] md:leading-[30px] lg:text-[24px] lg:leading-[36px]">{data.label}</div>
+            <hr className="mt-[20px] border-0 border-t border-white" />
+            <ul className="mt-[24px] space-y-[5px]">
               <li>
                 <a href={data.phone.href} className={item}>
                   <Icon name="phone" box="0 0 512 512" />
@@ -48,8 +49,9 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
                 </a>
               </li>
               <li className={item}>
-                <Icon name="pin" box="0 0 384 512" />
-                <span className="pl-[5px]">{data.address}</span>
+                <Icon name="pin" box="0 0 384 512" className="mr-[10px]" />
+                {/* Inline text, as live's address line. */}
+                <span><span>{data.address}</span></span>
               </li>
               <li className={item}>
                 <span>{data.hoursLabel}</span>
@@ -66,7 +68,7 @@ export async function ContactView({ data }: { data: typeof contactPage }) {
         </div>
       </section>
 
-      <section className="px-[10px] pt-[10px] pb-[16px] md:px-[20px]">
+      <section className="px-[10px] pt-[10px] pb-[16px]">
         <MapEmbed src={settings.maps.place} title={data.mapTitle} className="mx-auto h-[450px] max-w-[1400px]" />
       </section>
     </>

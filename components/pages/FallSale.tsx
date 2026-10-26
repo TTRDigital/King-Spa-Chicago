@@ -1,3 +1,4 @@
+import { headerFallbackFont } from "@/components/sections/archiveHeaderFont";
 import Image from "next/image";
 import Link from "next/link";
 import type { fallSalePage } from "@/lib/data/pages/fallSale";
@@ -7,6 +8,7 @@ export function FallSaleView({ data }: { data: typeof fallSalePage }) {
   const { experience: exp, visit, terms } = data;
   return (
     <div className="bg-white font-sans">
+      <style>{headerFallbackFont}</style>
       <div className="mx-auto max-w-[1420px] p-[10px]">
         <div className="bg-[#3d0a10] px-[20px] py-[12px] text-center">
           <span className="text-[18px] leading-[27px] font-bold tracking-[0.4px] text-[#d9a441]">{data.topBar}</span>
