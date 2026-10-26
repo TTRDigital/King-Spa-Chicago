@@ -196,7 +196,9 @@ export function SaunaView({ data }: { data: typeof saunaPage }) {
                       <div className="ks-info-columns">
                         <div className="ks-info-col">
                           <h4>{rooms.experienceLabel}</h4>
-                          <p>{r.experience}</p>
+                          <p>
+                            <Inline text={r.experience} />
+                          </p>
                           <ul className="ks-tags">
                             {r.tags.map((t) => (
                               <li key={t}>{t}</li>

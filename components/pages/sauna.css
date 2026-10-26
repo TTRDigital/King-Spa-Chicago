@@ -51,7 +51,7 @@
 .pg-sauna .ks-room-item.active .ks-accordion-icon::before, .pg-sauna .ks-room-item.active .ks-accordion-icon::after { background: var(--ks-gold); }
 .pg-sauna .ks-room-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
 .pg-sauna .ks-room-inner { padding: 0 24px 36px; }
-.pg-sauna .ks-room-img { width: 100%; height: 340px; object-fit: cover; border-radius: 20px !important; margin: 16px 0 28px; display: block; }
+.pg-sauna .ks-room-img { width: 100%; height: auto; object-fit: cover; border-radius: 20px !important; margin: 16px 0 28px; display: block; }
 .pg-sauna .ks-info-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .pg-sauna .ks-info-col h4 { font-size: 1.1rem; margin-bottom: 12px; border-bottom: 1px solid rgba(201, 169, 98, 0.3); padding-bottom: 6px; display: inline-block; }
 .pg-sauna .ks-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -124,7 +124,7 @@
 .pg-sauna .ks-room-header-left { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
 .pg-sauna .ks-room-meta { width: 100%; margin-left: 0; font-size: 0.72rem; margin-top: 2px; }
 .pg-sauna .ks-room-inner { padding: 0 16px 28px; }
-.pg-sauna .ks-room-img { height: 220px; border-radius: 14px !important; margin: 12px 0 22px; }
+.pg-sauna .ks-room-img { border-radius: 14px !important; margin: 12px 0 22px; }
 .pg-sauna .ks-info-columns { grid-template-columns: 1fr; gap: 24px; }
 .pg-sauna .ks-sequence-flow { flex-direction: column; align-items: center; gap: 0; margin-bottom: 44px; }
 .pg-sauna .ks-sequence-step { width: 100%; max-width: 260px; }
@@ -149,9 +149,13 @@
 .pg-sauna .ks-sequencing-section { padding: 44px 14px; }
 .pg-sauna .ks-rooms-container { gap: 12px; }
 .pg-sauna .ks-room-name { font-size: 1.15rem; }
-.pg-sauna .ks-room-img { height: 190px; }
+
 .pg-sauna .ks-sequence-circle { width: 62px; height: 62px; }
 .pg-sauna .ks-sequence-circle svg { width: 24px; height: 24px; }
 .pg-sauna .ks-tips-section { padding: 28px 16px; border-radius: 12px; }
 .pg-sauna .ks-tip-text { font-size: 0.84rem; }
 }
+
+/* On the old site Elementor's `img { height: auto }` won over the page's fixed photo heights,
+   so room photos show at their natural proportions (kept above). The page body is cream. */
+body:has(.pg-sauna) { background: #fffdf4; }

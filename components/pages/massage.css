@@ -1,3 +1,4 @@
+/* Live names fonts it never loads, so browsers show plain serif; "Cormorant Garamond" is left out because this site does load that font. */
 /* Ported from the live page's own stylesheet (chi.kingspa.com), scoped to .pg-massage. */
 /* Its Tang Garland / Cormorant Garamond headings never loaded on the live page, so they showed in the browser serif: kept that way. */
 /* Hello Elementor base rules the live page sat on (Tailwind's reset removes them). */
@@ -11,7 +12,7 @@
 .pg-massage button { font-family: inherit; font-size: 1rem; line-height: 1.5; margin: 0; background-color: initial; border: 1px solid #c36; border-radius: 3px; color: #c36; display: inline-block; font-weight: 400; padding: .5rem 1rem; text-align: center; transition: all .3s; user-select: none; white-space: nowrap; }
 .pg-massage button:focus, .pg-massage button:hover { background-color: #c36; color: #fff; text-decoration: none; }
 .pg-massage button:focus:not(:focus-visible) { outline: none; }
-.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-soft: #D4C596; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-gap: 40px; --ks-radius: 8px; }
+.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-soft: #D4C596; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: "Tang Garland", serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-gap: 40px; --ks-radius: 8px; }
 .pg-massage .ks-wrapper * { box-sizing: border-box; }
 .pg-massage .ks-wrapper { font-family: var(--ks-body-font); background: var(--ks-cream); color: var(--ks-text); line-height: 1.7; font-size: 16px; width: 100%; overflow-x: hidden; }
 .pg-massage h1, .pg-massage h2, .pg-massage h3, .pg-massage h4 { font-family: var(--ks-heading-font); font-weight: 400; margin-top: 0; line-height: 1.25; }
@@ -92,7 +93,7 @@
 .pg-massage .ks-enhance { margin-top: 60px; background: var(--ks-cream-dark); border-radius: 8px; padding: 50px; text-align: center; max-width: 1100px; margin-left: auto; margin-right: auto; }
 .pg-massage .ks-pair-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 30px; }
 .pg-massage .ks-pair-item { flex: 1; min-width: 250px; max-width: 300px; background: var(--ks-white); padding: 20px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-burgundy-light: #A63F3F; --ks-cream: #FFFDF4; --ks-font-heading: serif; --ks-font-body: var(--ff-questrial), sans-serif; }
+.pg-massage { --ks-burgundy: #722222; --ks-burgundy-dark: #4a1515; --ks-burgundy-light: #A63F3F; --ks-cream: #FFFDF4; --ks-font-heading: "TAN Garland", serif; --ks-font-body: var(--ff-questrial), sans-serif; }
 .pg-massage .ks-cta-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
 .pg-massage .ks-cta-section { background: linear-gradient(135deg, var(--ks-burgundy) 0%, var(--ks-burgundy-dark) 100%); padding: 80px 20px; text-align: center; font-family: var(--ks-font-body); color: var(--ks-cream); }
 .pg-massage .ks-cta-content { max-width: 600px; margin: 0 auto; }
@@ -100,3 +101,7 @@
 .pg-massage .ks-cta-text { color: rgba(255, 253, 244, 0.85); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6; }
 .pg-massage .ks-cta-button { display: inline-block; background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 18px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background 0.3s ease, transform 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
 .pg-massage .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); }
+
+/* On the old site this page's own stylesheet also spaced out the footer credit line
+   (20px more above "WEBSITE BY", 9px below). Only while this page is shown. */
+body:has(.pg-massage) footer p.whitespace-pre-line + p { margin-top: 88px; margin-bottom: 9px; }

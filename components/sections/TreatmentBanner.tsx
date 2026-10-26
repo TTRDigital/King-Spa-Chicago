@@ -28,7 +28,7 @@ export function TreatmentBanner({
 }) {
   return (
     <section
-      className={`relative isolate flex flex-col items-center gap-[20px] overflow-hidden text-center ${className}`}
+      className={`relative isolate flex flex-col items-stretch gap-[20px] overflow-hidden text-center ${className}`}
     >
       <Image
         src={image.src}

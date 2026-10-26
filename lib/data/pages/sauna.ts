@@ -150,7 +150,7 @@ export const saunaPage = {
         meta: "390°F • Extreme",
         image: images.fireSudatorium,
         experience:
-          "Must be 15+ years old. The hottest room in the facility. A traditional dome heated by burning oak wood. Guests enter wrapped in a thick blanket for a brief, intense session.",
+          "**Must be 15+ years old.** The hottest room in the facility. A traditional dome heated by burning oak wood. Guests enter wrapped in a thick blanket for a brief, intense session.",
         tags: ["Oak Wood Fire", "Traditional Kiln"],
         benefits: [
           "Deepest level of detoxification",

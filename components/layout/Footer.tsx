@@ -41,13 +41,13 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           </ul>
         </div>
 
-        <div className="mt-[38px] grid grid-cols-1 gap-y-[18px] md:mt-[30px] md:grid-cols-4 md:gap-y-0">
+        <div className="mt-[41px] grid grid-cols-1 gap-y-[20px] md:mt-[30px] md:grid-cols-4 md:gap-y-0">
           {f.columns.map((col) => (
             <div key={col.heading} className="px-[10px]">
               <h4 className={heading}>
                 <A href={col.headingHref}>{col.heading}</A>
               </h4>
-              <ul className="mt-[9px] space-y-[10px]">
+              <ul className="mt-[10px] space-y-[10px] md:mt-[9px]">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <A href={l.href} className={item}>{l.label}</A>

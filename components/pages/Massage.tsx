@@ -204,7 +204,7 @@ export async function MassageView({ data }: { data: typeof massagePage }) {
         {...banner}
         image={images.bannerRed}
         className="h-[417px] px-[10px] pt-[150px] md:h-[627px] md:px-0 md:pt-[244px]"
-        koreanClassName="font-serif text-[32px] leading-[32px] font-normal"
+        koreanClassName="font-['Tang_Garland',serif] text-[32px] leading-[32px] font-normal"
         titleClassName="text-[38px] leading-[38px] font-normal md:text-[68px] md:leading-[68px]"
         subtitleClassName="text-[20px] leading-[20px] font-normal md:text-[32px] md:leading-[32px]"
       />
@@ -355,14 +355,15 @@ export async function MassageView({ data }: { data: typeof massagePage }) {
           </section>
         </div>
 
-        <section className="bg-white px-[10px] pt-[30px] md:px-[20px]">
-          <h2 className="m-0 text-center font-recoleta text-[47px] leading-[47px] font-normal text-[#333]">
+        <section className="bg-white px-[10px] pt-[30px] pb-[10px] md:px-[20px]">
+          {/* `!`: the page stylesheet's h2 rule would otherwise win (Elementor heading on the old site). */}
+          <h2 className="m-0! text-center font-recoleta! text-[47px]! leading-[47px]! font-normal! text-[#333]!">
             {reviewsTitle}
           </h2>
-          <Reviews
-            widgetId={settings.reviews.pagesWidgetId}
-            className="mt-[20px]"
-          />
+          {/* The old site's widget wrapper spacing (20px above, 40px below the reviews). */}
+          <div className="pt-[20px] pb-[40px]">
+            <Reviews widgetId={settings.reviews.pagesWidgetId} />
+          </div>
         </section>
 
         <div className="ks-cta-wrapper">

@@ -1,3 +1,4 @@
+/* Live names fonts it never loads, so browsers show plain serif; "Cormorant Garamond" is left out because this site does load that font. */
 /* Ported from the live page's own stylesheet (chi.kingspa.com), scoped to .pg-facials. */
 /* Its Tang Garland / Cormorant Garamond headings never loaded on the live page, so they showed in the browser serif: kept that way. */
 /* Hello Elementor base rules the live page sat on (Tailwind's reset removes them). */
@@ -11,7 +12,7 @@
 .pg-facials button { font-family: inherit; font-size: 1rem; line-height: 1.5; margin: 0; background-color: initial; border: 1px solid #c36; border-radius: 3px; color: #c36; display: inline-block; font-weight: 400; padding: .5rem 1rem; text-align: center; transition: all .3s; user-select: none; white-space: nowrap; }
 .pg-facials button:focus, .pg-facials button:hover { background-color: #c36; color: #fff; text-decoration: none; }
 .pg-facials button:focus:not(:focus-visible) { outline: none; }
-.pg-facials { --ks-burgundy: #722222; --ks-burgundy-light: #A63F3F; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-light: #E8D9A8; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-radius: 8px; }
+.pg-facials { --ks-burgundy: #722222; --ks-burgundy-light: #A63F3F; --ks-burgundy-dark: #4a1515; --ks-cream: #FFFDF4; --ks-cream-dark: #F7F4E8; --ks-white: #FFFFFF; --ks-gold: #C9A962; --ks-gold-light: #E8D9A8; --ks-text: #2D2926; --ks-text-light: #635F59; --ks-heading-font: "Tang Garland", serif; --ks-body-font: var(--ff-questrial), sans-serif; --ks-radius: 8px; }
 .pg-facials .ks-wrapper * { box-sizing: border-box; }
 .pg-facials .ks-wrapper { font-family: var(--ks-body-font); background: var(--ks-cream); color: var(--ks-text); line-height: 1.7; font-size: 16px; width: 100%; overflow-x: hidden; }
 .pg-facials h1, .pg-facials h2, .pg-facials h3, .pg-facials h4 { font-family: var(--ks-heading-font); font-weight: 400; margin-top: 0; line-height: 1.25; }
@@ -131,3 +132,7 @@
 .pg-facials .ks-cta-text { color: rgba(255, 253, 244, 0.85); margin-bottom: 32px; font-size: 1.1rem; }
 .pg-facials .ks-cta-button { display: inline-block; background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 18px 40px; border-radius: 4px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background 0.3s ease, transform 0.3s ease; }
 .pg-facials .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); }
+
+/* On the old site this page's own stylesheet also spaced out the footer credit line
+   (20px more above "WEBSITE BY", 9px below). Only while this page is shown. */
+body:has(.pg-facials) footer p.whitespace-pre-line + p { margin-top: 88px; margin-bottom: 9px; }
