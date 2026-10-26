@@ -93,10 +93,10 @@ export const homePage = {
   },
   videos: {
     heading: "How to Enjoy King Spa",
-    /** YouTube video IDs, played in place when clicked. */
+    /** YouTube videos, embedded as on the old site (the title is the player's accessible name). */
     items: [
-      { youtubeId: "Yblee2j8Gdc", title: "How to Enjoy King Spa" },
-      { youtubeId: "nStjDL7qFBw", title: "How to Enjoy King Spa" },
+      { youtubeId: "Yblee2j8Gdc", title: "My Video.mp4" },
+      { youtubeId: "nStjDL7qFBw", title: "King Spa & Sauna" },
     ],
   },
   gallery: {

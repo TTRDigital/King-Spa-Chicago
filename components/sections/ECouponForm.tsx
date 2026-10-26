@@ -94,7 +94,7 @@ export function ECouponForm({ copy }: { copy: Copy }) {
   const aria = (f: Field) => ({ "aria-invalid": errors[f] ? true : undefined, "aria-describedby": errors[f] ? `ecoupon-${f}-error` : undefined });
 
   return (
-    <form onSubmit={onSubmit} noValidate className="mx-auto w-[217px] md:w-[925px]">
+    <form onSubmit={onSubmit} noValidate className="mx-auto w-[70%]">
       <div className="grid grid-cols-1 gap-x-[15px] gap-y-[21px] md:grid-cols-2 md:gap-y-[22px]">
         <div>
           <label htmlFor="ecoupon-name" className={label}>{copy.nameLabel}</label>

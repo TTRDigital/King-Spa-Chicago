@@ -30,7 +30,7 @@ export function GalleryLightbox({ images }: { images: Img[] }) {
   const img = open === null ? null : images[open];
   return (
     <>
-      <div className="grid grid-cols-3 gap-[10px] md:grid-cols-4 md:gap-x-[10px] md:gap-y-[9.5px]">
+      <div className="grid grid-cols-3 gap-[10px] min-[767px]:grid-cols-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-y-[9.5px]">
         {images.map((x, i) => (
           <button
             key={x.src + i}
@@ -42,7 +42,7 @@ export function GalleryLightbox({ images }: { images: Img[] }) {
             }}
             className="relative block aspect-[4/3] overflow-hidden rounded-[10px]"
           >
-            <Image src={x.src} alt={x.alt} fill sizes="(max-width: 767px) 33vw, 343px" className="object-cover transition-transform duration-300 hover:scale-105" />
+            <Image src={x.src} alt={x.alt} fill sizes="(max-width: 766px) 33vw, (max-width: 1023px) 50vw, 343px" className="object-cover transition-transform duration-300 hover:scale-105" />
           </button>
         ))}
       </div>

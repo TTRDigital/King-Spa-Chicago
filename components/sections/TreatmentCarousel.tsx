@@ -11,8 +11,8 @@ const GAP = 10;
 const DELAY = 5000;
 
 /**
- * "Our Signature Spa Treatments": a looping slider, three cards on desktop and
- * one on phones, with arrows, sliding on its own every 5 seconds like the old
+ * "Our Signature Spa Treatments": a looping slider, three cards from 1024px,
+ * two from 767px and one below (the old Elementor carousel's own breakpoints), with arrows, sliding on its own every 5 seconds like the old
  * site's carousel. It pauses while hovered or focused and never auto-slides
  * for visitors who prefer reduced motion.
  */
@@ -24,11 +24,16 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   const paused = useRef(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setPerView(mq.matches ? 3 : 1);
+    const three = window.matchMedia("(min-width: 1024px)");
+    const two = window.matchMedia("(min-width: 767px)");
+    const update = () => setPerView(three.matches ? 3 : two.matches ? 2 : 1);
     update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
+    three.addEventListener("change", update);
+    two.addEventListener("change", update);
+    return () => {
+      three.removeEventListener("change", update);
+      two.removeEventListener("change", update);
+    };
   }, []);
 
   const go = useCallback((d: number) => {
@@ -58,7 +63,7 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   }, [animate]);
 
   const track = [...cards, ...cards, ...cards];
-  const arrow = "absolute top-[calc(50%-16px)] z-10 -translate-y-1/2 p-[8px] text-white";
+  const arrow = "absolute top-[calc(50%-16px)] z-10 flex h-[30px] w-[30px] -translate-y-1/2 items-center justify-center text-white";
   return (
     <div
       className="relative"
@@ -106,11 +111,11 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
           })}
         </div>
       </div>
-      <button type="button" aria-label="Previous treatment" onClick={() => go(-1)} className={`${arrow} -left-[9px]`}>
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M15 4l-8 8 8 8" /></svg>
+      <button type="button" aria-label="Previous treatment" onClick={() => go(-1)} className={`${arrow} left-0`}>
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M14.6 4l-8 8 8 8" /></svg>
       </button>
-      <button type="button" aria-label="Next treatment" onClick={() => go(1)} className={`${arrow} -right-[8px]`}>
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true"><path d="M9 4l8 8-8 8" /></svg>
+      <button type="button" aria-label="Next treatment" onClick={() => go(1)} className={`${arrow} right-0`}>
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M9.4 4l8 8-8 8" /></svg>
       </button>
     </div>
   );
