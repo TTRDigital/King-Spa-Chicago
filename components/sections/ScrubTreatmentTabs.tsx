@@ -17,7 +17,7 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <div id={id} role="tabpanel" aria-labelledby={tabId} className="order-none flex w-full flex-col gap-[40px] px-[20px] pt-[30px] pb-[30px] md:flex-row md:gap-[20px] md:pt-[30px] md:pb-[50px]">
-      <div className="md:w-[629px] md:shrink-0">
+      <div className="md:min-w-0 md:flex-1 md:basis-0">
         {tab.items.map((it, i) => (
           <div key={it.title}>
             <button
@@ -29,7 +29,7 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
               <span className="block flex-1 pl-px">{it.title}</span>
               <Caret open={open === i} />
             </button>
-            {open === i ? <p className="pt-[5px] pb-[27px] font-mulish text-[14px] leading-[23.8px] text-white md:pr-[62px]">{it.text}</p> : null}
+            {open === i ? <p className="pt-[3px] pr-[55px] pb-[27px] font-mulish text-[14px] leading-[23.8px] text-white lg:pt-[5px] lg:pr-[62px]">{it.text}</p> : null}
           </div>
         ))}
         <Link
@@ -39,7 +39,7 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
           <span className="block text-center">{tab.button.label}</span>
         </Link>
       </div>
-      <div className="md:w-[629px] md:shrink-0">
+      <div className="md:min-w-0 md:flex-1 md:basis-0">
         <Image src={tab.image.src} alt={tab.image.alt} width={tab.image.width} height={tab.image.height} sizes="(max-width: 767px) 330px, 629px" className="h-auto w-full" />
       </div>
     </div>

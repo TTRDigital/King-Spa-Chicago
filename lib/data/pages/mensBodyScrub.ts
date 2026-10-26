@@ -130,11 +130,11 @@ export const mensBodyScrubPage = {
     heading: "Earn with Every Visit",
     text: "The KingSpa Rewards App keeps every point of your treatment toward your next visit. Visit regularly, build rewards at every tier, and unlock free admissions and exclusive member rates. Your membership accrues points with every scrub, treatment, and spa day spent.",
     pills: ["1pt per $1 spent", "500pts ＝ Free Entry", "50pt Sign-Up Bonus", "$45 App Rate"],
-    // valueWidth / gap: the number's box width and the space before its label on computers (px), as on the old site.
+    // gap: the space before the label on tablets and computers (px), as on the old site.
     stats: [
-      { value: "500", label: "Points = Free Admission", valueWidth: 123.5, gap: 40 },
-      { value: "$45", label: "App Member Rate", valueWidth: 123.5, gap: 40 },
-      { value: "50", label: "Sign-Up Bonus Points", valueWidth: 128, gap: 20 },
+      { value: "500", label: "Points = Free Admission", gap: 40 },
+      { value: "$45", label: "App Member Rate", gap: 40 },
+      { value: "50", label: "Sign-Up Bonus Points", gap: 20 },
     ],
   },
   faq: {

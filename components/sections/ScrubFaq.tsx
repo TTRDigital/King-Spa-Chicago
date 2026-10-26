@@ -25,11 +25,11 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
   const [open, setOpen] = useState<number | null>(0);
   const ritual = variant === "ritual";
   return (
-    <div className={ritual ? "mt-[73px] px-[15px] md:mt-[90px] md:px-0" : "mt-[85px] px-[15px] md:mt-[92px] md:px-0"}>
+    <div className={ritual ? "mt-[73px] px-[15px] md:mt-[90px] lg:px-0" : "mt-[85px] px-[15px] md:mt-[89px] lg:mt-[92px] lg:px-0"}>
       {items.map((f, i) => {
         const isOpen = open === i;
         return (
-          <div key={f.question} className={ritual ? "pb-[25px] md:pb-[40px]" : "pb-[30px] md:pb-[45px]"}>
+          <div key={f.question} className={ritual ? "pb-[25px] md:pb-[40px]" : "pb-[30px] md:pb-[40px] lg:pb-[45px]"}>
             <button
               type="button"
               aria-expanded={isOpen}
@@ -41,8 +41,8 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
               <span
                 className={
                   ritual
-                    ? "block py-[2.5px] font-recoleta text-[16px] leading-[17px] tracking-[0.1px] text-maroon max-md:max-w-[291px] md:py-0 md:text-[22px] md:leading-[30px]"
-                    : "font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] text-maroon md:text-[22px] md:leading-[25px]"
+                    ? "block py-[2.5px] font-recoleta text-[16px] leading-[17px] tracking-[0.1px] text-maroon max-md:max-w-[85.5%] md:py-0 md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[30px]"
+                    : "font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] text-maroon md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[25px]"
                 }
               >
                 {f.question}
@@ -55,8 +55,8 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
               <p
                 className={
                   ritual
-                    ? "rich pt-[22px] pr-[15px] pb-[12px] font-mulish text-[14px] leading-[21px] text-[#0e0e0e] md:pt-[30px] md:pr-[80px] md:pb-[4px] md:text-[16px] md:leading-[24px]"
-                    : "rich pt-[26px] pr-[17px] pb-[22px] font-recoleta text-[14px] leading-[21px] text-maroon md:pt-[34px] md:pr-[80px] md:pb-[15px] md:text-[16px] md:leading-[24px]"
+                    ? "rich pt-[22px] pr-[15px] pb-[12px] font-mulish text-[14px] leading-[21px] text-[#0e0e0e] md:pt-[30px] md:pr-[30px] md:pb-[4px] md:text-[16px] md:leading-[24px] lg:pr-[80px]"
+                    : "rich pt-[26px] pr-[17px] pb-[22px] font-recoleta text-[14px] leading-[21px] text-maroon md:pt-[32px] md:pr-[45px] md:pb-[17px] md:text-[16px] md:leading-[24px] lg:pt-[34px] lg:pr-[80px] lg:pb-[15px]"
                 }
               >
                 <Inline text={f.answer} />

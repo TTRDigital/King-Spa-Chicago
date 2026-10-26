@@ -130,11 +130,11 @@ export const womensBodyScrubPage = {
     heading: "Earn with Every Visit",
     text: "The KingSpa Rewards App turns every visit into points toward your next one. Earn 1 point per $1 spent on admission, food, and services — points never expire. New members receive a 50-point sign-up bonus on their first visit, and app members unlock an exclusive $45 admission rate (vs. standard $75).",
     pills: ["1pt per $1 spent", "500pts ＝ Free Entry", "50pt Sign-Up Bonus", "$45 App Rate"],
-    // valueWidth / gap: the number's box width and the space before its label on computers (px), as on the old site.
+    // gap: the space before the label on tablets and computers (px), as on the old site.
     stats: [
-      { value: "500", label: "Points = Free Admission", valueWidth: 123.5, gap: 40 },
-      { value: "$45", label: "App Member Rate", valueWidth: 123.5, gap: 40 },
-      { value: "50", label: "Sign-Up Bonus Points", valueWidth: 128, gap: 20 },
+      { value: "500", label: "Points = Free Admission", gap: 40 },
+      { value: "$45", label: "App Member Rate", gap: 40 },
+      { value: "50", label: "Sign-Up Bonus Points", gap: 20 },
     ],
   },
   faq: {
