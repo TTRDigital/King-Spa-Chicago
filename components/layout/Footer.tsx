@@ -18,13 +18,16 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
 };
 const iconFor = (label: string) => SOCIAL_ICONS[Object.keys(SOCIAL_ICONS).find((k) => label.toLowerCase().includes(k)) ?? "facebook"];
 
-/** Maroon footer as on the old site (Elementor section, boxed 1408px). Column headings render in the bold sans the old site fell back to. */
+/**
+ * Maroon footer as on the old site (Elementor section, boxed 1408px). Column headings render in the bold sans the old site fell back to.
+ * Like the old footer section it is layered above the sticky header (z-index 999 against 99), so it slides over the header when scrolled under it.
+ */
 export function Footer({ settings }: { settings: SiteSettings }) {
   const f = settings.footer;
   const heading = "font-[Arial,Helvetica,sans-serif] text-[24px] leading-[24px] font-bold text-white";
   const item = "inline-block font-mulish text-[16px] leading-[24px] font-semibold text-white";
   return (
-    <footer className="bg-maroon py-[62px]">
+    <footer className="relative z-[999] bg-maroon py-[62px]">
       <div className="mx-auto max-w-[1408px]">
         <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
           <Link href="/" className="block w-full md:w-[21.64%]" aria-label="King Spa & Sauna home">
@@ -67,10 +70,10 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               </span>
               <span>{f.hours}</span>
             </p>
-            <h4 className={`mt-[27px] md:mt-[18px] ${heading}`}>
+            <h4 className={`mt-[20px] md:mt-[18px] ${heading}`}>
               <A href={f.addressHeadingHref}>{f.addressHeading}</A>
             </h4>
-            <p className="mt-[4px] md:mt-[8px]"><span className={item}>{f.address}</span></p>
+            <p className="mt-[5px] md:mt-[8px]"><span className={item}>{f.address}</span></p>
           </div>
         </div>
 

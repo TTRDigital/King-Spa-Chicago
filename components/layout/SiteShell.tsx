@@ -15,7 +15,7 @@ export async function SiteShell({ children }: { children: ReactNode }) {
   return (
     <>
       <JsonLd data={businessSchema(settings)} />
-      <a href="#content" className="sr-only z-[100] bg-white px-5 py-3 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+      <a href="#content" className="sr-only z-[10000] bg-white px-5 py-3 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
         Skip to content
       </a>
       <Header menu={settings.header.menu} button={settings.header.button} logo={settings.logo} />

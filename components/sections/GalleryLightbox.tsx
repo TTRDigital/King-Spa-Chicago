@@ -135,7 +135,7 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
         ))}
       </div>
       {isOpen && photo ? (
-        <div ref={dialog} tabIndex={-1} role="dialog" aria-modal="true" aria-label={photo.title} className="fixed inset-0 z-[300] animate-[lbfade_.3s_linear] overflow-hidden bg-black/80 outline-none">
+        <div ref={dialog} tabIndex={-1} role="dialog" aria-modal="true" aria-label={photo.title} className="fixed inset-0 z-[9999] animate-[lbfade_.3s_linear] overflow-hidden bg-black/80 outline-none">
           <div
             className="flex h-full"
             style={{ transform: `translateX(-${pos * 100}%)`, transition: animate ? "transform 300ms ease" : "none" }}

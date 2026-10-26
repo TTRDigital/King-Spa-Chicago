@@ -13,8 +13,9 @@ const DELAY = 5000;
 /**
  * "Our Signature Spa Treatments": a looping slider, three cards from 1024px,
  * two from 767px and one below (the old Elementor carousel's own breakpoints), with arrows, sliding on its own every 5 seconds like the old
- * site's carousel. It pauses while hovered or focused and never auto-slides
- * for visitors who prefer reduced motion.
+ * site's carousel. As there, it can be dragged or swiped, and stops sliding on
+ * its own once a visitor uses it. It also waits while a card has the keyboard
+ * focus and never slides on its own for visitors who prefer reduced motion.
  */
 export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   const n = cards.length;
@@ -22,6 +23,9 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   const [index, setIndex] = useState(n);
   const [animate, setAnimate] = useState(true);
   const paused = useRef(false);
+  const stopped = useRef(false);
+  const drag = useRef<{ x: number; dx: number; t: number; moved: boolean } | null>(null);
+  const [dragX, setDragX] = useState<number | null>(null);
 
   useEffect(() => {
     const three = window.matchMedia("(min-width: 1024px)");
@@ -44,7 +48,7 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const t = window.setInterval(() => {
-      if (!paused.current && document.visibilityState === "visible") go(1);
+      if (!paused.current && !stopped.current && document.visibilityState === "visible") go(1);
     }, DELAY);
     return () => window.clearInterval(t);
   }, [go]);
@@ -62,6 +66,40 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
     return () => cancelAnimationFrame(r);
   }, [animate]);
 
+  const userGo = (d: number) => {
+    stopped.current = true;
+    go(d);
+  };
+  const onDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    drag.current = { x: e.clientX, dx: 0, t: Date.now(), moved: false };
+  };
+  const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = drag.current;
+    if (!d) return;
+    d.dx = e.clientX - d.x;
+    if (!d.moved && Math.abs(d.dx) > 5) {
+      d.moved = true;
+      stopped.current = true;
+      e.currentTarget.setPointerCapture(e.pointerId);
+    }
+    if (d.moved) setDragX(d.dx);
+  };
+  const onUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = drag.current;
+    if (!d) return;
+    setDragX(null);
+    if (!d.moved) {
+      drag.current = null;
+      return;
+    }
+    // Swiper's rule: a quick flick (under 300ms) always moves; a slow drag moves past half a card.
+    const card = e.currentTarget.getBoundingClientRect().width / perView;
+    if (Date.now() - d.t < 300 || Math.abs(d.dx) > card / 2) userGo(d.dx < 0 ? 1 : -1);
+    // Keep the drag until the click that ends it has been swallowed (a drag never opens a card's link).
+    window.setTimeout(() => (drag.current = null), 0);
+  };
+
   const track = [...cards, ...cards, ...cards];
   const arrow = "absolute top-[calc(50%-16px)] z-10 flex h-[30px] w-[30px] -translate-y-1/2 items-center justify-center text-white";
   return (
@@ -69,16 +107,22 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
       className="relative"
       aria-roledescription="carousel"
       aria-label="Signature spa treatments"
-      onMouseEnter={() => (paused.current = true)}
-      onMouseLeave={() => (paused.current = false)}
       onFocus={() => (paused.current = true)}
       onBlur={() => (paused.current = false)}
     >
       <div className="overflow-hidden">
         <div
-          className="flex"
-          style={{ gap: GAP, transform: `translateX(calc(${-index} * (100% + ${GAP}px) / ${perView}))`, transition: animate ? "transform 500ms ease" : "none" }}
+          className="flex touch-pan-y select-none"
+          style={{ gap: GAP, transform: `translateX(calc(${-index} * (100% + ${GAP}px) / ${perView} + ${dragX ?? 0}px))`, transition: animate && dragX === null ? "transform 500ms ease" : "none" }}
           onTransitionEnd={onEnd}
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={onUp}
+          onPointerCancel={onUp}
+          onClickCapture={(e) => {
+            if (drag.current?.moved) e.preventDefault();
+          }}
+          onDragStart={(e) => e.preventDefault()}
         >
           {track.map((c, i) => {
             const visible = i >= index && i < index + perView;
@@ -111,10 +155,10 @@ export function TreatmentCarousel({ cards }: { cards: Card[] }) {
           })}
         </div>
       </div>
-      <button type="button" aria-label="Previous treatment" onClick={() => go(-1)} className={`${arrow} left-0`}>
+      <button type="button" aria-label="Previous treatment" onClick={() => userGo(-1)} className={`${arrow} left-0`}>
         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M14.6 4l-8 8 8 8" /></svg>
       </button>
-      <button type="button" aria-label="Next treatment" onClick={() => go(1)} className={`${arrow} right-0`}>
+      <button type="button" aria-label="Next treatment" onClick={() => userGo(1)} className={`${arrow} right-0`}>
         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M9.4 4l8 8-8 8" /></svg>
       </button>
     </div>

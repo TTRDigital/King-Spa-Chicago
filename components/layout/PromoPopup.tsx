@@ -31,7 +31,7 @@ export function PromoPopup({ popup }: { popup: SiteSettings["promoPopup"] }) {
   if (!open) return null;
   return (
     // As live: no margin round it (full width on phones), no entrance animation, a plain white × at the top, 5% from the right (the box behind it is in the image).
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80" onClick={() => setOpen(false)} role="presentation">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80" onClick={() => setOpen(false)} role="presentation">
       <div role="dialog" aria-modal="true" aria-label={popup.image.alt} className="relative w-[640px] max-w-full shadow-[2px_8px_23px_3px_rgba(0,0,0,0.2)]" onClick={(e) => e.stopPropagation()}>
         <Link href={popup.href} onClick={() => setOpen(false)} className="block">
           <Image src={popup.image.src} alt={popup.image.alt} width={popup.image.width} height={popup.image.height} sizes="(max-width: 639px) 100vw, 640px" className="block h-auto w-full" />
