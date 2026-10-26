@@ -23,9 +23,10 @@ export function PostToc({ title, items }: { title: string; items: { label: strin
   const toggle = () => setOpen(open === null ? !window.matchMedia("(min-width: 1025px)").matches : !open);
   return (
     <div className="lg:sticky lg:top-[120px]">
-      <div className="flex items-center justify-center lg:justify-start">
-        <h4 className="font-[Arial,Helvetica,sans-serif] text-[20px] leading-[24px] font-bold text-maroon">{title}</h4>
-        <button type="button" aria-expanded={open ?? undefined} aria-controls="post-toc" aria-label="Open or close the table of contents" onClick={toggle} className="ml-[4px] text-maroon">
+      {/* Title then a 20px chevron, as the old contents box (it wraps the title when the box is narrower than 194px). */}
+      <div className="flex items-center justify-between">
+        <h4 className="min-w-0 font-[Arial,Helvetica,sans-serif] text-[20px] leading-[24px] font-bold text-maroon">{title}</h4>
+        <button type="button" aria-expanded={open ?? undefined} aria-controls="post-toc" aria-label="Open or close the table of contents" onClick={toggle} className="flex w-[20px] shrink-0 justify-end text-maroon">
           {open === null ? (
             <>
               <span className="lg:hidden"><Chevron up={false} /></span>

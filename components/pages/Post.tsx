@@ -30,13 +30,16 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
         <h1 className="mt-[20px] font-recoleta text-[73px] leading-[73px] font-medium text-white">{t.heading}</h1>
       </section>
 
-      <section className="bg-cream px-[15px] py-[50px] lg:px-0">
-        <div className="lg:ml-[7.7%] lg:mr-[1.74%] lg:grid lg:grid-cols-[24.85%_75.15%]">
-          <div className="px-[10px]">
-            <PostToc title={t.tocTitle} items={[{ label: t.bannerKorean, href: "#blog-heading" }]} />
+      {/* As on the old site: from 768px a row of at most 1400px (centered) with the contents column (29.65%; the 195px contents box is centered in it between 10px and 30px of space) and the article (70%); below 768px they stack. */}
+      <section className="bg-cream px-[15px] py-[50px] md:px-0">
+        <div className="md:mx-auto md:flex md:max-w-[1400px]">
+          <div className="px-[10px] md:w-[29.65%] md:shrink-0 md:pr-[30px]">
+            <div className="mx-auto w-[195px] max-w-full">
+              <PostToc title={t.tocTitle} items={[{ label: t.bannerKorean, href: "#blog-heading" }]} />
+            </div>
           </div>
 
-          <div className="px-[10px]">
+          <div className="px-[10px] md:w-[70%] md:shrink-0">
             <div className="mt-[17px] flex items-start">
               <div className="relative h-[35px] w-[35px] shrink-0">
                 <Image src={t.bylineIcon.src} alt={t.bylineIcon.alt} width={t.bylineIcon.width} height={t.bylineIcon.height} unoptimized className="absolute top-0 left-[-6px] h-[35px] w-[32px] max-w-none" />
@@ -59,18 +62,18 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
               ))}
             </div>
 
-            <div className="mt-[34px] rounded-[22px] bg-rust px-[24px] pt-[40px] pb-[60px] text-center text-white md:px-[50px] md:py-[60px]">
-              <h2 className="font-recoleta text-[30px] leading-[32px] font-normal md:text-[34px] md:leading-[34px]">{t.cta.heading}</h2>
-              <div className="mt-[20px] font-mulish text-[14px] leading-[21px] md:px-[60px] md:text-[15px] md:leading-[22.5px]">{t.cta.text}</div>
-              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:mt-[20px] md:ml-[20px] md:px-[20px] md:py-[15px]">
+            <div className="mt-[34px] rounded-[22px] bg-rust px-[24px] pt-[40px] pb-[60px] text-center text-white md:p-[30px] lg:px-[50px] lg:py-[60px]">
+              <h2 className="font-recoleta text-[30px] leading-[32px] font-normal lg:text-[34px] lg:leading-[34px]">{t.cta.heading}</h2>
+              <div className="mt-[20px] font-mulish text-[14px] leading-[21px] md:px-[10%] lg:px-[7%] lg:text-[15px] lg:leading-[22.5px]">{t.cta.text}</div>
+              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[20px] md:py-[15px] lg:mt-[20px] lg:ml-[20px]">
                 <span className="block text-center">{t.cta.button.label}</span>
               </a>
             </div>
 
             {/* Two columns on desktop as on the old site: the heading, then "View All" right-aligned in a 284px column. */}
             <div className="mt-[40px] px-[10px] md:flex md:items-start">
-              <h2 className="font-recoleta text-[24px] leading-[24px] font-normal text-maroon max-md:w-[calc(100%-18px)] md:flex-1 md:text-[32px] md:leading-[32px]">{t.relatedHeading}</h2>
-              <Link href={t.viewAll.href} className="mt-[20px] flex items-center font-mulish text-[14px] leading-[21px] font-semibold text-maroon md:mt-0 md:ml-[20px] md:w-[264px] md:justify-end md:text-end">
+              <h2 className="font-recoleta text-[24px] leading-[24px] font-normal text-maroon max-md:w-[calc(100%-18px)] md:text-[27px] md:leading-[27px] lg:flex-1 lg:text-[32px] lg:leading-[32px]">{t.relatedHeading}</h2>
+              <Link href={t.viewAll.href} className="mt-[20px] flex items-center font-mulish text-[14px] leading-[21px] font-semibold text-maroon md:mt-0 md:ml-[20px] md:flex-1 md:justify-end md:text-end lg:w-[264px] lg:flex-none">
                 <span aria-hidden="true" className="inline-flex w-[18px] shrink-0">
                   <svg viewBox="0 0 448 512" width="13" height="13" fill="currentColor">
                   <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
@@ -80,9 +83,10 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
               </Link>
             </div>
 
-            <div className="mt-[40px] flex items-center justify-end px-[10px] md:mt-[20px]">
-              <h2 className="mr-[10px] font-dmserif text-[20px] leading-[20px] font-normal text-[#022a3e]">{t.shareLabel}</h2>
-              <ul className="flex">
+            {/* From 768px the share block is a right-aligned 34.3% column; when it is too narrow (768px) the buttons drop below "Share:", as on the old site. */}
+            <div className="mt-[40px] flex items-center justify-end px-[10px] md:mt-[20px] md:ml-auto md:w-[34.3%] md:flex-wrap">
+              <h2 className="font-dmserif text-[20px] leading-[20px] font-normal text-[#022a3e]">{t.shareLabel}</h2>
+              <ul className="ml-[10px] flex">
                 {SHARE.map((s) => (
                   <li key={s.name}>
                     <a href={s.url(url, post.title)} target="_blank" rel="noopener" aria-label={`Share on ${s.name}`} className="flex h-[45px] w-[45px] items-center justify-center rounded-full bg-maroon bg-[linear-gradient(90deg,rgba(0,0,0,0.12),rgba(0,0,0,0))] text-white">
@@ -93,9 +97,12 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
               </ul>
             </div>
 
-            <div className="mt-[40px] px-[10px] pb-[19px] md:flex md:items-start md:pb-[10px]">
-              <Image src={lion.src} alt={lion.alt} width={lion.width} height={lion.height} unoptimized className="ml-[78px] h-[216px] w-[107px] md:ml-[13px] md:w-[107px] md:shrink-0" />
-              <div className="mt-[10px] md:mt-[10px] md:ml-[91px] md:flex-1">
+            {/* Author box as on the old site: the lion (at most 107px) is centered in its column less 58px on the right; from 768px that column is 22% wide and the text takes the other 78% (10px padding). */}
+            <div className="mt-[40px] px-[10px] pb-[19px] md:flex md:items-start md:px-0 md:pb-[10px]">
+              <div className="pr-[58px] md:w-[22%] md:shrink-0">
+                <Image src={lion.src} alt={lion.alt} width={lion.width} height={lion.height} unoptimized className="mx-auto h-auto w-full max-w-[107px]" />
+              </div>
+              <div className="mt-[10px] md:flex-1 md:px-[10px]">
                 <p className="font-mulish text-[14px] leading-[25.2px] text-[#022a3e] md:text-[16px] md:leading-[28.8px]">{t.authorIntro}</p>
                 <h4 className="-mt-[5.6px] font-mulish text-[20px] leading-[25.6px] font-bold text-[#022a3e] md:text-[24px] md:leading-[30.72px]">{t.authorName}</h4>
               </div>
