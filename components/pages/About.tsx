@@ -80,7 +80,7 @@ export function AboutView({ data }: { data: typeof aboutPage }) {
           <Paragraphs items={commitment.paragraphs} className="mt-[20px] text-black" />
         </div>
         <div className="mt-[34px] text-center">
-          <Link href={commitment.button.href} className="inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[95px] md:py-[19px]">
+          <Link href={commitment.button.href} className="inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[95px] md:py-[19px] transition-all duration-300 hover:bg-[rgba(2,1,1,0)] hover:text-maroon">
             <span className="block">{commitment.button.label}</span>
           </Link>
         </div>

@@ -65,7 +65,7 @@ export function PostView({ post, blog }: { post: Post; blog: typeof blogPage; po
             <div className="mt-[34px] rounded-[22px] bg-rust px-[24px] pt-[40px] pb-[60px] text-center text-white md:p-[30px] lg:px-[50px] lg:py-[60px]">
               <h2 className="font-recoleta text-[30px] leading-[32px] font-normal lg:text-[34px] lg:leading-[34px]">{t.cta.heading}</h2>
               <div className="mt-[20px] font-mulish text-[14px] leading-[21px] md:px-[10%] lg:px-[7%] lg:text-[15px] lg:leading-[22.5px]">{t.cta.text}</div>
-              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[20px] md:py-[15px] lg:mt-[20px] lg:ml-[20px]">
+              <a href={t.cta.button.href} className="mt-[30px] inline-block rounded-[4px] border border-maroon bg-maroon p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase transition-all duration-300 hover:border-[#00aaff] hover:bg-white hover:text-[#00aaff] md:px-[20px] md:py-[15px] lg:mt-[20px] lg:ml-[20px]">
                 <span className="block text-center">{t.cta.button.label}</span>
               </a>
             </div>

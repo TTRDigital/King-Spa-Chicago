@@ -61,8 +61,7 @@ export function HomeTabs({ tabs }: { tabs: Tab[] }) {
                   type="button"
                   aria-pressed={item === i}
                   onClick={() => setItem(i)}
-                  onMouseEnter={() => setItem(i)}
-                  className={`text-left font-mulish text-[16px] leading-[24px] min-[901px]:text-[18px] min-[901px]:leading-[27px] ${item === i ? "font-extrabold text-wine underline underline-offset-[4px]" : "font-semibold text-cocoa hover:text-wine"}`}
+                  className={`text-left font-mulish transition-colors duration-200 text-[16px] leading-[24px] min-[901px]:text-[18px] min-[901px]:leading-[27px] ${item === i ? "font-extrabold text-wine underline underline-offset-[4px]" : "font-semibold text-cocoa hover:text-wine"}`}
                 >
                   {x.title}
                 </button>

@@ -33,6 +33,8 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
   const { banner, intro, rituals, process, benefits, fit, prepare, rewards, faq } = data;
   return (
     <>
+      {/* On this page the footer credit link turns white on hover, as on live (app/globals.css). */}
+      <span hidden data-credit-hover="" />
       <JsonLd data={faqPageSchema(faq.items)} />
 
       {/* Banner: three h2s, as on the old site (its h1 was hidden) */}

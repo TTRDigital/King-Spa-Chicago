@@ -36,7 +36,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           <ul className="mt-[64px] flex gap-[18px] md:mt-[10px] md:mr-[calc(9px+0.75%)]">
             {f.social.map((s) => (
               <li key={s.href}>
-                <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white text-maroon">
+                <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white text-maroon transition-all duration-300 hover:bg-maroon hover:text-white hover:opacity-90">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">{iconFor(s.label)}</svg>
                 </a>
               </li>
@@ -81,7 +81,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           <p className="whitespace-pre-line">{f.copyright}</p>
           <p className="mt-[68px]">
             {f.creditLabel}{" "}
-            <a href={f.credit.href} target="_blank" rel="noopener" className="text-[#dbdbdb]">
+            <a href={f.credit.href} target="_blank" rel="noopener" className="footer-credit text-[#dbdbdb]">
               {f.credit.label}
             </a>
           </p>

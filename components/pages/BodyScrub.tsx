@@ -17,6 +17,8 @@ export async function BodyScrubView({ data }: { data: typeof bodyScrubPage }) {
   const settings = await getSettings();
   return (
     <>
+      {/* On this page the footer credit link turns white on hover, as on live (app/globals.css). */}
+      <span hidden data-credit-hover="" />
       <JsonLd data={faqPageSchema(data.faq.items)} />
 
       {/* Banner (three h2s on the old site; its two h1s were hidden) */}
@@ -147,7 +149,7 @@ export async function BodyScrubView({ data }: { data: typeof bodyScrubPage }) {
           <p className="mx-auto mt-[21px] max-w-[calc(100%-3px)] font-mulish text-[14px] leading-[21px] text-white md:max-w-[78.2%] lg:max-w-[620px] lg:text-[15px] lg:leading-[22.5px]">{data.cta.text}</p>
           <a
             href={data.cta.button.href}
-            className="mt-[44px] inline-block rounded-[4px] border border-rust bg-rust p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase md:px-[20px] md:py-[15px] lg:mt-[36px] lg:ml-[20px]"
+            className="mt-[44px] inline-block rounded-[4px] border border-rust bg-rust p-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase transition-all duration-300 hover:border-[#00aaff] hover:bg-white hover:text-[#333] md:px-[20px] md:py-[15px] lg:mt-[36px] lg:ml-[20px]"
           >
             <span className="block">{data.cta.button.label}</span>
           </a>

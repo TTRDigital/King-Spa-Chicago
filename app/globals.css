@@ -95,6 +95,11 @@
   }
 }
 
+/* Footer credit link: white on hover on the pages that mark it (the old body scrub and first-time guide pages did this). */
+body:has([data-credit-hover]) .footer-credit:hover {
+  color: #fff;
+}
+
 /* The gallery lightbox fades in, as on the old site. */
 @keyframes lbfade {
   from {

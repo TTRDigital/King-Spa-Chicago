@@ -100,7 +100,7 @@
 .pg-massage .ks-cta-title { font-family: var(--ks-font-heading); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; color: var(--ks-cream); margin-bottom: 16px; line-height: 1.2; }
 .pg-massage .ks-cta-text { color: rgba(255, 253, 244, 0.85); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6; }
 .pg-massage .ks-cta-button { display: inline-block; background: var(--ks-burgundy-light); color: var(--ks-cream); padding: 18px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background 0.3s ease, transform 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-.pg-massage .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); }
+.pg-massage .ks-cta-button:hover { background: #b84a4a; transform: translateY(-2px); color: #fff; }
 
 /* On the old site this page's own stylesheet also spaced out the footer credit line
    (20px more above "WEBSITE BY", 9px below). Only while this page is shown. */

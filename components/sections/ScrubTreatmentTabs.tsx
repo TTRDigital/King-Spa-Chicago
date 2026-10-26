@@ -34,7 +34,7 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
         ))}
         <Link
           href={tab.button.href}
-          className="mt-[20px] inline-block rounded-[4px] border border-rust bg-rust p-[18px] font-[Arial,Helvetica,sans-serif] text-[14px] leading-[14px] font-bold text-white uppercase md:px-[40px] md:py-[20px]"
+          className="mt-[20px] inline-block rounded-[4px] border border-rust bg-rust p-[18px] font-[Arial,Helvetica,sans-serif] text-[14px] leading-[14px] font-bold text-white uppercase transition-all duration-300 hover:border-maroon hover:text-[#333] md:px-[40px] md:py-[20px]"
         >
           <span className="block text-center">{tab.button.label}</span>
         </Link>
@@ -68,7 +68,7 @@ export function ScrubTreatmentTabs({ tabs }: { tabs: Tab[] }) {
             aria-selected={on}
             aria-controls={panelId}
             onClick={() => setActive(i)}
-            className={`rounded-[10px_30px_10px_10px] px-[35px] py-[15px] font-recoleta text-[18px] leading-[27px] md:order-first ${on ? "bg-rust text-white" : "bg-[#f1f2f3] text-[#54595f]"}`}
+            className={`rounded-[10px_30px_10px_10px] px-[35px] py-[15px] font-recoleta text-[18px] leading-[27px] transition-[background-color,color,border-color,box-shadow] duration-300 md:order-first ${on ? "bg-rust text-white" : "bg-[#f1f2f3] text-[#54595f] hover:bg-rust hover:text-white"}`}
           >
             <span className="block text-center">{t.label}</span>
           </button>,

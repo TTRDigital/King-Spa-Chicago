@@ -26,6 +26,8 @@ export async function FirstTimeGuideView({ data }: { data: typeof firstTimeGuide
   const { banner, welcome, facts, steps, nourish, rooms, bring, nudity, reviews, faq, location, cta } = data;
   return (
     <>
+      {/* On this page the footer credit link turns white on hover, as on live (app/globals.css). */}
+      <span hidden data-credit-hover="" />
       <JsonLd data={faqPageSchema(faq.items)} />
 
       {/* Banner */}
@@ -46,7 +48,7 @@ export async function FirstTimeGuideView({ data }: { data: typeof firstTimeGuide
             <h2 className={`${tang} text-[24px] leading-[36px] md:text-[47px] md:leading-[63px]`}>{welcome.heading}</h2>
             <p className="mt-[20px] whitespace-pre-line font-sans text-[16px] leading-[24px] text-body">{welcome.text}</p>
             <div className="mt-[34px] text-center md:text-left">
-              <Link href={welcome.button.href} className="inline-block rounded-[4px] bg-rust p-[20px] font-recoleta text-[15px] leading-[15px] text-white uppercase">
+              <Link href={welcome.button.href} className="inline-block rounded-[4px] bg-rust p-[20px] font-recoleta text-[15px] leading-[15px] text-white uppercase transition-all duration-300 hover:text-[#333]">
                 {welcome.button.label}
               </Link>
             </div>
@@ -101,7 +103,7 @@ export async function FirstTimeGuideView({ data }: { data: typeof firstTimeGuide
           ))}
         </section>
         <section className="px-[10px] py-[10px] text-center">
-          <Link href={steps.button.href} className={`${btn} w-full max-w-[327px] px-[17px] py-[18px] md:w-auto md:max-w-none md:px-[50px] md:py-[20px]`}>
+          <Link href={steps.button.href} className={`${btn} transition-all duration-300 hover:border-white hover:bg-maroon hover:text-[#333] w-full max-w-[327px] px-[17px] py-[18px] md:w-auto md:max-w-none md:px-[50px] md:py-[20px]`}>
             {steps.button.label}
           </Link>
         </section>
@@ -192,7 +194,7 @@ export async function FirstTimeGuideView({ data }: { data: typeof firstTimeGuide
             <h2 className="font-recoleta text-[26px] leading-[28px] font-normal md:text-[30px] md:leading-[33px] lg:text-[34px] lg:leading-[44px]">{cta.heading}</h2>
             <p className="mt-[20px] font-mulish text-[16px] leading-[24px] font-medium">{cta.text}</p>
             <div className="mt-[34px]">
-              <Link href={cta.button.href} className={`${btn} px-[18px] py-[18px] md:px-[50px] md:py-[20px] lg:px-[80px]`}>
+              <Link href={cta.button.href} className={`${btn} transition-all duration-300 hover:border-[#00aaff] hover:bg-white hover:text-[#333] px-[18px] py-[18px] md:px-[50px] md:py-[20px] lg:px-[80px]`}>
                 {cta.button.label}
               </Link>
             </div>

@@ -22,7 +22,7 @@ export function CardFaq({ heading, items }: { heading: string; items: { question
                   aria-expanded={open === i}
                   aria-controls={`card-faq-${i}`}
                   onClick={() => setOpen(open === i ? null : i)}
-                  className={`relative flex w-full items-center py-[15px] pr-[30px] text-left font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] md:py-[20px] md:text-[18px] md:leading-[18px] lg:py-[24px] lg:text-[22px] lg:leading-[22px] ${open === i ? "text-maroon" : "text-black"}`}
+                  className={`relative flex w-full items-center py-[15px] pr-[30px] text-left font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] md:py-[20px] md:text-[18px] md:leading-[18px] lg:py-[24px] lg:text-[22px] lg:leading-[22px] ${open === i ? "text-maroon" : "text-black hover:text-[#333]"}`}
                 >
                   {f.question}
                   <svg viewBox="0 0 14 8" aria-hidden="true" className={`absolute top-1/2 right-[31px] h-[8px] w-[15px] -translate-y-1/2 md:right-[32px] md:h-[7px] md:w-[12px] lg:right-[33px] lg:h-[8px] lg:w-[14px] ${open === i ? "rotate-180 text-[#3a8dde]" : "text-[#022a3e]"}`}>
@@ -31,7 +31,7 @@ export function CardFaq({ heading, items }: { heading: string; items: { question
                 </button>
               </h3>
               <div id={`card-faq-${i}`} hidden={open !== i} className="pt-[10px] pr-[15px] pb-[38px] md:pt-[12px] md:pr-[30px] md:pb-[37px] lg:pr-[80px]">
-                <p className="rich font-mulish text-[14px] leading-[21px] text-[#022a3e] md:text-[16px] md:leading-[24px] [&_a]:text-[#cc3366] [&_a]:no-underline">
+                <p className="rich font-mulish text-[14px] leading-[21px] text-[#022a3e] md:text-[16px] md:leading-[24px] [&_a]:text-[#cc3366] [&_a]:no-underline [&_a:hover]:text-[#022a3e]">
                   <Inline text={f.answer} />
                 </p>
               </div>

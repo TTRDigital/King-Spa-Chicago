@@ -41,8 +41,8 @@ export function ScrubFaq({ items, variant }: { items: Item[]; variant: "body-scr
               <span
                 className={
                   ritual
-                    ? "block py-[2.5px] font-recoleta text-[16px] leading-[17px] tracking-[0.1px] text-maroon max-md:max-w-[85.5%] md:py-0 md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[30px]"
-                    : "font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] text-maroon md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[25px]"
+                    ? "block py-[2.5px] font-recoleta text-[16px] leading-[17px] tracking-[0.1px] text-maroon hover:text-[#333] max-md:max-w-[85.5%] md:py-0 md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[30px]"
+                    : "font-[Arial,Helvetica,sans-serif] text-[16px] leading-[17px] font-bold tracking-[0.1px] text-maroon hover:text-[#333] md:text-[18px] md:leading-[18px] lg:text-[22px] lg:leading-[25px]"
                 }
               >
                 {f.question}

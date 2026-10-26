@@ -68,7 +68,7 @@ export async function HomeView({ data }: { data: typeof homePage }) {
               <Inline text={intro.text} />
             </p>
             <div className="mt-[15px] hidden md:flex">
-              <Link href={intro.button.href} className="inline-block rounded-[9px] bg-rust py-[15px] pr-[30px] pl-[35px] font-tienne text-[16px] leading-[16px] text-white capitalize">
+              <Link href={intro.button.href} className="inline-block rounded-[9px] bg-rust py-[15px] pr-[30px] pl-[35px] font-tienne text-[16px] leading-[16px] text-white capitalize transition-all duration-300 hover:bg-white">
                 {intro.button.label}
               </Link>
             </div>
