@@ -88,10 +88,9 @@ export const siteSettings = {
     homeWidgetId: "3e17ac02-8cbb-44f4-81ec-6735942ced98",
     pagesWidgetId: "447724ab-4d06-4268-907b-3e451b81fd76",
   },
-  /** Google Maps embeds used on the old site. */
+  /** Google Maps embed: King Spa & Sauna's own Google listing (name, rating and reviews on the map card). */
   maps: {
-    place: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5927.939997188629!2d-87.79993979999999!3d42.022376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fc8e6b32de229%3A0x69547df726d8380a!2sCivic%20Center%20Plaza%2C%20809%20Civic%20Center%20Dr%2C%20Niles%2C%20IL%2060714!5e0!3m2!1sen!2sus!4v1767065891274!5m2!1sen!2sus",
-    pin: "https://maps.google.com/maps?q=42.022397404923915%2C%20-87.79994815312438&t=m&z=19&output=embed&iwloc=near",
+    place: "https://maps.google.com/maps?q=King%20Spa%20%26%20Sauna%2C%20809%20Civic%20Center%20Dr%2C%20Niles%2C%20IL%2060714&t=m&z=15&output=embed&iwloc=near",
   },
 };
 
