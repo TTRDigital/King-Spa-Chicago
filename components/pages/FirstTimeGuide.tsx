@@ -62,7 +62,7 @@ export async function FirstTimeGuideView({ data }: { data: typeof firstTimeGuide
               <div key={f.label} className="flex flex-col text-center text-white">
                 {/* eslint-disable-next-line @next/next/no-img-element -- decorative SVG icon */}
                 <img src={FACT_ICONS[i % 4].src} alt="" width={FACT_ICONS[i % 4].w} height={FACT_ICONS[i % 4].h} loading="lazy" className="mx-auto h-[50px] w-auto object-contain" />
-                <span className="mt-[16px] font-recoleta text-[16px] leading-[19.2px] font-medium md:mt-[20px] md:text-[19px] md:leading-[22.8px]">{f.label}</span>
+                <h3 className="mt-[16px] font-recoleta text-[16px] leading-[19.2px] font-medium md:mt-[20px] md:text-[19px] md:leading-[22.8px]">{f.label}</h3>
                 <p className="font-urbanist text-[14px] leading-[21px] md:text-[16px] md:leading-[24px]">{f.value}</p>
               </div>
             ))}

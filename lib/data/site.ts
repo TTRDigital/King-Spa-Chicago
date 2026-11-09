@@ -50,7 +50,7 @@ export const siteSettings = {
     ],
     columns: [
       { heading: "ABOUT", headingHref: "/about-us/", links: [
-        { label: "(847) 972-2540", href: "tel:7039573010" },
+        { label: "(847) 972-2540", href: "tel:8479722540" },
         { label: "Contact Us", href: "/contact/" },
       ] },
       { heading: "EXPLORE", headingHref: "/explore/", links: [

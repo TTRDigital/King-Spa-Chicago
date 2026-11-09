@@ -20,7 +20,7 @@ export function LocationHours({ data, mapSrc, headingFont, phoneAddressAlign = "
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative SVG icon */}
           <img src="/images/icons/location-address.svg" alt="" width={97} height={97} loading="lazy" className="h-[97px] w-[97px]" />
           <div className="md:pt-[8px]">
-            <span className={head}>{data.addressHeading}</span>
+            <h3 className={head}>{data.addressHeading}</h3>
             <p className={text}>{data.address}</p>
           </div>
         </div>
@@ -28,7 +28,7 @@ export function LocationHours({ data, mapSrc, headingFont, phoneAddressAlign = "
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative SVG icon */}
           <img src="/images/icons/location-hours.svg" alt="" width={97} height={97} loading="lazy" className="h-[97px] w-[97px]" />
           <div className="md:pt-[8px]">
-            <span className={head}>{data.hoursHeading}</span>
+            <h3 className={head}>{data.hoursHeading}</h3>
             <p className={text}>{data.hours}</p>
           </div>
         </div>

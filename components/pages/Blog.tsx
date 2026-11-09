@@ -35,9 +35,9 @@ export function BlogView({ data, posts }: { data: typeof blogPage; posts: Post[]
                 </Link>
                 <div className="relative px-[14px] pb-[20px] md:px-[14px]">
                   <Image src={data.card.avatar.src} alt={data.card.avatar.alt} width={60} height={60} sizes="60px" className="absolute top-[-30px] left-[14px] h-[60px] w-[60px] rounded-full" />
-                  <h3 className="pt-[45px] font-[Arial,Helvetica,sans-serif] text-[18px] leading-[21.6px] font-semibold text-maroon capitalize md:text-[26px] md:leading-[31.2px]">
+                  <h4 className="pt-[45px] font-[Arial,Helvetica,sans-serif] text-[18px] leading-[21.6px] font-semibold text-maroon capitalize md:text-[26px] md:leading-[31.2px]">
                     <Link href={href}>{p.title}</Link>
-                  </h3>
+                  </h4>
                   <p className="mt-[10px] font-mulish text-[14px] leading-[21px] font-light text-[#777777] md:mt-[19px] lg:mt-[18px]">{firstWords(p.excerpt, data.card.excerptWords)}</p>
                   <Link href={href} className="mt-[22px] block w-fit font-recoleta text-[14px] leading-[14px] text-maroon capitalize italic underline lg:mt-[20px] lg:text-[16px] lg:leading-[16px]">
                     {data.card.readMore}

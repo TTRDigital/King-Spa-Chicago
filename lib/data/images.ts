@@ -54,7 +54,7 @@ export const images = {
   cardPyramid: { src: "/images/saunas/card-gold-pyramid.png", alt: "Gold Pyramid Sauna entrance", width: 1528, height: 1352 },
   cardFire: { src: "/images/saunas/card-fire-sudatorium.png", alt: "Fire Sudatorium dome entrance flanked by amethyst geodes", width: 1528, height: 1352 },
   aboutAmethyst: { src: "/images/saunas/amethyst-hinoki.jpg", alt: "Guests resting in the Amethyst + Hinoki room", width: 1170, height: 700 },
-  baseRock: { src: "/images/saunas/base-rock-sauna.jpg", alt: "Baserock sauna", width: 1170, height: 700 },
+  baseRock: { src: "/images/saunas/base-rock-sauna.jpg", alt: "Base Rock Sauna", width: 1170, height: 700 },
   bathInside: { src: "/images/facility/bathhouse-hot-tub.jpg", alt: "Hot tub in the gender-separated bathhouse", width: 2560, height: 1703 },
   aboutBulgama: { src: "/images/saunas/bul-ga-ma-room.jpg", alt: "Guests sitting on the floor of the Bul Ga Ma Room", width: 1170, height: 700 },
   aboutCharcoal: { src: "/images/saunas/charcoal-room.jpg", alt: "Charcoal Room lined with shelves of mineral stones", width: 1170, height: 700 },

@@ -34,7 +34,7 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
   const [share, setShare] = useState(false);
   const [full, setFull] = useState(false);
   const dialog = useRef<HTMLDivElement>(null);
-  const opener = useRef<HTMLButtonElement | null>(null);
+  const opener = useRef<HTMLAnchorElement | null>(null);
   const drag = useRef<{ x: number; y: number; px: number; py: number; maxX: number; maxY: number } | null>(null);
 
   const index = pos === null ? 0 : (((pos - 1) % n) + n) % n;
@@ -119,11 +119,13 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
     <>
       <div className="grid grid-cols-3 gap-[10px] min-[767px]:grid-cols-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-y-[9.5px]">
         {photos.map((x, i) => (
-          <button
+          // A link to the photo file, as on the old site; a click opens it in the lightbox instead.
+          <a
             key={x.image.src + i}
-            type="button"
+            href={x.image.src}
             aria-label={`Open photo: ${x.image.alt}`}
             onClick={(e) => {
+              e.preventDefault();
               opener.current = e.currentTarget;
               setAnimate(false);
               setPos(i + 1);
@@ -131,7 +133,7 @@ export function GalleryLightbox({ photos }: { photos: Photo[] }) {
             className="relative block aspect-[4/3] overflow-hidden rounded-[10px]"
           >
             <Image src={x.image.src} alt={x.image.alt} fill sizes="(max-width: 766px) 33vw, (max-width: 1023px) 50vw, 343px" className="object-cover transition-transform duration-300 hover:scale-105" />
-          </button>
+          </a>
         ))}
       </div>
       {isOpen && photo ? (

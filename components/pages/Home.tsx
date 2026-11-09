@@ -131,14 +131,14 @@ export async function HomeView({ data }: { data: typeof homePage }) {
           <div className="flex flex-col items-center gap-[8px] md:flex-row md:items-start md:gap-0 md:px-[10px]">
             <PinIcon />
             <div>
-              <span className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.addressHeading}</span>
+              <h3 className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.addressHeading}</h3>
               <p className="mt-[17px] font-sans text-[16px] leading-[24px] text-body">{location.address}</p>
             </div>
           </div>
           <div className="flex flex-col items-center gap-[8px] md:flex-row md:items-start md:gap-0 md:px-[10px]">
             <ClockIcon />
             <div>
-              <span className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.hoursHeading}</span>
+              <h3 className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.hoursHeading}</h3>
               <p className="mt-[17px] whitespace-pre-line font-sans text-[16px] leading-[24px] text-body">{location.hours}</p>
             </div>
           </div>

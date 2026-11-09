@@ -13,23 +13,26 @@ const Caret = ({ open }: { open: boolean }) => (
   </svg>
 );
 
-function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
+function Panel({ tab, id, tabId, hidden }: { tab: Tab; id: string; tabId: string; hidden: boolean }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div id={id} role="tabpanel" aria-labelledby={tabId} className="order-none flex w-full flex-col gap-[40px] px-[20px] pt-[30px] pb-[30px] md:flex-row md:gap-[20px] md:pt-[30px] md:pb-[50px]">
+    <div id={id} role="tabpanel" aria-labelledby={tabId} hidden={hidden} className="order-none flex w-full flex-col gap-[40px] px-[20px] pt-[30px] pb-[30px] md:flex-row md:gap-[20px] md:pt-[30px] md:pb-[50px]">
       <div className="md:min-w-0 md:flex-1 md:basis-0">
         {tab.items.map((it, i) => (
           <div key={it.title}>
             <button
               type="button"
               aria-expanded={open === i}
+              aria-controls={`${id}-item-${i}`}
               onClick={() => setOpen(open === i ? null : i)}
               className="flex w-full items-center justify-between border border-black/[0.02] py-[11px] pr-[10px] text-left font-[Arial,Helvetica,sans-serif] text-[16px] leading-[16px] font-bold text-white"
             >
               <span className="block flex-1 pl-px">{it.title}</span>
               <Caret open={open === i} />
             </button>
-            {open === i ? <p className="pt-[3px] pr-[55px] pb-[27px] font-mulish text-[14px] leading-[23.8px] text-white lg:pt-[5px] lg:pr-[62px]">{it.text}</p> : null}
+            <p id={`${id}-item-${i}`} hidden={open !== i} className="pt-[3px] pr-[55px] pb-[27px] font-mulish text-[14px] leading-[23.8px] text-white lg:pt-[5px] lg:pr-[62px]">
+              {it.text}
+            </p>
           </div>
         ))}
         <Link
@@ -49,7 +52,8 @@ function Panel({ tab, id, tabId }: { tab: Tab; id: string; tabId: string }) {
 /**
  * "Explore Our Body Scrub Treatments": Women's / Men's tabs, each with an
  * accordion of treatments, a button and a photo. On phones the tab buttons
- * stack with the open panel under its button, as on the old site.
+ * stack with the open panel under its button, as on the old site. Every
+ * panel and treatment description is in the page; only the open ones show.
  */
 export function ScrubTreatmentTabs({ tabs }: { tabs: Tab[] }) {
   const [active, setActive] = useState(0);
@@ -72,7 +76,7 @@ export function ScrubTreatmentTabs({ tabs }: { tabs: Tab[] }) {
           >
             <span className="block text-center">{t.label}</span>
           </button>,
-          on ? <Panel key={panelId} tab={t} id={panelId} tabId={tabId} /> : null,
+          <Panel key={panelId} tab={t} id={panelId} tabId={tabId} hidden={!on} />,
         ];
       })}
     </div>

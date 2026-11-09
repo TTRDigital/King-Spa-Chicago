@@ -85,10 +85,10 @@ export const homePage = {
   treatments: {
     heading: "Our Signature Spa Treatments",
     cards: [
+      { title: "Massage", lines: ["Release Tension and", "Restore Balance"], image: images.cardMassage, button: { label: "Learn More", href: "/massagetherapy/" } },
       { title: "Body Scrubs", lines: ["Experience Ancient", "Korean Skincare"], image: images.cardBodyScrub, button: { label: "Learn More", href: "/body-scrub/" } },
       { title: "V-Steam", lines: ["Restore Balance and", "Wellness"], image: images.cardVSteam, button: { label: "Learn More", href: "/v-steam/" } },
       { title: "Facials", lines: ["Revitalize your", "skin"], image: images.cardFacial, button: { label: "Learn More", href: "/facials/" } },
-      { title: "Massage", lines: ["Release Tension and", "Restore Balance"], image: images.cardMassage, button: { label: "Learn More", href: "/massagetherapy/" } },
     ],
   },
   videos: {

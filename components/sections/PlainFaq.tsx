@@ -18,20 +18,18 @@ export function PlainFaq({ items }: { items: { question: string; answer: string 
     <div>
       {items.map((f, i) => (
         <div key={f.question}>
-          <h3>
-            <button
-              type="button"
-              aria-expanded={open.includes(i)}
-              aria-controls={`plain-faq-${i}`}
-              onClick={() => setOpen(open.includes(i) ? open.filter((x) => x !== i) : [...open, i])}
-              className="flex w-full items-center gap-[10px] border border-[#d5d8dc] p-[10px] text-left font-sans text-[20px] leading-[30px] font-normal text-[#1f2124]"
-            >
-              <svg aria-hidden="true" viewBox="0 0 448 512" width="13" height="15" className="shrink-0 fill-current">
-                <path d={open.includes(i) ? MINUS : PLUS} />
-              </svg>
-              {f.question}
-            </button>
-          </h3>
+          <button
+            type="button"
+            aria-expanded={open.includes(i)}
+            aria-controls={`plain-faq-${i}`}
+            onClick={() => setOpen(open.includes(i) ? open.filter((x) => x !== i) : [...open, i])}
+            className="flex w-full items-center gap-[10px] border border-[#d5d8dc] p-[10px] text-left font-sans text-[20px] leading-[30px] font-normal text-[#1f2124]"
+          >
+            <svg aria-hidden="true" viewBox="0 0 448 512" width="13" height="15" className="shrink-0 fill-current">
+              <path d={open.includes(i) ? MINUS : PLUS} />
+            </svg>
+            {f.question}
+          </button>
           <div id={`plain-faq-${i}`} hidden={!open.includes(i)} className="relative py-[24px]">
             <span aria-hidden="true" className="absolute top-[-9px] left-0 h-[42px] w-[11px] border border-r-0 border-[#d5d8dc]" />
             <span aria-hidden="true" className="absolute bottom-[-9px] left-0 h-[42px] w-[11px] border border-l-0 border-[#d5d8dc]" />

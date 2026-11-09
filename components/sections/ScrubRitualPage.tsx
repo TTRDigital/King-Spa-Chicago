@@ -86,7 +86,7 @@ export function ScrubRitualPage({ data }: { data: ScrubRitualPageData }) {
                 className={`${glassCard} flex flex-col px-[25px] pt-[25px] pb-[35px] ${i === rituals.items.length - 1 && rituals.items.length % 2 ? "md:col-span-2 md:ml-[330px] md:w-[max(380px,calc(50%-12.5px))]" : ""}`}
               >
                 {r.badge ? (
-                  <span className="mb-[10px] -translate-y-[30px] self-start rounded-[6px] bg-sand px-[8px] py-[5px] font-recoleta text-[14px] leading-[14px] font-medium text-maroon">{r.badge}</span>
+                  <h2 className="mb-[10px] -translate-y-[30px] self-start rounded-[6px] bg-sand px-[8px] py-[5px] font-recoleta text-[14px] leading-[14px] font-medium text-maroon">{r.badge}</h2>
                 ) : null}
                 <h2 className="font-recoleta text-[28px] leading-[28px] font-medium text-white">{r.name}</h2>
                 <h2 className="mt-[10px] font-recoleta text-[14px] leading-[14px] font-medium text-sand">{r.duration}</h2>
