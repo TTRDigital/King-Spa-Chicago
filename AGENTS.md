@@ -16,7 +16,7 @@ Next.js 16 (App Router, static export) + Sanity Studio embedded at `/cms`, Tailw
 - **Design:** measured from the live pages at 1440px and 390px. Fonts as on the old site: Recoleta and Tang Garland (the same font files the old site served, self-hosted in `public/fonts/`), Mulish, Tienne and the page-specific Google fonts (self-hosted by next/font). Recoleta at weight 600+ renders in the browser's sans-serif on the old site (its bold file never loaded); that look is kept on purpose.
 - **Menu:** full menu from 1025px up (the old site's breakpoint), phone menu below.
 - **Third parties kept as they were:** gift card shop (store.kingspa.com, linked), Elfsight Google Reviews (embedded, loaded when scrolled near), Google Maps (lazy iframes), Google Tag Manager GTM-MR3XHJK3, the Fall Sale popup (hides itself after the end date set in /cms > Site settings > Promo popup).
-- **Form:** the $45 e-coupon form posts to `/api/lead.php` (PHP on SiteGround), which forwards to a GoHighLevel inbound webhook once one is configured.
+- **E-coupon:** `/e-coupon/` is the app version of the page (as on https://chi.kingspa.com/e-coupon-staging/): visitors get the coupon in the Kingspa Rewards app (App Store and Google Play buttons). The old sign-up form is no longer on the page; `/api/lead.php` is still deployed but nothing posts to it.
 
 ## Old URLs (`public/.htaccess`)
 
@@ -51,9 +51,9 @@ Repository **variables** (not secrets): `SANITY_PROJECT_ID` (optional override),
 
 **Publish → live:** in sanity.io/manage > API > Webhooks, add a webhook: URL `https://api.github.com/repos/TTRDigital/King-Spa-Chicago/dispatches`, method POST, triggers create/update/delete, projection `{"event_type": "sanity-publish"}`, headers `Authorization: Bearer <GitHub fine-grained token with Contents: read and write on this repo>` and `Accept: application/vnd.github+json`.
 
-## The e-coupon form
+## The e-coupon endpoint (unused)
 
-Same fields as the old form: Name, Email, Number Of Visitors (required), Visiting Date. Client and server validation, a hidden honeypot field plus a timing check (dropped only when both say spam; one alone is delivered with a `suspected-spam` tag), a per-IP rate limit, UTM/gclid attribution. Payload: flat JSON with `name`, `first_name`, `last_name`, `email`, `number_of_visitors`, `visiting_date`, `tags` (`website-lead`, `e-coupon-45`), `spam_check`, `page_url`, `landing_page`, `referrer` and the UTM fields. The old WordPress form e-mailed the coupon itself; now a GoHighLevel automation on that webhook must send it. **Without a webhook configured the form accepts requests but does not forward them** (the PHP error log says so).
+No page posts to it since the e-coupon page moved to the app. What it does, for reference: same fields as the old form: Name, Email, Number Of Visitors (required), Visiting Date. Client and server validation, a hidden honeypot field plus a timing check (dropped only when both say spam; one alone is delivered with a `suspected-spam` tag), a per-IP rate limit, UTM/gclid attribution. Payload: flat JSON with `name`, `first_name`, `last_name`, `email`, `number_of_visitors`, `visiting_date`, `tags` (`website-lead`, `e-coupon-45`), `spam_check`, `page_url`, `landing_page`, `referrer` and the UTM fields. The old WordPress form e-mailed the coupon itself; now a GoHighLevel automation on that webhook must send it. **Without a webhook configured the form accepts requests but does not forward them** (the PHP error log says so).
 
 ## Development
 

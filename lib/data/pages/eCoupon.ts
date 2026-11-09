@@ -4,37 +4,32 @@ import { images } from "../images.ts";
 export const eCouponPage = {
   seo: { title: "E-Coupon – King Spa Chicago", description: "" },
   banner: {
-    heading: "A Full Day of Wellness for $45",
-    subheading: "Sign up below for all-day access to Chicago's authentic Korean spa experience (a $75 value)",
+    heading: "Get Your King Spa E-Coupon in the Kingspa Rewards App",
+    subheading: "Download the free Kingspa Rewards app to claim your e-coupon for Chicago's authentic Korean spa experience.",
+  },
+  /** The two store buttons, shown under the banner heading and again in the "How to" card. */
+  apps: {
+    appStore: { label: "Download on the App Store", href: "https://apps.apple.com/us/app/kingspa-rewards/id6756033799" },
+    googlePlay: { label: "Get it on Google Play", href: "https://play.google.com/store/apps/details?id=com.kingspa.mobileapp" },
   },
   intro: {
     heading: "Step Into 500 Years Of Korean Healing Tradition",
-    text: "Begin your journey to rejuvenation at King Spa & Sauna Chicago. Complete the form below to receive an exclusive $45 admission offer—your invitation to discover 11 specialty saunas, hot and cold plunge pools, and all-day access to the region’s only authentic jjimjilbang experience.",
+    text: "Enjoy 11 specialty saunas, hot and cold plunge pools and all-day access to our jjimjilbang. Download the Kingspa Rewards app to get your e-coupon, earn rewards on every visit and be the first to hear about exclusive offers.",
   },
-  coupon: { title: "King Spa & Sauna e-Coupon", expires: "Expires", price: "$45", perPerson: "Per Person", value: "($75 Value)" },
-  form: {
-    heading: "Get Your $45 Admission E-Coupon",
-    nameLabel: "Name",
-    namePlaceholder: "Enter Your Name",
-    emailLabel: "Email",
-    emailPlaceholder: "Email Address",
-    visitorsLabel: "Number Of Visitors",
-    visitorsPlaceholder: "Please Enter Number of Visitors",
-    dateLabel: "Visiting Date",
-    datePlaceholder: "Please Enter Visiting Date",
-    button: "Get My $45 Offer",
-    /** Shown in place of the form once it is sent (the page's own "How It Works" sentence). */
-    success: "Once you submit your information, your $45 e-coupon will be delivered to your inbox – be sure to check your spam if you don’t see it.",
-  },
-  howItWorks: {
-    heading: "How It Works",
-    text: "Once you submit your information, your $45 e-coupon will be delivered to your inbox – be sure to check your spam if you don’t see it. Simply print it or show it on your mobile device when you arrive and pay the $45 for entry to King Spa (a $75 value).",
+  howTo: {
+    heading: "How to Get Your E-Coupon",
+    /** Shown with a phone, a person-plus and a ticket icon, in that order. */
+    steps: [
+      "1. Download the free Kingspa Rewards app on your iPhone or Android phone.",
+      "2. Create your free account.",
+      "3. Show your e-coupon in the app at the front desk when you visit.",
+    ],
   },
   terms: {
     heading: "Terms & Conditions",
     contactLabel: "Questions? Contact",
     email: "ecoupon@kingspa.com",
-    text: "Welcome offer is valid for 30 days from the date of receipt and applies to admission only at our Chicago location. One e-coupon covers your entire group—no need for multiple sign-ups.\nThis offer cannot be combined with other promotions or third-party vouchers (including Groupon, LivingSocial, Amazon, or Gilt City). Food, beverages, and spa services are not included. Guests must be 8 years or older to enter the facility. Outside food, alcohol, glass containers, blankets, and pillows are not permitted.",
+    text: "E-coupon offers, terms and expiration dates are shown in the Kingspa Rewards app. Offer applies to admission only at our Chicago location.\nThis offer cannot be combined with other promotions or third-party vouchers (including Groupon, LivingSocial, Amazon, or Gilt City). Food, beverages, and spa services are not included. Guests must be 8 years or older to enter the facility. Outside food, alcohol, glass containers, blankets, and pillows are not permitted.",
   },
   expect: {
     heading: "New to King Spa? Here's What to Expect",
