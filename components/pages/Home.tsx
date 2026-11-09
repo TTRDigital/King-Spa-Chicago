@@ -6,12 +6,11 @@ import { faqPageSchema } from "@/lib/schema";
 import { Inline } from "@/components/ui/RichText";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reviews } from "@/components/ui/Reviews";
-import { MapEmbed } from "@/components/ui/MapEmbed";
 import { HomeTabs } from "@/components/sections/HomeTabs";
 import { TreatmentCarousel } from "@/components/sections/TreatmentCarousel";
 import { GalleryLightbox } from "@/components/sections/GalleryLightbox";
-import { PlainFaq } from "@/components/sections/PlainFaq";
-import { ClockIcon, PinIcon } from "@/components/sections/IconBoxes";
+import { CardFaq } from "@/components/sections/CardFaq";
+import { LocationHours } from "@/components/sections/LocationHours";
 
 /** Home (/), section by section as on chi.kingspa.com. */
 /**
@@ -124,42 +123,20 @@ export async function HomeView({ data }: { data: typeof homePage }) {
         </div>
       </section>
 
-      {/* Location & Hours (Elementor defaults: system font) */}
-      <section className="mx-auto max-w-[1400px] px-[20px] pt-[20px]">
-        <h2 className="font-sans text-[32px] leading-[32px] font-medium text-body">{location.heading}</h2>
-        <div className="mt-[30px] grid grid-cols-1 gap-[20px] text-center md:mt-[30px] md:grid-cols-2 md:gap-0 md:text-left">
-          <div className="flex flex-col items-center gap-[8px] md:flex-row md:items-start md:gap-0 md:px-[10px]">
-            <PinIcon />
-            <div>
-              <h3 className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.addressHeading}</h3>
-              <p className="mt-[17px] font-sans text-[16px] leading-[24px] text-body">{location.address}</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-[8px] md:flex-row md:items-start md:gap-0 md:px-[10px]">
-            <ClockIcon />
-            <div>
-              <h3 className="block font-sans text-[28px] leading-[33.6px] font-medium text-body md:mt-[7px]">{location.hoursHeading}</h3>
-              <p className="mt-[17px] whitespace-pre-line font-sans text-[16px] leading-[24px] text-body">{location.hours}</p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-[10px] w-[304px] max-w-full">
-          <MapEmbed src={settings.maps.pin} title="King Spa & Sauna on Google Maps" className="h-[300px] border-2 border-[#ddd]" />
-        </div>
-      </section>
+      {/* Location & Hours, FAQ and booking: designed as on the inner pages (the old home page showed Elementor's
+          unstyled defaults here, with a small map). Icon boxes with a full-width map, the FAQ card, a booking card. */}
+      <LocationHours data={location} mapSrc={settings.maps.place} headingFont="recoleta" />
 
-      {/* FAQ */}
-      <section className="mt-[44px]">
-        <h2 className="font-sans text-[32px] leading-[32px] font-medium text-body">{faq.heading}</h2>
-        <PlainFaq items={faq.items} />
-      </section>
+      <CardFaq heading={faq.heading} items={faq.items} />
 
-      {/* Book Your Spa Day */}
-      <section className="pt-[24px] pb-[24px]">
-        <h2 className="font-sans text-[32px] leading-[32px] font-medium text-body">{booking.heading}</h2>
-        <p className="font-sans text-[16px] leading-[24px] text-body">{booking.text}</p>
-        <div className="mt-[38px] text-center md:text-right">
-          <Link href={booking.button.href} className="inline-block rounded-[5px] bg-grey-btn px-[40px] py-[20px] font-sans text-[18px] leading-[18px] text-white underline">
+      <section className="mx-auto max-w-[1400px] px-[10px] pb-[60px] md:pb-[90px] lg:px-0">
+        <div className="mx-auto max-w-[1235px] rounded-[20px_20px_100px_20px] border-b-[10px] border-rust bg-maroon px-[24px] pt-[40px] pb-[50px] text-center md:rounded-[30px_30px_100px_30px] md:px-[60px] md:py-[60px]">
+          <h2 className="font-recoleta text-[30px] leading-[34px] font-normal text-white md:text-[40px] md:leading-[44px] lg:text-[48px] lg:leading-[52px]">{booking.heading}</h2>
+          <p className="mx-auto mt-[20px] max-w-[760px] font-mulish text-[15px] leading-[23px] text-white">{booking.text}</p>
+          <Link
+            href={booking.button.href}
+            className="mt-[30px] inline-block rounded-[4px] border border-rust bg-rust px-[36px] py-[18px] font-mulish text-[14px] leading-[14px] font-bold text-white uppercase transition-all duration-300 hover:border-white hover:bg-white hover:text-maroon"
+          >
             {booking.button.label}
           </Link>
         </div>
