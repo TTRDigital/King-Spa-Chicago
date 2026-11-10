@@ -37,7 +37,6 @@ export const siteSettings = {
       { label: "Pricing", href: "/pricing/", children: [] },
       { label: "Blog", href: "/blog/", children: [] },
       { label: "rewards", href: "/reward/", children: [] },
-      { label: "Gift Card", href: "https://store.kingspa.com/chicago/chicago-gift-card.html", children: [] },
     ],
     /** Shown as the last item of the phone menu (the desktop shows the button instead). */
     button: { label: "E-Coupon", href: "/e-coupon/" },
@@ -72,6 +71,8 @@ export const siteSettings = {
     addressHeading: "ADDRESS",
     addressHeadingHref: "/treatments/",
     address: "809 Civic Center Dr. Niles, IL 60714",
+    /** One line above the copyright: gift cards are sold onsite only. */
+    giftCardNote: "Gift cards can only be purchased onsite at King Spa.",
     copyright: "Copyright © King Spa & Sauna. All Rights Reserved\nBlog | Sitemap | Policies | Terms & Conditions",
     creditLabel: "WEBSITE BY",
     credit: { label: "TTR Digital Marketing", href: "https://ttrdigitalmarketing.com/" },

@@ -128,4 +128,9 @@ export const pricingPage = {
       },
     ],
   },
+  /** Last section of the price list: gift cards are sold onsite only (no online store). */
+  giftCards: {
+    heading: "Gift Cards",
+    text: "Gift cards can only be purchased onsite at King Spa.",
+  },
 };

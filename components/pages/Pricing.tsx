@@ -96,7 +96,7 @@ function CenteredBlock({
 
 /** Pricing (/pricing/). */
 export function PricingView({ data }: { data: Data }) {
-  const { admission, bodyScrub, massage, footChair, facial, vSteam } = data;
+  const { admission, bodyScrub, massage, footChair, facial, vSteam, giftCards } = data;
   return (
     <>
       <InnerBanner korean={data.banner.korean} title={data.banner.title} />
@@ -150,6 +150,14 @@ export function PricingView({ data }: { data: Data }) {
         <CenteredBlock block={footChair} headingAlign="text-center md:text-start" textClass="text-[14px] leading-[21px]" />
         <CenteredBlock block={facial} headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
         <CenteredBlock block={vSteam} overlap="-mt-[57px]" headingAlign="text-center" textClass="text-[14px] leading-[21px] lg:text-[15px] lg:leading-[22.5px]" />
+
+        {/* Gift Cards: a small card in the price sections' style (maroon, Tang heading, Mulish text), no link. */}
+        <section className="pb-[110px]">
+          <div className={`${tableBox} mx-[10px] px-[20px] py-[40px] text-center md:mx-auto md:w-[686px] md:rounded-[31px] md:px-[70px] md:py-[50px]`}>
+            <h4 className="font-tang text-[26px] leading-[39px] font-normal text-white md:text-[35px] md:leading-[52.5px] lg:text-[40px] lg:leading-[60px]">{giftCards.heading}</h4>
+            <p className="mt-[15px] font-mulish text-[14px] leading-[21px] text-white md:mt-[20px] lg:text-[15px] lg:leading-[22.5px]">{giftCards.text}</p>
+          </div>
+        </section>
       </div>
     </>
   );

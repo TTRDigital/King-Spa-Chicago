@@ -78,6 +78,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
         </div>
 
         <div className="mt-[30px] border-t-2 border-white/30 px-[10px] pt-[10px] pb-[24px] text-center font-mulish text-[13px] leading-[19.5px] text-white md:mt-[30px]">
+          <p className="mb-[10px]">{f.giftCardNote}</p>
           <p className="whitespace-pre-line">{f.copyright}</p>
           <p className="mt-[68px]">
             {f.creditLabel}{" "}
