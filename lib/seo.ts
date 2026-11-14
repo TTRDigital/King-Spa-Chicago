@@ -13,7 +13,7 @@ export function pageMetadata(seo: Seo, path: string, image: Img = images.heroRed
     title: { absolute: seo.title },
     description,
     alternates: { canonical: path },
-    robots: noIndex ? { index: false, follow: true } : undefined,
+    robots: process.env.VERCEL_ENV === "preview" ? { index: false, follow: false } : noIndex ? { index: false, follow: true } : undefined, // previews (staging copy) are never indexed
     openGraph: { type: "website", siteName: "King Spa Chicago", locale: "en_US", url: path, title: seo.title, description, images: [{ url: image.src, width: image.width, height: image.height, alt: image.alt }] },
     twitter: { card: "summary_large_image", title: seo.title, description, images: [image.src] },
   };
