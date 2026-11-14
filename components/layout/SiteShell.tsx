@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Script from "next/script";
 import { getSettings } from "@/lib/content";
 import { businessSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -27,6 +28,8 @@ export async function SiteShell({ children }: { children: ReactNode }) {
       <ChatWidget />
       <AttributionCapture />
       <Analytics />
+      {/* Staging copy only: the Feedback Studio edit bar. Never built into production. */}
+      {process.env.VERCEL_ENV === "preview" && <Script src="https://ttr-portal.vercel.app/api/site/notes/bar" strategy="afterInteractive" />}
     </>
   );
 }

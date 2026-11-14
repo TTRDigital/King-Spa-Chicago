@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "King Spa Chicago", template: "%s – King Spa Chicago" },
   applicationName: "King Spa Chicago",
+  // Vercel previews (the staging copy) must never be indexed.
+  ...(process.env.VERCEL_ENV === "preview" ? { robots: { index: false, follow: false } } : {}),
   formatDetection: { telephone: false, address: false, email: false },
   icons: {
     icon: [

@@ -5,6 +5,7 @@ export const dynamic = "force-static";
 
 // Same rule as the old site's robots.txt (it only blocked /wp-admin/), plus the studio and the form endpoint.
 export default function robots(): MetadataRoute.Robots {
+  if (process.env.VERCEL_ENV === "preview") return { rules: [{ userAgent: "*", disallow: "/" }] };
   return {
     rules: [{ userAgent: "*", allow: "/", disallow: ["/cms/", "/api/"] }],
     sitemap: absoluteUrl("/sitemap.xml"),
